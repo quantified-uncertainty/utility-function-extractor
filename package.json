@@ -1,6 +1,6 @@
 {
-  "name": "with-tailwindcss",
-  "version": "0.1.0",
+  "name": "utility-function-extractor",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,6 +10,7 @@
   "dependencies": {
     "next": "latest",
     "react": "^17.0.1",
+    "react-compound-slider": "^3.3.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
