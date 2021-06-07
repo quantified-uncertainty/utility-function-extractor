@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React, { useState } from "react";
+import {DrawGraph} from '../lib/labeledgraph';
 import { SliderElement } from "../lib/slider.js";
 
 // Utilities
@@ -46,7 +47,7 @@ export default function Home() {
   const [quantitativeComparisons, setQuantitativeComparisons] = useState([])
 
   const [isListOrdered, setIsListOrdered]  = useState(false)
-  const [orderedList, setOrderedList] = useState(null)
+  const [orderedList, setOrderedList] = useState([])
 
 
   // Manipulations
@@ -185,6 +186,11 @@ export default function Home() {
           </button>
         </div>
         
+        <DrawGraph 
+          isListOrdered={isListOrdered}
+          list={orderedList}
+          quantitativeComparisons={quantitativeComparisons}>
+        </DrawGraph>
 
         <div className={`mt-10 ${isListOrdered? "": "hidden" }`}>
           <p>{`Ordered list: ${JSON.stringify(orderedList, null, 4)}`}</p> 
@@ -192,7 +198,6 @@ export default function Home() {
           <p>{`Quantitative comparisons: ${JSON.stringify(quantitativeComparisons, null, 4)}`}</p> 
 
         </div>
-
       </main>
 
     </div>

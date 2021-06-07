@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "d3": "^6.7.0",
     "next": "latest",
     "react": "^17.0.1",
     "react-compound-slider": "^3.3.1",
