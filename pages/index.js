@@ -1,9 +1,14 @@
 import Head from 'next/head'
 import React, { useState } from "react";
+import fs from 'fs';
+import path from 'path';
 import {DrawGraph} from '../lib/labeledgraph';
 import { SliderElement } from "../lib/slider.js";
-
+import {DisplayElement} from '../lib/displayElement'
 // Utilities
+
+let increasingList = (n) => Array.from(Array(n).keys())
+
 Array.prototype.containsArray = function(val) {
   var hash = {};
   for(var i=0; i<this.length; i++) {
@@ -35,11 +40,26 @@ let displayFunctionSlider = (value) => {
 
 };
 
+// data
+export async function getStaticProps() {
+  //getServerSideProps
+  // const { metaforecasts } = await getForecasts();
+  const directory = path.join(process.cwd(),"pages")
+  let listOfPosts = JSON.parse(fs.readFileSync(path.join(directory, 'listOfPosts.json'), 'utf8'));
+  console.log(directory)
+  //console.log("metaforecasts", metaforecasts)
+  return {
+    props: {
+      listOfPosts,
+    },
+  };
+}
+
 // Main
-export default function Home() {
+export default function Home({listOfPosts}) {
   // State
-  let list = [1,2,3,4,5,6,7,8,9,10]
-  // let initialComparisonPair = [9,10]
+  let list = increasingList(listOfPosts.length)//[1,2,3,4,5,6,7,8,9,10]
+
   const [toComparePair, setToComparePair] = useState([list[list.length-2], list[list.length-1]])
   const [binaryComparisons, setBinaryComparisons] = useState([])
 
@@ -48,7 +68,6 @@ export default function Home() {
 
   const [isListOrdered, setIsListOrdered]  = useState(false)
   const [orderedList, setOrderedList] = useState([])
-
 
   // Manipulations
   let compareTwoElements = (newBinaryComparisons, element1, element2) => {
@@ -162,13 +181,19 @@ export default function Home() {
                 className="flex m-auto border-gray-300 border-4 h-64 w-64"
                 //onClick={() => nextStep(binaryComparisons, toComparePair[0], toComparePair[1])}
               >
-                <p className="block m-auto text-center">{toComparePair[0]}</p>
+                <p className="block m-auto text-center">  
+                  <DisplayElement element={listOfPosts[toComparePair[0]]}>
+                  </DisplayElement>
+                </p>
               </div>
               <div 
                 className="flex m-auto border-gray-300 border-4 h-64 w-64"
                 //onClick={() => nextStep(binaryComparisons, toComparePair[1], toComparePair[0])}
               >
-                <p className="block m-auto text-center">{toComparePair[1]}</p>
+                <p className="block m-auto text-center">  
+                  <DisplayElement element={listOfPosts[toComparePair[1]]}>
+                  </DisplayElement>
+                </p>
               </div>
           </div>
           <div className={`flex row-start-3 row-end-3  col-start-1 col-end-4 md:col-start-3 md:col-end-3 md:row-start-1 md:row-end-1 lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-1 items-center justify-center mb-4 mt-10 ${isListOrdered? "hidden" : ""}`}>
