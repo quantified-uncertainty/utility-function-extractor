@@ -5,6 +5,8 @@ import path from 'path';
 import {DrawGraph} from '../lib/labeledgraph';
 import { SliderElement } from "../lib/slider.js";
 import {DisplayElement} from '../lib/displayElement'
+import {DisplayAsMarkdown} from '../lib/displayAsMarkdown'
+
 // Utilities
 
 let increasingList = (n) => Array.from(Array(n).keys())
@@ -39,6 +41,8 @@ let displayFunctionSlider = (value) => {
   return result
 
 };
+
+let nicelyFormatLinks = (quantitativeComparisons , list) => quantitativeComparisons.map(([element1, element2, distance]) => ({source: list.indexOf(element1), target: list.indexOf(element2), distance: distance}))
 
 // data
 export async function getStaticProps() {
@@ -164,9 +168,9 @@ export default function Home({listOfPosts}) {
 
   // Html
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 mt-10">
       <Head>
-        <title>Welcome to Hot Or Not</title>
+        <title>Utility Function Extractor</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -178,7 +182,7 @@ export default function Home({listOfPosts}) {
         <div className = {`${isListOrdered ? "hidden" : ""}`}>
           <div className="flex flex-wrap items-center max-w-4xl mt-6 sm:w-full mt-20">
               <div 
-                className="flex m-auto border-gray-300 border-4 h-64 w-64"
+                className="flex m-auto border-gray-300 border-4 h-72 w-72"
                 //onClick={() => nextStep(binaryComparisons, toComparePair[0], toComparePair[1])}
               >
                 <p className="block m-auto text-center">  
@@ -187,7 +191,7 @@ export default function Home({listOfPosts}) {
                 </p>
               </div>
               <div 
-                className="flex m-auto border-gray-300 border-4 h-64 w-64"
+                className="flex m-auto border-gray-300 border-4 h-72 w-72 p-5"
                 //onClick={() => nextStep(binaryComparisons, toComparePair[1], toComparePair[0])}
               >
                 <p className="block m-auto text-center">  
@@ -217,13 +221,19 @@ export default function Home({listOfPosts}) {
           quantitativeComparisons={quantitativeComparisons}>
         </DrawGraph>
 
-        <div className={`mt-10 ${isListOrdered? "": "hidden" }`}>
-          <p>{`Ordered list: ${JSON.stringify(orderedList, null, 4)}`}</p> 
-          <p>{`Binary comparisons: ${JSON.stringify(binaryComparisons, null, 4)}`}</p> 
+        
+      </main>
+
+      <div className={`inline text-left w-full flex-1 px-20 ${isListOrdered? "": "hidden" }`}>
+          <DisplayAsMarkdown markdowntext={"## Ordered list\n\n" + JSON.stringify(orderedList.map(i => listOfPosts[i]), null, 4)}></DisplayAsMarkdown>
+          <DisplayAsMarkdown markdowntext={"## Distances\n\n" + JSON.stringify(nicelyFormatLinks(quantitativeComparisons, list), null, 4)}></DisplayAsMarkdown>
+          {/*
+                    <p>{`Binary comparisons: ${JSON.stringify(binaryComparisons, null, 4)}`}</p> 
           <p>{`Quantitative comparisons: ${JSON.stringify(quantitativeComparisons, null, 4)}`}</p> 
 
+          */}
+
         </div>
-      </main>
 
     </div>
   )
