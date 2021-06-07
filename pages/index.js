@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import fs from 'fs';
 import path from 'path';
 import {DrawGraph} from '../lib/labeledgraph';
-import { SliderElement } from "../lib/slider.js";
+import { SliderElement } from "../lib/slider";
 import {DisplayElement} from '../lib/displayElement'
 import {DisplayAsMarkdown} from '../lib/displayAsMarkdown'
+import {CreateTableWithDistances} from '../lib/findPaths'
 
 // Utilities
 
@@ -19,7 +20,7 @@ Array.prototype.containsArray = function(val) {
   return hash.hasOwnProperty(val);
 }
 
-let checkIfListIsOrdered = (arr, binaryComparisons) => {
+let checkIfListIsOrdered = (arr, binaryComparisons) => { // list of ids
   let l = arr.length
   let isOrdered = true
   for(let i=0; i<l-1; i++){
@@ -62,8 +63,8 @@ export async function getStaticProps() {
 // Main
 export default function Home({listOfPosts}) {
   // State
-  let list = increasingList(listOfPosts.length)//[1,2,3,4,5,6,7,8,9,10]
-
+  let list = increasingList(listOfPosts.length)//[1,2,3,4,5,6,7,8,9,10] // listOfPosts.map(element => element.id)// 
+  let referenceValueId = 1//listOfPosts.filter(post => post.isReferenceValue || false)[0].id
   const [toComparePair, setToComparePair] = useState([list[list.length-2], list[list.length-1]])
   const [binaryComparisons, setBinaryComparisons] = useState([])
 
@@ -185,19 +186,19 @@ export default function Home({listOfPosts}) {
                 className="flex m-auto border-gray-300 border-4 h-72 w-72"
                 //onClick={() => nextStep(binaryComparisons, toComparePair[0], toComparePair[1])}
               >
-                <p className="block m-auto text-center">  
+                <div className="block m-auto text-center">  
                   <DisplayElement element={listOfPosts[toComparePair[0]]}>
                   </DisplayElement>
-                </p>
+                </div>
               </div>
               <div 
                 className="flex m-auto border-gray-300 border-4 h-72 w-72 p-5"
                 //onClick={() => nextStep(binaryComparisons, toComparePair[1], toComparePair[0])}
               >
-                <p className="block m-auto text-center">  
+                <div className="block m-auto text-center">  
                   <DisplayElement element={listOfPosts[toComparePair[1]]}>
                   </DisplayElement>
-                </p>
+                </div>
               </div>
           </div>
           <div className={`flex row-start-3 row-end-3  col-start-1 col-end-4 md:col-start-3 md:col-end-3 md:row-start-1 md:row-end-1 lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-1 items-center justify-center mb-4 mt-10 ${isListOrdered? "hidden" : ""}`}>
@@ -220,7 +221,15 @@ export default function Home({listOfPosts}) {
           list={orderedList}
           quantitativeComparisons={quantitativeComparisons}>
         </DrawGraph>
-
+          <div className={`inline items-center text-center mt-10 ${isListOrdered? "": "hidden" }`}>
+            <CreateTableWithDistances
+              isListOrdered={isListOrdered}
+              quantitativeComparisons={quantitativeComparisons}
+              listOfElements={orderedList.map(i => listOfPosts[i])}
+              referenceValueId={referenceValueId}
+            >
+            </CreateTableWithDistances>
+        </div>
         
       </main>
 
@@ -232,9 +241,7 @@ export default function Home({listOfPosts}) {
           <p>{`Quantitative comparisons: ${JSON.stringify(quantitativeComparisons, null, 4)}`}</p> 
 
           */}
-
-        </div>
-
+      </div>
     </div>
   )
 }

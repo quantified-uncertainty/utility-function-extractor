@@ -46,3 +46,7 @@ ul {
   list-style-type: square;
   margin-left: 20px;
 }
+
+th, td {
+  font-size: 17px;
+}
