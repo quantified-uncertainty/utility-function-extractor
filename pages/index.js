@@ -11,6 +11,7 @@ import {CreateTableWithDistances} from '../lib/findPaths'
 // Utilities
 
 let increasingList = (n) => Array.from(Array(n).keys())
+let buildLinks = quantitativeComparisons => quantitativeComparisons.map(([element1, element2, distance]) => ({source: element1, target: element2, distance: distance}))
 
 Array.prototype.containsArray = function(val) {
   var hash = {};
@@ -20,7 +21,7 @@ Array.prototype.containsArray = function(val) {
   return hash.hasOwnProperty(val);
 }
 
-let checkIfListIsOrdered = (arr, binaryComparisons) => { // list of ids
+let checkIfListIsOrdered = (arr, binaryComparisons) => { 
   let l = arr.length
   let isOrdered = true
   for(let i=0; i<l-1; i++){
@@ -30,6 +31,7 @@ let checkIfListIsOrdered = (arr, binaryComparisons) => { // list of ids
 }
 
 let simplifySliderValue = value => 10**value >= 3 ? Math.round(10**value) : Math.round(10*10**value)/10
+
 let displayFunctionSlider = (value) => {
   let result
   if(value >= 0){
@@ -45,13 +47,14 @@ let displayFunctionSlider = (value) => {
 
 let nicelyFormatLinks = (quantitativeComparisons , list) => quantitativeComparisons.map(([element1, element2, distance]) => ({source: list.indexOf(element1), target: list.indexOf(element2), distance: distance}))
 
-// data
+/* React components */
+// fs can only be used here. 
 export async function getStaticProps() {
   //getServerSideProps
   // const { metaforecasts } = await getForecasts();
   const directory = path.join(process.cwd(),"pages")
   let listOfPosts = JSON.parse(fs.readFileSync(path.join(directory, 'listOfPosts.json'), 'utf8'));
-  console.log(directory)
+  //console.log(directory)
   //console.log("metaforecasts", metaforecasts)
   return {
     props: {
@@ -60,16 +63,17 @@ export async function getStaticProps() {
   };
 }
 
-// Main
+// Main react component
 export default function Home({listOfPosts}) {
   // State
-  let list = increasingList(listOfPosts.length)//[1,2,3,4,5,6,7,8,9,10] // listOfPosts.map(element => element.id)// 
-  let referenceValueId = 1//listOfPosts.filter(post => post.isReferenceValue || false)[0].id
-  const [toComparePair, setToComparePair] = useState([list[list.length-2], list[list.length-1]])
-  const [binaryComparisons, setBinaryComparisons] = useState([])
+  let list = increasingList(listOfPosts.length) // [0,1,2,3,4]
+  listOfPosts = listOfPosts.map((element, i) => ({...element, id: i}))
 
+  const [toComparePair, setToComparePair] = useState([list[list.length-2], list[list.length-1]])
   const [sliderValue, setSliderValue] = useState(0)
-  const [quantitativeComparisons, setQuantitativeComparisons] = useState([])
+
+  const [binaryComparisons, setBinaryComparisons] = useState([])
+  const [quantitativeComparisons, setQuantitativeComparisons] = useState([]) // More expressive, but more laborious to search through. For the ordering step, I only manipulate the binaryComparisons.
 
   const [isListOrdered, setIsListOrdered]  = useState(false)
   const [orderedList, setOrderedList] = useState([])
@@ -82,9 +86,9 @@ export default function Home({listOfPosts}) {
       return element1Greater && !element2Greater
     } else{
       setToComparePair([element1, element2])
-      console.log(`No comparison found between ${element1} and ${element2}`)
-      console.log(`Comparisons:`)
-      console.log(JSON.stringify(newBinaryComparisons, null, 4));
+      //console.log(`No comparison found between ${element1} and ${element2}`)
+      //console.log(`Comparisons:`)
+      //console.log(JSON.stringify(newBinaryComparisons, null, 4));
       return "No comparison found"
     }
   }
@@ -134,19 +138,19 @@ export default function Home({listOfPosts}) {
   }
 
   let nextStepSimple = (binaryComparisons, element1, element2) => {
-    console.log("Binary comparisons: ")
-    console.log(JSON.stringify(binaryComparisons, null, 4));
+    //console.log("Binary comparisons: ")
+    //console.log(JSON.stringify(binaryComparisons, null, 4));
 
     let newComparison = [element1, element2] // [element1, element2]
     let newBinaryComparisons = [...binaryComparisons, newComparison]
-    console.log("New binaryComparisons: ")
-    console.log(JSON.stringify(newBinaryComparisons, null, 4));
+    //console.log("New binaryComparisons: ")
+    //console.log(JSON.stringify(newBinaryComparisons, null, 4));
     setBinaryComparisons(newBinaryComparisons)  
     
     let result = mergeSort(list, newBinaryComparisons)
-    console.log(result)
+    //console.log(result)
     if(result !=  "No comparison found; unable to proceed" && checkIfListIsOrdered(result, newBinaryComparisons)){
-      console.log(result)
+      //console.log(result)
       setIsListOrdered(true)
       setOrderedList(result)
     }
@@ -218,15 +222,14 @@ export default function Home({listOfPosts}) {
         
         <DrawGraph 
           isListOrdered={isListOrdered}
-          list={orderedList}
-          quantitativeComparisons={quantitativeComparisons}>
+          nodes={orderedList.map(i => listOfPosts[i])}
+          links={buildLinks(quantitativeComparisons)}>
         </DrawGraph>
           <div className={`inline items-center text-center mt-10 ${isListOrdered? "": "hidden" }`}>
             <CreateTableWithDistances
               isListOrdered={isListOrdered}
-              quantitativeComparisons={quantitativeComparisons}
-              listOfElements={orderedList.map(i => listOfPosts[i])}
-              referenceValueId={referenceValueId}
+              nodes={orderedList.map(i => listOfPosts[i])}
+              links={buildLinks(quantitativeComparisons)}
             >
             </CreateTableWithDistances>
         </div>
