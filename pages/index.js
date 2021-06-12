@@ -2,11 +2,12 @@ import Head from 'next/head'
 import React, { useState } from "react";
 import fs from 'fs';
 import path from 'path';
-import {DrawGraph} from '../lib/labeledgraph';
-import { SliderElement } from "../lib/slider";
+import {DrawGraph, removeOldSvg} from '../lib/labeledgraph';
+import { SliderElement, SubmitSliderButton } from "../lib/slider";
 import {DisplayElement} from '../lib/displayElement'
 import {DisplayAsMarkdown} from '../lib/displayAsMarkdown'
 import {CreateTableWithDistances} from '../lib/findPaths'
+import {TextAreaForJson} from "../lib/textAreaForJson"
 
 // Utilities
 
@@ -45,7 +46,7 @@ let displayFunctionSlider = (value) => {
 
 };
 
-let nicelyFormatLinks = (quantitativeComparisons , list) => quantitativeComparisons.map(([element1, element2, distance]) => ({source: list.indexOf(element1), target: list.indexOf(element2), distance: distance}))
+let nicelyFormatLinks = (quantitativeComparisons , listOfElements) => quantitativeComparisons.map(([element1, element2, distance]) => ({source: listOfElements[element1].name, target: listOfElements[element2].name, distance: distance}))
 
 /* React components */
 // fs can only be used here. 
@@ -58,25 +59,66 @@ export async function getStaticProps() {
   //console.log("metaforecasts", metaforecasts)
   return {
     props: {
-      listOfPosts,
+      listOfElementsDefault: listOfPosts,
     },
   };
 }
 
 // Main react component
-export default function Home({listOfPosts}) {
+export default function Home({listOfElementsDefault}) {
   // State
-  let list = increasingList(listOfPosts.length) // [0,1,2,3,4]
-  listOfPosts = listOfPosts.map((element, i) => ({...element, id: i}))
+  let initialListOfElements = listOfElementsDefault.map((element, i) => ({...element, id: i}))
+  let initialPosList = increasingList(listOfElementsDefault.length) // [0,1,2,3,4]
+  //let listOfElements = listOfElementsDefault.map((element, i) => ({...element, id: i}))
+  //let list = increasingList(listOfElementsDefault.length) // [0,1,2,3,4]
 
-  const [toComparePair, setToComparePair] = useState([list[list.length-2], list[list.length-1]])
-  const [sliderValue, setSliderValue] = useState(0)
+  //let initialComparePair = [list[list.length-2], list[list.length-1]]
+  let initialComparePair = [initialPosList[initialPosList.length-2], initialPosList[initialPosList  .length-1]]
+  let initialSliderValue = 0
+  let initialBinaryComparisons = []
+  let initialQuantitativeComparisons = []
+  let initialIsListOdered = false
+  let initialOrderedList = []
+  let initialShowAdvancedOptions = false
+  let initialShowComparisons = false
+  let initialShowChangeDataSet = false
 
-  const [binaryComparisons, setBinaryComparisons] = useState([])
-  const [quantitativeComparisons, setQuantitativeComparisons] = useState([]) // More expressive, but more laborious to search through. For the ordering step, I only manipulate the binaryComparisons.
+  const [listOfElements, setListOfElements] = useState(initialListOfElements)
+  const [posList, setPosList] = useState(initialPosList)
+  //const posList = initialPosList
+  // let listOfElements = initialListOfElements
 
-  const [isListOrdered, setIsListOrdered]  = useState(false)
-  const [orderedList, setOrderedList] = useState([])
+  const [toComparePair, setToComparePair] = useState(initialComparePair)
+  const [sliderValue, setSliderValue] = useState(initialSliderValue)
+  const [binaryComparisons, setBinaryComparisons] = useState(initialBinaryComparisons)
+  const [quantitativeComparisons, setQuantitativeComparisons] = useState(initialQuantitativeComparisons) // More expressive, but more laborious to search through. For the ordering step, I only manipulate the binaryComparisons.
+
+  const [isListOrdered, setIsListOrdered]  = useState(initialIsListOdered)
+  const [orderedList, setOrderedList] = useState(initialOrderedList)
+
+  let [showAdvancedOptions, changeShowAdvanceOptions] = useState(initialShowAdvancedOptions);
+  let [showComparisons, changeShowComparisons] = useState(initialShowComparisons);
+  let [showChangeDataSet, changeshowChangeDataSet] = useState(initialShowChangeDataSet);
+
+  let restart = (posList) => {
+    setToComparePair([posList[posList.length-2], posList[posList.length-1]])
+    setSliderValue(initialSliderValue)
+    setBinaryComparisons(initialBinaryComparisons)
+    setQuantitativeComparisons(initialQuantitativeComparisons)
+    setIsListOrdered(initialIsListOdered)
+    setOrderedList(initialOrderedList)
+    removeOldSvg()
+  }
+  
+  let changeDataSet = (listOfElementsNew) => {
+    listOfElementsNew = 
+    listOfElementsNew.map((element, i) => ({...element, id: i}))
+    let newPosList = increasingList(listOfElementsNew.length)
+    setListOfElements(listOfElementsNew)
+    setPosList(increasingList(listOfElementsNew.length))
+    setToComparePair([newPosList[newPosList.length-2], newPosList[newPosList.length-1]])
+    restart(newPosList)
+  }
 
   // Manipulations
   let compareTwoElements = (newBinaryComparisons, element1, element2) => {
@@ -113,23 +155,23 @@ export default function Home({listOfPosts}) {
     return [...sortedArr, ...left, ...right]; // if they don't have the same size, the remaining ones will be greater than the ones before
   }
   
-  function mergeSort(arr, newBinaryComparisons) {
-    if(arr ==  "No comparison found; unable to proceed"){
+  function mergeSort({array, comparisons}) {
+    if(array ==  "No comparison found; unable to proceed"){
       return  "No comparison found; unable to proceed"
     }
-    const half = arr.length / 2;
+    const half = array.length / 2;
   
     // the base case is array length <=1
-    if (arr.length <= 1) {
-      return arr;
+    if (array.length <= 1) {
+      return array;
     }
   
-    const left = arr.splice(0, half); // the first half of the array
-    const right = arr;
-    let orderedFirstHalf = mergeSort(left, newBinaryComparisons)
-    let orderedSecondHalf = mergeSort(right, newBinaryComparisons)
+    const left = array.slice(0, half); // the first half of the array
+    const right = array.slice(half, array.length) // Note that splice is destructive. 
+    let orderedFirstHalf = mergeSort({array:left, comparisons})
+    let orderedSecondHalf = mergeSort({array:right, comparisons})
     if(orderedFirstHalf != "No comparison found; unable to proceed" && orderedSecondHalf != "No comparison found; unable to proceed"){
-      let result = merge(newBinaryComparisons, orderedFirstHalf, orderedSecondHalf);
+      let result = merge(comparisons, orderedFirstHalf, orderedSecondHalf);
       return result
     }else{
       return  "No comparison found; unable to proceed"
@@ -137,7 +179,7 @@ export default function Home({listOfPosts}) {
 
   }
 
-  let nextStepSimple = (binaryComparisons, element1, element2) => {
+  let nextStepSimple = (posList, binaryComparisons, element1, element2) => {
     //console.log("Binary comparisons: ")
     //console.log(JSON.stringify(binaryComparisons, null, 4));
 
@@ -147,22 +189,28 @@ export default function Home({listOfPosts}) {
     //console.log(JSON.stringify(newBinaryComparisons, null, 4));
     setBinaryComparisons(newBinaryComparisons)  
     
-    let result = mergeSort(list, newBinaryComparisons)
+    let result = mergeSort({array: posList, comparisons: newBinaryComparisons})
     //console.log(result)
     if(result !=  "No comparison found; unable to proceed" && checkIfListIsOrdered(result, newBinaryComparisons)){
-      //console.log(result)
+      // console.log(`isListOrdered: ${isListOrdered}`)
+      console.log("poslist@nextStepSimple")
+      console.log(posList)
+      console.log("result@nextStepSimple")
+      console.log(result)
+
       setIsListOrdered(true)
       setOrderedList(result)
     }
   }
 
-  let nextStepSlider = (binaryComparisons, sliderValue, element1, element2) => {
+  let nextStepSlider = ({posList, binaryComparisons, sliderValue, element1, element2}) => {
     if(sliderValue < 0){
       sliderValue = -sliderValue;
       [element1,element2] = [element2,element1]
     }
-
-    nextStepSimple(binaryComparisons, element1, element2)
+    console.log(`posList@nextStepSlider:`)
+    console.log(posList)
+    nextStepSimple(posList, binaryComparisons, element1, element2)
 
     let newQuantitativeComparison = [element1, element2, simplifySliderValue(sliderValue)]
     let newQuantitativeComparisons = [...quantitativeComparisons, newQuantitativeComparison]
@@ -173,25 +221,27 @@ export default function Home({listOfPosts}) {
 
   // Html
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 mt-10">
-      <Head>
-        <title>Utility Function Extractor</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="mt-20">
+        <Head >
+          <title>Utility Function Extractor</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      </div>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+      <main className="flex flex-col items-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold">
          Utility Function Extractor
         </h1>
 
         <div className = {`${isListOrdered ? "hidden" : ""}`}>
-          <div className="flex flex-wrap items-center max-w-4xl mt-6 sm:w-full mt-20">
+          <div className="flex flex-wrap items-center max-w-4xl sm:w-full mt-10">
               <div 
-                className="flex m-auto border-gray-300 border-4 h-72 w-72"
+                className="flex m-auto border-gray-300 border-4 h-72 w-72 p-5"
                 //onClick={() => nextStep(binaryComparisons, toComparePair[0], toComparePair[1])}
               >
                 <div className="block m-auto text-center">  
-                  <DisplayElement element={listOfPosts[toComparePair[0]]}>
+                  <DisplayElement element={listOfElements[toComparePair[0]]}>
                   </DisplayElement>
                 </div>
               </div>
@@ -200,7 +250,7 @@ export default function Home({listOfPosts}) {
                 //onClick={() => nextStep(binaryComparisons, toComparePair[1], toComparePair[0])}
               >
                 <div className="block m-auto text-center">  
-                  <DisplayElement element={listOfPosts[toComparePair[1]]}>
+                  <DisplayElement element={listOfElements[toComparePair[1]]}>
                   </DisplayElement>
                 </div>
               </div>
@@ -213,38 +263,88 @@ export default function Home({listOfPosts}) {
                   displayFunction={displayFunctionSlider}
                 />
           </div>
-          <button 
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5"
-            onClick={() => nextStepSlider(binaryComparisons, sliderValue, toComparePair[1], toComparePair[0])}>
-              Submit
-          </button>
+          <SubmitSliderButton
+            posList={posList}
+            binaryComparisons={binaryComparisons}
+            sliderValue={sliderValue}
+            toComparePair={toComparePair}
+            nextStepSlider={nextStepSlider}
+          />
+          
         </div>
         
         <DrawGraph 
           isListOrdered={isListOrdered}
-          nodes={orderedList.map(i => listOfPosts[i])}
+          orderedList={orderedList}
+          listOfElements={listOfElements}
           links={buildLinks(quantitativeComparisons)}>
         </DrawGraph>
-          <div className={`inline items-center text-center mt-10 ${isListOrdered? "": "hidden" }`}>
+        <div className={`inline items-center text-center mt-10 ${isListOrdered? "": "hidden" }`}>
             <CreateTableWithDistances
               isListOrdered={isListOrdered}
-              nodes={orderedList.map(i => listOfPosts[i])}
+              orderedList={orderedList}
+              listOfElements={listOfElements}
               links={buildLinks(quantitativeComparisons)}
             >
             </CreateTableWithDistances>
         </div>
-        
-      </main>
+        <div className="w-2/12 flex justify-center mt-10">
+          <button
+            className="text-gray-500 text-sm"
+            onClick={() => changeShowAdvanceOptions(!showAdvancedOptions)}
+          >
+            Advanced options ▼
+          </button>
+        </div>
 
-      <div className={`inline text-left w-full flex-1 px-20 ${isListOrdered? "": "hidden" }`}>
-          <DisplayAsMarkdown markdowntext={"## Ordered list\n\n" + JSON.stringify(orderedList.map(i => listOfPosts[i]), null, 4)}></DisplayAsMarkdown>
-          <DisplayAsMarkdown markdowntext={"## Distances\n\n" + JSON.stringify(nicelyFormatLinks(quantitativeComparisons, list), null, 4)}></DisplayAsMarkdown>
+        <div className={`flex flex-wrap -mx-4 overflow-hidden ${showAdvancedOptions? "": "hidden"}`}>
+          <div className="my-4 px-4 w-1/3 overflow-hidden">
+            <button 
+              className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5"
+              onClick={() => restart(posList)}>
+                Restart
+            </button>
+          </div>
+          <div className="my-4 px-4 w-1/3 overflow-hidden">
+            <button 
+              className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5"
+              onClick={() => changeShowComparisons(!showComparisons)}>
+                Show comparisons
+            </button>
+          </div>
+          <div className="my-4 px-4 w-1/3 overflow-hidden">
+            <button 
+              className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5"
+              onClick={() => changeshowChangeDataSet(!showChangeDataSet)}>
+                Use your own data
+            </button>
+          </div>
+        </div>
+        
+        <div className={`inline mt-5 ${showChangeDataSet ? "": "hidden" }`}>
+          <TextAreaForJson handleSubmit={changeDataSet}/>
+        </div>
+
+        <div className={`inline mt-5 ${showComparisons? "": "hidden" }`}>
+          {/*
+            <DisplayAsMarkdown markdowntext={"## Ordered list\n\n" + JSON.stringify(orderedList.map(i => listOfElements[i]), null, 4)}></DisplayAsMarkdown>
+          */}
+          <h2>Comparisons</h2>
+          <div className="text-left">
+            <DisplayAsMarkdown 
+              markdowntext={JSON.stringify(nicelyFormatLinks(quantitativeComparisons, listOfElements), null, 4)}
+              className={""}>
+            </DisplayAsMarkdown>
+          </div>
+
           {/*
                     <p>{`Binary comparisons: ${JSON.stringify(binaryComparisons, null, 4)}`}</p> 
           <p>{`Quantitative comparisons: ${JSON.stringify(quantitativeComparisons, null, 4)}`}</p> 
 
           */}
-      </div>
+        </div>
+      </main>
+
     </div>
   )
 }
