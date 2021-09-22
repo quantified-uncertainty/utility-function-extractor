@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Doubling consumption for one person for one year",
+    "note": "(at fairly low levels of wealth)",
+    "isReferenceValue": true
+  },
+  {
+    "name": "Averting the death of an individual under 5 from malaria"
+  },
+  {
+    "name": "Averting the death of an individual 5 or older from malaria"
+  },
+  {
+    "name": "Averting the death of a 6- to 59-month-old child",
+    "note": "(through Vitamin A Supplementation)"
+  },
+  {
+    "name": "Averting the death of an individual under 5 from vaccine-preventable diseases"
+  },
+  {
+    "name": "Averting the death of an individual 5-14 years old from vaccine-preventable diseases"
+  },
+  {
+    "name": "Averting the death of an individual 15-49 years old from vaccine-preventable diseases"
+  },
+  {
+    "name": "Averting the death of an individual 50-74 years old from vaccine-preventable diseases"
+  }
+]
