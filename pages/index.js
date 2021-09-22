@@ -8,7 +8,7 @@ import { DisplayElement } from '../lib/displayElement'
 import { DisplayAsMarkdown } from '../lib/displayAsMarkdown'
 import { CreateTableWithDistances } from '../lib/findPaths'
 import { TextAreaForJson } from "../lib/textAreaForJson"
-
+import { pushToMongo } from "../lib/mongo-wrapper.js"
 // Utilities
 
 let increasingList = (n) => Array.from(Array(n).keys())
@@ -32,7 +32,7 @@ let checkIfListIsOrdered = (arr, binaryComparisons) => {
 }
 
 let transformSliderValueToActualValue = value => 10 ** value //>= 2 ? Math.round(10 ** value) : Math.round(10 * 10 ** value) / 10
-let truncateValueForDisplay = value => value > 10 ? Math.round(value) : Math.round(value*10)/10
+let truncateValueForDisplay = value => value > 10 ? Math.round(value) : Math.round(value * 10) / 10
 let transformSliderValueToPracticalValue = value => truncateValueForDisplay(transformSliderValueToActualValue(value))
 
 let displayFunctionSlider = (value) => {
@@ -202,6 +202,10 @@ export default function Home({ listOfElementsDefault }) {
 
       setIsListOrdered(true)
       setOrderedList(result)
+
+      return true
+    } else {
+      return false
     }
   }
 
@@ -212,13 +216,17 @@ export default function Home({ listOfElementsDefault }) {
     }
     console.log(`posList@nextStepSlider:`)
     console.log(posList)
-    nextStepSimple(posList, binaryComparisons, element1, element2)
+    let successStatus = nextStepSimple(posList, binaryComparisons, element1, element2)
 
     let newQuantitativeComparison = [element1, element2, transformSliderValueToPracticalValue(sliderValue)]
     let newQuantitativeComparisons = [...quantitativeComparisons, newQuantitativeComparison]
     setQuantitativeComparisons(newQuantitativeComparisons)
 
     setSliderValue(0)
+    if (successStatus) {
+      let jsObject = nicelyFormatLinks(quantitativeComparisons, listOfElements)
+      pushToMongo(jsObject)
+    }
   }
 
   // Html
