@@ -8,18 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "d3": "^6.7.0",
-    "dns": "^0.1.2",
-    "mongodb": "^4.1.2",
-    "net": "^1.0.2",
     "next": "latest",
     "path": "^0.12.7",
     "react": "^17.0.1",
     "react-compound-slider": "^3.3.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^6.0.2",
-    "remark-gfm": "^1.0.0",
-    "tls": "^0.0.1"
+    "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.4",
