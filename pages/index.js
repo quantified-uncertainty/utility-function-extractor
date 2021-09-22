@@ -8,8 +8,6 @@ import { DisplayElement } from '../lib/displayElement'
 import { DisplayAsMarkdown } from '../lib/displayAsMarkdown'
 import { CreateTableWithDistances } from '../lib/findPaths'
 import { TextAreaForJson } from "../lib/textAreaForJson"
-import { pushToMongo } from "../lib/mongo-wrapper.js"
-// Utilities
 
 let increasingList = (n) => Array.from(Array(n).keys())
 let buildLinks = quantitativeComparisons => quantitativeComparisons.map(([element1, element2, distance]) => ({ source: element1, target: element2, distance: distance }))
@@ -225,7 +223,7 @@ export default function Home({ listOfElementsDefault }) {
     setSliderValue(0)
     if (successStatus) {
       let jsObject = nicelyFormatLinks(quantitativeComparisons, listOfElements)
-      pushToMongo(jsObject)
+      console.log(jsObject)
     }
   }
 
