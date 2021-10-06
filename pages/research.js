@@ -1,6 +1,12 @@
+/*
+  This is just a copy of index.js but with the constants changed.
+  Don't edit this file, but rather make changes at index.js
+  And copy them over here.
+*/
+
 /* Definitions */
-const elementsDocument = 'listOfMoralGoods.json'
-const domain = 250
+const elementsDocument = 'listOfResearchOutputs.json'
+const domain = 10**7
 
 /* Imports */
 import Head from 'next/head'
