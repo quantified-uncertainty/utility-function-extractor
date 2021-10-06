@@ -8,7 +8,7 @@ import { DisplayElement } from '../lib/displayElement'
 import { DisplayAsMarkdown } from '../lib/displayAsMarkdown'
 import { CreateTableWithDistances } from '../lib/findPaths'
 import { TextAreaForJson } from "../lib/textAreaForJson"
-import { pushToMongo } from "./lib/pushToMongo.js"
+import { pushToMongo } from "../lib/pushToMongo.js"
 
 let increasingList = (n) => Array.from(Array(n).keys())
 let buildLinks = quantitativeComparisons => quantitativeComparisons.map(([element1, element2, distance]) => ({ source: element1, target: element2, distance: distance }))
