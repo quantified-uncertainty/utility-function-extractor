@@ -14,6 +14,7 @@ import { DisplayAsMarkdown } from '../lib/displayAsMarkdown'
 import { CreateTableWithDistances } from '../lib/findPaths'
 import { TextAreaForJson } from "../lib/textAreaForJson"
 import { pushToMongo } from "../lib/pushToMongo.js"
+import { toLocale, transformSliderValueToPracticalValue } from "../lib/utils.js"
 
 /* Helpers */
 let increasingList = (n) => Array.from(Array(n).keys())
@@ -35,11 +36,6 @@ let checkIfListIsOrdered = (arr, binaryComparisons) => {
   }
   return isOrdered
 }
-
-let transformSliderValueToActualValue = value => 10 ** value //>= 2 ? Math.round(10 ** value) : Math.round(10 * 10 ** value) / 10
-let toLocale = x => Number(x).toLocaleString()
-let truncateValueForDisplay = value => value > 10 ? Number(Math.round(value)).toPrecision(2) : Math.round(value * 10) / 10
-let transformSliderValueToPracticalValue = value => truncateValueForDisplay(transformSliderValueToActualValue(value))
 
 let displayFunctionSlider = (value) => {
   let result
