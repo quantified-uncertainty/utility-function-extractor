@@ -14,7 +14,7 @@ import { DisplayAsMarkdown } from '../lib/displayAsMarkdown'
 import { CreateTableWithDistances } from '../lib/findPaths'
 import { TextAreaForJson } from "../lib/textAreaForJson"
 import { pushToMongo } from "../lib/pushToMongo.js"
-import { toLocale, transformSliderValueToPracticalValue } from "../lib/utils.js"
+import { toLocale, transformSliderValueToPracticalValue, transformSliderValueToActualValue } from "../lib/utils.js"
 
 /* Helpers */
 let increasingList = (n) => Array.from(Array(n).keys())
@@ -220,7 +220,7 @@ export default function Home({ listOfElementsDefault }) {
     console.log(posList)
     let successStatus = nextStepSimple(posList, binaryComparisons, element1, element2)
 
-    let newQuantitativeComparison = [element1, element2, transformSliderValueToPracticalValue(sliderValue)]
+    let newQuantitativeComparison = [element1, element2, transformSliderValueToActualValue(sliderValue)]
     let newQuantitativeComparisons = [...quantitativeComparisons, newQuantitativeComparison]
     setQuantitativeComparisons(newQuantitativeComparisons)
 
