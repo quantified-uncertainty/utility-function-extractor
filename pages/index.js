@@ -43,7 +43,11 @@ let displayFunctionSlider = (value) => {
     result = toLocale(transformSliderValueToPracticalValue(value))
   } else {
     let inverseresult = toLocale(transformSliderValueToPracticalValue(-value))
-    result = `1/${inverseresult}`
+    if(inverseresult == 1){
+      result = '1'
+    }else{
+      result = `1/${inverseresult}`
+    }
   }
   result = `The first option is ${result}x as valuable as the second one`
   return result
