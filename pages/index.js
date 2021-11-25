@@ -18,7 +18,7 @@ import { toLocale, transformSliderValueToPracticalValue, transformSliderValueToA
 
 /* Helpers */
 let increasingList = (n) => Array.from(Array(n).keys())
-let buildLinks = quantitativeComparisons => quantitativeComparisons.map(([element1, element2, distance]) => ({ source: element1, target: element2, distance: distance }))
+let buildLinks = quantitativeComparisons => quantitativeComparisons.map(([element1, element2, distance, reasoning]) => ({ source: element1, target: element2, distance: distance, reasoning: reasoning }))
 
 Array.prototype.containsArray = function (val) {
   var hash = {};
@@ -59,7 +59,7 @@ let displayFunctionSlider = (value) => {
 
 };
 
-let nicelyFormatLinks = (quantitativeComparisons, listOfElements) => quantitativeComparisons.map(([element1, element2, distance]) => ({ source: listOfElements[element1].name, target: listOfElements[element2].name, distance: distance }))
+let nicelyFormatLinks = (quantitativeComparisons, listOfElements) => quantitativeComparisons.map(([element1, element2, distance, reasoning]) => ({ source: listOfElements[element1].name, target: listOfElements[element2].name, distance: distance, reasoning: reasoning }))
 
 /* React components */
 // fs can only be used here. 
@@ -88,6 +88,7 @@ export default function Home({ listOfElementsDefault }) {
   //let initialComparePair = [list[list.length-2], list[list.length-1]]
   let initialComparePair = [initialPosList[initialPosList.length - 2], initialPosList[initialPosList.length - 1]]
   let initialSliderValue = 1
+  let initialReasoning = ''
   let initialBinaryComparisons = []
   let initialQuantitativeComparisons = []
   let initialIsListOdered = false
@@ -103,6 +104,7 @@ export default function Home({ listOfElementsDefault }) {
 
   const [toComparePair, setToComparePair] = useState(initialComparePair)
   const [sliderValue, setSliderValue] = useState(initialSliderValue)
+  const [reasoning, setReasoning] = useState(initialReasoning)
   const [binaryComparisons, setBinaryComparisons] = useState(initialBinaryComparisons)
   const [quantitativeComparisons, setQuantitativeComparisons] = useState(initialQuantitativeComparisons) // More expressive, but more laborious to search through. For the ordering step, I only manipulate the binaryComparisons.
 
@@ -220,7 +222,7 @@ export default function Home({ listOfElementsDefault }) {
     }
   }
 
-  let nextStepSlider = ({ posList, binaryComparisons, sliderValue, element1, element2 }) => {
+  let nextStepSlider = ({ posList, binaryComparisons, sliderValue, Reasoning, element1, element2 }) => {
     if (sliderValue < 1 && sliderValue > 0) {
       sliderValue = 1/sliderValue;
       [element1, element2] = [element2, element1]
@@ -229,11 +231,12 @@ export default function Home({ listOfElementsDefault }) {
     console.log(posList)
     let successStatus = nextStepSimple(posList, binaryComparisons, element1, element2)
 
-    let newQuantitativeComparison = [element1, element2, transformSliderValueToActualValue(sliderValue)]
+    let newQuantitativeComparison = [element1, element2, transformSliderValueToActualValue(sliderValue), reasoning]
     let newQuantitativeComparisons = [...quantitativeComparisons, newQuantitativeComparison]
     setQuantitativeComparisons(newQuantitativeComparisons)
 
     setSliderValue(1)
+    setReasoning('')
     if (successStatus) {
       let jsObject = nicelyFormatLinks(quantitativeComparisons, listOfElements)
       pushToMongo(jsObject)
@@ -290,12 +293,19 @@ export default function Home({ listOfElementsDefault }) {
                   {`times as valuable as ...`}
                 </label>
                 <br />
+                <br />
+                <label>
+                  Reasoning:
+                  <textarea value={reasoning} onChange={(event) => setReasoning(event.target.value)} />        
+                </label>
+                <br />
 
 
                 <SubmitSliderButton
                   posList={posList}
                   binaryComparisons={binaryComparisons}
                   sliderValue={sliderValue}
+                  reasoning={reasoning}
                   toComparePair={toComparePair}
                   nextStepSlider={nextStepSlider}
                 />
