@@ -13,14 +13,9 @@ import ComparisonView from '../lib/comparisonView.js'
 const elementsDocument = '../data/listOfMoralGoods.json'
 
 /* React components */
-// fs can only be used here. 
 export async function getStaticProps() {
-  //getServerSideProps
-  // const { metaforecasts } = await getForecasts();
   const directory = path.join(process.cwd(), "pages")
   let listOfElementsForView = JSON.parse(fs.readFileSync(path.join(directory, elementsDocument), 'utf8'));
-  //console.log(directory)
-  //console.log("metaforecasts", metaforecasts)
   return {
     props: {
       listOfElementsForView
