@@ -1,5 +1,5 @@
 /* Definitions */
-const elementsDocument = 'listOfMoralGoods.json'
+const elementsDocument = '../data/listOfMoralGoods.json'
 const domain = 250
 
 /* Imports */

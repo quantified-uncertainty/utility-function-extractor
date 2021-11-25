@@ -6,6 +6,8 @@ The core structure is json array of objects. Only the "name" attribute is requir
 
 The `isReferenceValue` property determines the display at the end, but it is optional.
 
+So internally this would look like:
+
 ```
 [
     {

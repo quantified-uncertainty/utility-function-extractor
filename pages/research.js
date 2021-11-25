@@ -5,8 +5,9 @@
 */
 
 /* Definitions */
-const elementsDocument = 'listOfResearchOutputs.json'
+const elementsDocument = '../data/listOfResearchOutputs.json'
 const domain = 10**7
+
 
 /* Imports */
 import Head from 'next/head'
