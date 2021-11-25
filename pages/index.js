@@ -295,7 +295,7 @@ export default function Home({ listOfElementsDefault }) {
                 <br />
                 <br />
                 <label>
-                  Reasoning:
+                  Reasoning (optional):
                   <textarea value={reasoning} onChange={(event) => setReasoning(event.target.value)} />        
                 </label>
                 <br />

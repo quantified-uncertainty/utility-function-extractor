@@ -8,7 +8,6 @@
 const elementsDocument = '../data/listOfResearchOutputs.json'
 const domain = 10**7
 
-
 /* Imports */
 import Head from 'next/head'
 import React, { useState } from "react";
@@ -302,7 +301,7 @@ export default function Home({ listOfElementsDefault }) {
                 <br />
                 <br />
                 <label>
-                  Reasoning:
+                  Reasoning (optional):
                   <textarea value={reasoning} onChange={(event) => setReasoning(event.target.value)} />        
                 </label>
                 <br />
