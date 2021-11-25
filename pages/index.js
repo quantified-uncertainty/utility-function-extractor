@@ -14,7 +14,7 @@ import { DisplayAsMarkdown } from '../lib/displayAsMarkdown'
 import { CreateTableWithDistances } from '../lib/findPaths'
 import { TextAreaForJson } from "../lib/textAreaForJson"
 import { pushToMongo } from "../lib/pushToMongo.js"
-import { toLocale, transformSliderValueToPracticalValue, transformSliderValueToActualValue } from "../lib/utils.js"
+import { toLocale, transformSliderValueToPracticalValue, transformSliderValueToActualValue, numToAlphabeticalString } from "../lib/utils.js"
 
 /* Helpers */
 let increasingList = (n) => Array.from(Array(n).keys())
@@ -37,18 +37,23 @@ let checkIfListIsOrdered = (arr, binaryComparisons) => {
   return isOrdered
 }
 
-let displayFunctionSlider = (value) => {
+let displayFunctionSliderInner = (value) => {
   let result
   if (value >= 0) {
     result = toLocale(transformSliderValueToPracticalValue(value))
   } else {
     let inverseresult = toLocale(transformSliderValueToPracticalValue(-value))
-    if(inverseresult == 1){
+    if (inverseresult == 1) {
       result = '1'
-    }else{
+    } else {
       result = `1/${inverseresult}`
     }
   }
+  return result
+}
+
+let displayFunctionSlider = (value) => {
+  let result = displayFunctionSliderInner(value)
   result = `The first option is ${result}x as valuable as the second one`
   return result
 
@@ -82,7 +87,7 @@ export default function Home({ listOfElementsDefault }) {
 
   //let initialComparePair = [list[list.length-2], list[list.length-1]]
   let initialComparePair = [initialPosList[initialPosList.length - 2], initialPosList[initialPosList.length - 1]]
-  let initialSliderValue = 0
+  let initialSliderValue = 1
   let initialBinaryComparisons = []
   let initialQuantitativeComparisons = []
   let initialIsListOdered = false
@@ -216,8 +221,8 @@ export default function Home({ listOfElementsDefault }) {
   }
 
   let nextStepSlider = ({ posList, binaryComparisons, sliderValue, element1, element2 }) => {
-    if (sliderValue < 0) {
-      sliderValue = -sliderValue;
+    if (sliderValue < 1) {
+      // sliderValue = -sliderValue;
       [element1, element2] = [element2, element1]
     }
     console.log(`posList@nextStepSlider:`)
@@ -228,7 +233,7 @@ export default function Home({ listOfElementsDefault }) {
     let newQuantitativeComparisons = [...quantitativeComparisons, newQuantitativeComparison]
     setQuantitativeComparisons(newQuantitativeComparisons)
 
-    setSliderValue(0)
+    setSliderValue(1)
     if (successStatus) {
       let jsObject = nicelyFormatLinks(quantitativeComparisons, listOfElements)
       pushToMongo(jsObject)
@@ -262,8 +267,42 @@ export default function Home({ listOfElementsDefault }) {
                 </DisplayElement>
               </div>
             </div>
+
+            <div className="flex m-auto w-72">
+              <div className="block m-auto text-center">
+                {/*`is ${displayFunctionSliderInner(sliderValue)}x times as valuable as`*/}
+                <br />
+
+                <label>
+                  {`... is `}
+                  <br />
+                  <input
+                    type="number"
+                    value={sliderValue}
+                    onChange={(event) =>{
+                      //console.log(event)
+                      //console.log(event.target.value)
+                      setSliderValue(event.target.value)
+                    }}
+                    className="text-center"
+                  />
+                  <br />
+                  {`times as valuable as ...`}
+                </label>
+                <br />
+
+
+                <SubmitSliderButton
+                  posList={posList}
+                  binaryComparisons={binaryComparisons}
+                  sliderValue={sliderValue}
+                  toComparePair={toComparePair}
+                  nextStepSlider={nextStepSlider}
+                />
+              </div>
+            </div>
             <div
-              className="flex m-auto border-gray-300 border-4 h-72 w-72 p-5"
+              className="flex m-auto border-gray-300 border-4 h-72 w-72 p-5 "
             //onClick={() => nextStep(binaryComparisons, toComparePair[1], toComparePair[0])}
             >
               <div className="block m-auto text-center">
@@ -272,6 +311,10 @@ export default function Home({ listOfElementsDefault }) {
               </div>
             </div>
           </div>
+          <div>
+          </div>
+          {/*
+
           <div className={`flex row-start-3 row-end-3  col-start-1 col-end-4 md:col-start-3 md:col-end-3 md:row-start-1 md:row-end-1 lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-1 items-center justify-center mb-4 mt-10 ${isListOrdered ? "hidden" : ""}`}>
             <SliderElement
               className="flex items-center justify-center"
@@ -281,13 +324,8 @@ export default function Home({ listOfElementsDefault }) {
               domain={domain}
             />
           </div>
-          <SubmitSliderButton
-            posList={posList}
-            binaryComparisons={binaryComparisons}
-            sliderValue={sliderValue}
-            toComparePair={toComparePair}
-            nextStepSlider={nextStepSlider}
-          />
+           */}
+
 
         </div>
 
