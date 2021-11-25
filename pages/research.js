@@ -13,7 +13,6 @@ import ComparisonView from '../lib/comparisonView.js'
 const elementsDocument = '../data/listOfResearchOutputs.json'
 
 /* React components */
-// fs can only be used here. 
 export async function getStaticProps() {
   const directory = path.join(process.cwd(), "pages")
   let listOfElementsForView = JSON.parse(fs.readFileSync(path.join(directory, elementsDocument), 'utf8'));
