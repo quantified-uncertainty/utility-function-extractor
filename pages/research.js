@@ -300,13 +300,6 @@ export default function Home({ listOfElementsDefault }) {
                 </label>
                 <br />
                 <br />
-                <label>
-                  Reasoning (optional):
-                  <textarea value={reasoning} onChange={(event) => setReasoning(event.target.value)} />        
-                </label>
-                <br />
-
-
                 <SubmitSliderButton
                   posList={posList}
                   binaryComparisons={binaryComparisons}

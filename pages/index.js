@@ -224,7 +224,7 @@ export default function Home({ listOfElementsDefault }) {
 
   let nextStepSlider = ({ posList, binaryComparisons, sliderValue, Reasoning, element1, element2 }) => {
     if (sliderValue < 1 && sliderValue > 0) {
-      sliderValue = 1/sliderValue;
+      sliderValue = 1 / sliderValue;
       [element1, element2] = [element2, element1]
     }
     console.log(`posList@nextStepSlider:`)
@@ -282,23 +282,18 @@ export default function Home({ listOfElementsDefault }) {
                   <input
                     type="number"
                     value={sliderValue}
-                    onChange={(event) =>{
+                    onChange={(event) => {
                       //console.log(event)
                       //console.log(event.target.value)
                       setSliderValue(event.target.value)
                     }}
-                    className="text-center"
+                    className="text-center px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-lg border-0 shadow outline-none focus:outline-none focus:ring w-8/12 m-2 "
                   />
                   <br />
                   {`times as valuable as ...`}
                 </label>
                 <br />
-                <br />
-                <label>
-                  Reasoning (optional):
-                  <textarea value={reasoning} onChange={(event) => setReasoning(event.target.value)} />        
-                </label>
-                <br />
+
 
 
                 <SubmitSliderButton
@@ -310,6 +305,7 @@ export default function Home({ listOfElementsDefault }) {
                   nextStepSlider={nextStepSlider}
                 />
               </div>
+
             </div>
             <div
               className="flex m-auto border-gray-300 border-4 h-72 w-72 p-5 "
@@ -321,6 +317,16 @@ export default function Home({ listOfElementsDefault }) {
               </div>
             </div>
           </div>
+          <br />
+          <label className="">
+            Reasoning (optional):
+            <br />
+            <textarea className="mt-2 px-3 py-4 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-base border-0 shadow outline-none focus:outline-none focus:ring w-full"
+              value={reasoning} 
+              onChange={(event) => setReasoning(event.target.value)} 
+            />
+          </label>
+          <br />
           <div>
           </div>
           {/*
