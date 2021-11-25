@@ -223,7 +223,7 @@ export default function Home({ listOfElementsDefault }) {
   let nextStepSlider = ({ posList, binaryComparisons, sliderValue, element1, element2 }) => {
     if (sliderValue < 1) {
       // sliderValue = -sliderValue;
-      [element1, element2] = [element2, element1]
+      // [element1, element2] = [element2, element1]
     }
     console.log(`posList@nextStepSlider:`)
     console.log(posList)
