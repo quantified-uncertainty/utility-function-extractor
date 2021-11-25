@@ -287,14 +287,12 @@ export default function Home({ listOfElementsDefault }) {
                       //console.log(event.target.value)
                       setSliderValue(event.target.value)
                     }}
-                    className="text-center px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-lg border-0 shadow outline-none focus:outline-none focus:ring w-8/12 m-2 "
+                    className="text-center px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-lg border-0 shadow outline-none focus:outline-none focus:ring w-8/12 m-2"
                   />
                   <br />
                   {`times as valuable as ...`}
                 </label>
                 <br />
-
-
 
                 <SubmitSliderButton
                   posList={posList}
