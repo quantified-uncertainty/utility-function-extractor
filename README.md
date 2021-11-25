@@ -2,7 +2,7 @@
 This repository creates a react webpage that allows to extract a utility function from possibly inconsistent binary comparisons
 
 ## Object structure
-The core structure is json array of objects. Only the "name" attribute is required; the id is also internally required but it's created on the fly if it doesn't exist. The reason that ids are needed is that comparing objects is annoying. 
+The core structure is json array of objects. Only the "name" attribute is required; the (numerical) id is also internally required but it's created on the fly. The reason that ids are needed is that comparing objects is annoying. 
 
 The `isReferenceValue` property determines the display at the end, but it is optional.
 

@@ -3,6 +3,10 @@
 # personal notes
 Notes.md
 
+# convenience old folder
+pages/.old/*
+pages/.old
+
 # dependencies
 /node_modules
 /.pnp
