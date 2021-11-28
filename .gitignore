@@ -3,6 +3,9 @@
 # personal notes
 Notes.md
 
+# hacky upload script
+lib/pushToMongoManually.js
+
 # convenience old folder
 pages/.old/*
 pages/.old
