@@ -4,7 +4,12 @@
 @tailwind utilities;
 */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import './globals.css';
 @import 'tailwindcss/utilities';
+*/
