@@ -25,3 +25,6 @@ So internally this would look like:
     }
 ]
 ```
+
+## Netlify
+https://github.com/netlify/netlify-plugin-nextjs/#readme
