@@ -17,8 +17,7 @@ import {
 } from "./utils.js";
 
 /* DEFINTIONS */
-const DEFAULT_COMPARE = () => 1; // 1/Math.random() - 1 // Useful for testing, cause I can make the default number change.
-const estimatedMergeSortSteps = conservativeNumMergeSortSteps; // pander to human biases so that users complain less.
+const DEFAULT_COMPARE = () => 1; // 1/Math.random() - 1
 
 /* Misc. helpers */
 let buildLinks = (quantitativeComparisons) =>
@@ -80,7 +79,7 @@ export default function ComparisonView({ listOfElementsForView }) {
   let initialShowChangeDataSet = false;
   let initialNumSteps = 0;
   let initialMaxSteps = maxMergeSortSteps(listOfElementsForView.length);
-  let initialExpectedSteps = estimatedMergeSortSteps(
+  let initialExpectedSteps = expectedNumMergeSortSteps(
     listOfElementsForView.length
   );
   let initialTableRows = [];
@@ -160,7 +159,7 @@ export default function ComparisonView({ listOfElementsForView }) {
       newPosList[newPosList.length - 1],
     ]);
 
-    changeExpectedSteps(estimatedMergeSortSteps(newListLength));
+    changeExpectedSteps(expectedNumMergeSortSteps(newListLength));
     changeMaxSteps(maxMergeSortSteps(newListLength));
 
     restart(newPosList);
