@@ -5,25 +5,28 @@
 
 /* Imports */
 import React from "react";
-import fs from 'fs';
-import path from 'path';
-import ComparisonView from '../lib/comparisonView.js'
+import fs from "fs";
+import path from "path";
+import ComparisonView from "../lib/comparisonView.js";
 
 /* Definitions */
-const elementsDocument = '../data/listOfMoralGoods.json'
+const elementsDocument = "../data/listOfMoralGoods.json";
 
 /* React components */
 export async function getStaticProps() {
-  const directory = path.join(process.cwd(), "pages")
-  let listOfElementsForView = JSON.parse(fs.readFileSync(path.join(directory, elementsDocument), 'utf8'));
+  const directory = path.join(process.cwd(), "pages");
+  let listOfElementsForView = JSON.parse(
+    fs.readFileSync(path.join(directory, elementsDocument), "utf8")
+  );
   return {
     props: {
-      listOfElementsForView
+      listOfElementsForView,
     },
   };
 }
 
 // Main react component
 export default function Home({ listOfElementsForView }) {
-  return(<ComparisonView listOfElementsForView={listOfElementsForView}/>)
+  return <ComparisonView listOfElementsForView={listOfElementsForView} />;
 }
+
