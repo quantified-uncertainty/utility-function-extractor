@@ -3,6 +3,9 @@
 # personal notes
 Notes.md
 
+# vim files
+.swp
+
 # hacky upload script
 lib/pushToMongoManually.js
 
