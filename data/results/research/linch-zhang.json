@@ -1,0 +1,351 @@
+[
+  {
+    "source": "Thinking Fast and Slow",
+
+    "target": "The Mathematical Theory of Communication",
+
+    "distance": 5,
+
+    "reasoning": "This is by Linch."
+  },
+
+  {
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "Superintelligence",
+
+    "distance": 100,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "Thinking Fast and Slow",
+
+    "distance": 10,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Thinking Fast and Slow",
+
+    "target": "Superintelligence",
+
+    "distance": "10",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The Mathematical Theory of Communication",
+
+    "target": "Superintelligence",
+
+    "distance": "50",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": 10,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": "5",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "Categorizing Variants of Goodhart's Law",
+
+    "distance": 100,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "Categorizing Variants of Goodhart's Law",
+
+    "distance": 20,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": 50,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": 10,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": 2,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": "5",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Thinking Fast and Slow",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": "3",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The Mathematical Theory of Communication",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": 1,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The Vulnerable World Hypothesis",
+
+    "target": "Superintelligence",
+
+    "distance": 10,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "Reversals in Psychology",
+
+    "distance": 1,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "distance": "2",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+
+    "target": "A Model of Patient Spending and Movement Building",
+
+    "distance": 1.3333333333333333,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "distance": "1.5",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Reversals in Psychology",
+
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "distance": "1.5",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": 5,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "A comment on setting up a charity",
+
+    "distance": 1,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "A comment on setting up a charity",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": 5,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": 100,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "A comment on setting up a charity",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": 100,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": 20,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "The motivated reasoning critique of effective altruism",
+
+    "distance": 14.285714285714285,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "A comment on setting up a charity",
+
+    "target": "The motivated reasoning critique of effective altruism",
+
+    "distance": 16.666666666666668,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": "2",
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 2.5,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 3.3333333333333335,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 5,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "Reversals in Psychology",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 10,
+
+    "reasoning": ""
+  },
+
+  {
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 5,
+
+    "reasoning": ""
+  }
+]

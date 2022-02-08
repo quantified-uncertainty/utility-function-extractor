@@ -1,0 +1,483 @@
+[
+
+{
+
+    "source": "Thinking Fast and Slow",
+
+    "target": "The Mathematical Theory of Communication",
+
+    "distance": 5,
+
+    "reasoning": "Seems like both sets of ideas would've happened eventually, my guess is that information theory was more important and counterfactual sped up by more"
+
+},
+
+{
+
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "Superintelligence",
+
+    "distance": 20,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "Thinking Fast and Slow",
+
+    "distance": 3.3333333333333335,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Thinking Fast and Slow",
+
+    "target": "Superintelligence",
+
+    "distance": "200",
+
+    "reasoning": "Yeah yeah I know I'm contradicting myself"
+
+},
+
+{
+
+    "source": "The Mathematical Theory of Communication",
+
+    "target": "Superintelligence",
+
+    "distance": "60",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": 10,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": "4",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "Categorizing Variants of Goodhart's Law",
+
+    "distance": 2,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": "4",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": 200,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": 10,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": 5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": 2.5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": "10",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Thinking Fast and Slow",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": "2",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The Vulnerable World Hypothesis",
+
+    "target": "The Mathematical Theory of Communication",
+
+    "distance": 5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Reversals in Psychology",
+
+    "target": "A Model of Patient Spending and Movement Building",
+
+    "distance": 2.5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": 2.5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Reversals in Psychology",
+
+    "distance": 1.4285714285714286,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Reversals in Psychology",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": "4",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": "2",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": 10,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "A comment on setting up a charity",
+
+    "distance": "3",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "A comment on setting up a charity",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": 2,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "distance": 2,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "A comment on setting up a charity",
+
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "distance": 2,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": "4",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Reversals in Psychology",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": "5",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": "3",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": "2",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "The motivated reasoning critique of effective altruism",
+
+    "distance": 5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "A comment on setting up a charity",
+
+    "target": "The motivated reasoning critique of effective altruism",
+
+    "distance": 1.6666666666666667,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "distance": "5",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Categorizing Variants of Goodhart's Law",
+
+    "distance": 5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Reversals in Psychology",
+
+    "target": "Categorizing Variants of Goodhart's Law",
+
+    "distance": 3.3333333333333335,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "A Model of Patient Spending and Movement Building",
+
+    "distance": "8",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 2.5,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": 1,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": 2,
+
+    "reasoning": ""
+
+}
+
+]
