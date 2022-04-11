@@ -1,24 +1,21 @@
 ## About
-This repository creates a react webpage that allows to extract a utility function from possibly inconsistent binary comparisons
+
+This repository creates a react webpage that allows to extract a utility function from possibly inconsistent binary comparisons. It presents the users with a series of elements to compare, using merge-sort in the background to cleverly minimize the number of choices needed. Then, it cleverly aggregates them, by taking each element as a reference point in turn, and computing the possible distances from that reference point to all other points, and taking the geometric mean of these distances. This produces a number representing the value of each element, such that the ratios between elements represent the user's preferences: a utility function!
+
+Initially, users could only input numbers, e.g., "A is `3` times better than B". But now, users can also input distributions, using the [squiggle]() syntax, e.g., "A is `1 to 10` times better than B", or "A is `mm(normal(1, 10), uniform(0,100))` better than B".
 
 ## Object structure
-The core structure is json array of objects. Only the "name" attribute is required; the (numerical) id is also internally required but it's created on the fly. The reason that ids are needed is that comparing objects is annoying. 
 
-The `isReferenceValue` property determines the display at the end, but it is optional.
-
-So internally this would look like:
+The core structure is json array of objects. Only the "name" attribute is required. If there is a "url", it is displayed nicely.
 
 ```
 [
     {
-        "id": 1,
         "name": "Peter Parker",
         "someOptionalKey": "...",
         "anotherMoreOptionalKey": "...",
-        "isReferenceValue": true
     },
     {
-        "id": 2,
         "name": "Spiderman",
         "someOptionalKey": "...",
         "anotherMoreOptionalKey": "..."
@@ -27,4 +24,5 @@ So internally this would look like:
 ```
 
 ## Netlify
+
 https://github.com/netlify/netlify-plugin-nextjs/#readme
