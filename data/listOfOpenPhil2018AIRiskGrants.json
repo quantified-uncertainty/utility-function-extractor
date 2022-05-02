@@ -1,48 +1,47 @@
 [
   {
-    "name": "AI Scholarships — Scholarship Support (2018)",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.jnlrsr63yliq",
-    "amount": "$159,000"
+    "name": "Michael Cohen and Dmitrii Krasheninnikov — Scholarship Support (2018)",
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.jnlrsr63yliq",
+    "amount": "$159k"
   },
   {
     "name": "AI Impacts — General Support (2018)",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.6m6tebpouzt1",
-    "amount": "$100,000",
-    "isReferenceValue": true
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.6m6tebpouzt1",
+    "amount": "$100k"
   },
   {
     "name": "Oxford University — Research on the Global Politics of AI",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.c6r2m7i749ay",
-    "amount": "$429,770"
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.c6r2m7i749ay",
+    "amount": "$429k"
   },
   {
     "name": "Ought — General Support (2018)",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.xnzaj48k3fdb",
-    "amount": "$525,000"
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.xnzaj48k3fdb",
+    "amount": "$525k"
   },
   {
     "name": "Machine Intelligence Research Institute — AI Safety Retraining Program",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.h922w7eh5rq6",
-    "amount": "$150,000"
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.h922w7eh5rq6",
+    "amount": "$150k"
   },
   {
     "name": "UC Berkeley — AI Safety Research (2018)",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.rrsbecbboed8",
-    "amount": "$1,145,000"
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.rrsbecbboed8",
+    "amount": "$1.145M"
   },
   {
     "name": "Open Phil AI Fellowship — 2018 Class",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.p8xd58asz6a2",
-    "amount": "$1,135,000"
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.p8xd58asz6a2",
+    "amount": "$1.135M"
   },
   {
     "name": "Wilson Center — AI Policy Seminar Series",
-    "url": "https://docs.google.com/document/d/1vuSH9HuDbDQHWUarGii6uBM0rGbj2TM-JDGSdXz71Z8/edit#heading=h.qiurhycylgi3",
-    "amount": "$400,000"
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.qiurhycylgi3",
+    "amount": "$400k"
   },
   {
     "name": "Stanford University — Machine Learning Security Research Led by Dan Boneh and Florian Tramer",
-    "url": "https://arxiv.org/abs/1803.04585",
+    "url": "https://docs.google.com/document/d/1VlN6I4Jauarx-0Fp7AC1ggeQ02AITsN7S56ffAO9NTU/edit#heading=h.ox8adhpgba86",
     "amount": "$100k"
   }
 ]
