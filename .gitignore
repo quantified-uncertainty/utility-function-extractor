@@ -7,14 +7,14 @@ Notes.md
 .swp
 
 # hacky upload script
-lib/pushToMongoManually.js
+packages/webpage/lib/pushToMongoManually.js
 
 # convenience old folder
-pages/.old/*
-pages/.old
+packages/webpage/pages/.old/*
+packages/webpage/pages/.old
 
 # dependencies
-/node_modules
+**/node_modules
 /.pnp
 .pnp.js
 
@@ -22,11 +22,11 @@ pages/.old
 /coverage
 
 # next.js
-/.next/
-/out/
+**/.next/
+**/out/
 
 # production
-/build
+**/build
 
 # misc
 .DS_Store

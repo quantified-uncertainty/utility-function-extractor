@@ -253,6 +253,9 @@ export default function ComparisonView({ listOfElementsForView }) {
   }
 
   function mergeSort({ array, comparisons }) {
+    console.log("mergesort");
+    console.log({ array, comparisons });
+    console.log("/console");
     if (array == "No comparison found; unable to proceed") {
       return "No comparison found; unable to proceed";
     }
