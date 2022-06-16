@@ -1,0 +1,241 @@
+[
+  {
+    "source": "Stanford University — Machine Learning Security Research Led by Dan Boneh and Florian Tramer",
+
+    "target": "Wilson Center — AI Policy Seminar Series",
+
+    "distance": 4.039836724233664,
+
+    "reasoning": "Jaime's estimates.\nThe Wilson Center seems to not be running the AI Policy Seminar Series anymore, so I am led to believe it was not a great success (?). There could be someone key influenced that will facilitate things later but seems unlikely\nThe ML Security program does not seem to have resulted on anything substantial",
+
+    "squiggleString": "1 to 10"
+  },
+
+  {
+    "source": "Stanford University — Machine Learning Security Research Led by Dan Boneh and Florian Tramer",
+
+    "target": "Open Phil AI Fellowship — 2018 Class",
+
+    "distance": 657.4661082204123,
+
+    "reasoning": "The AI fellows have produced work on interpretability and out of distribution learning.\nSeems to have been better for purchasing influence too, though that's a secondary consideration IMO",
+
+    "squiggleString": "400 to 1000"
+  },
+
+  {
+    "source": "Wilson Center — AI Policy Seminar Series",
+
+    "target": "Open Phil AI Fellowship — 2018 Class",
+
+    "distance": 403.9836724233662,
+
+    "reasoning": "The research seems more directly relevant from the AI fellows, the policy seminar has no legible output",
+
+    "squiggleString": "100 to 1000"
+  },
+
+  {
+    "source": "UC Berkeley — AI Safety Research (2018)",
+
+    "target": "Machine Intelligence Research Institute — AI Safety Retraining Program",
+
+    "distance": 40.39836724233665,
+
+    "reasoning": "Seems to support directly people working on the topic, and more counterfactual",
+
+    "squiggleString": "10 to 100"
+  },
+
+  {
+    "source": "Stanford University — Machine Learning Security Research Led by Dan Boneh and Florian Tramer",
+
+    "target": "UC Berkeley — AI Safety Research (2018)",
+
+    "distance": 7.229755173700019,
+
+    "reasoning": "AI Safety Research Affects more people, someone might end up doing something cool",
+
+    "squiggleString": "5 to 10"
+  },
+
+  {
+    "source": "Wilson Center — AI Policy Seminar Series",
+
+    "target": "UC Berkeley — AI Safety Research (2018)",
+
+    "distance": 2.663515640351876,
+
+    "reasoning": "Similar value from the outside",
+
+    "squiggleString": "0.1 to 10"
+  },
+
+  {
+    "source": "UC Berkeley — AI Safety Research (2018)",
+
+    "target": "Open Phil AI Fellowship — 2018 Class",
+
+    "distance": 247.53475654135346,
+
+    "reasoning": "AI fellows produced directly relevant research, are more successful",
+
+    "squiggleString": "(1/(0.001 to 0.01))"
+  },
+
+  {
+    "source": "Machine Intelligence Research Institute — AI Safety Retraining Program",
+
+    "target": "Open Phil AI Fellowship — 2018 Class",
+
+    "distance": 49.50695130827075,
+
+    "reasoning": "aI fellows seem to have produced more relevant research, though grant is less counterfactual",
+
+    "squiggleString": "(1/(0.005 to 0.05))"
+  },
+
+  {
+    "source": "Ought — General Support (2018)",
+
+    "target": "Oxford University — Research on the Global Politics of AI",
+
+    "distance": 403.9836724233662,
+
+    "reasoning": "GovAI is doing cool stuff, Ought not so much",
+
+    "squiggleString": "100 to 1000"
+  },
+
+  {
+    "source": "AI Impacts — General Support (2018)",
+
+    "target": "Michael Cohen and Dmitrii Krasheninnikov — Scholarship Support (2018)",
+
+    "distance": 2.5202870466776885,
+
+    "reasoning": "Direct work seems more important, but Ai impacts work is pretty cool",
+
+    "squiggleString": "1 to 5"
+  },
+
+  {
+    "source": "Ought — General Support (2018)",
+
+    "target": "AI Impacts — General Support (2018)",
+
+    "distance": 109.28343925564944,
+
+    "reasoning": "AI impacts work has been more successful \\ useful for my research",
+
+    "squiggleString": "50 to 200"
+  },
+
+  {
+    "source": "AI Impacts — General Support (2018)",
+
+    "target": "Oxford University — Research on the Global Politics of AI",
+
+    "distance": 39.678020061969825,
+
+    "reasoning": "GovAI is doing more work and on a more neglected topic. Both are doing good work, but GOvAI output is bigger",
+
+    "squiggleString": "(1/(0.01 to 0.05))"
+  },
+
+  {
+    "source": "Oxford University — Research on the Global Politics of AI",
+
+    "target": "Michael Cohen and Dmitrii Krasheninnikov — Scholarship Support (2018)",
+
+    "distance": 2.865987655844147,
+
+    "reasoning": "Cohens work seems harder to replace.\nGovAI is doing more work though",
+
+    "squiggleString": "0.01 to 10"
+  },
+
+  {
+    "source": "Stanford University — Machine Learning Security Research Led by Dan Boneh and Florian Tramer",
+
+    "target": "Ought — General Support (2018)",
+
+    "distance": 14.338510859889407,
+
+    "reasoning": "At least Ought is trying ",
+
+    "squiggleString": "1 to 50"
+  },
+
+  {
+    "source": "Wilson Center — AI Policy Seminar Series",
+
+    "target": "Ought — General Support (2018)",
+
+    "distance": 2.663515640351876,
+
+    "reasoning": "Unclear",
+
+    "squiggleString": "0.1 to 10"
+  },
+
+  {
+    "source": "UC Berkeley — AI Safety Research (2018)",
+
+    "target": "Ought — General Support (2018)",
+
+    "distance": 4.039836724233664,
+
+    "reasoning": "At least ought is trying",
+
+    "squiggleString": "1 to 10"
+  },
+
+  {
+    "source": "Machine Intelligence Research Institute — AI Safety Retraining Program",
+
+    "target": "Ought — General Support (2018)",
+
+    "distance": 1.4338510859889406,
+
+    "reasoning": "Value more the potential new hire than oughts research",
+
+    "squiggleString": "0.1 to 5"
+  },
+
+  {
+    "source": "Ought — General Support (2018)",
+
+    "target": "Open Phil AI Fellowship — 2018 Class",
+
+    "distance": 247.53475654135346,
+
+    "reasoning": "Fellows seem to have produced more relevant research",
+
+    "squiggleString": "(1/(0.001 to 0.01))"
+  },
+
+  {
+    "source": "AI Impacts — General Support (2018)",
+
+    "target": "Open Phil AI Fellowship — 2018 Class",
+
+    "distance": 13.831727022205978,
+
+    "reasoning": "Fellows produced more relevant research, AI impacts work is cool though",
+
+    "squiggleString": "(1/(0.05 to 0.1))"
+  },
+
+  {
+    "source": "Open Phil AI Fellowship — 2018 Class",
+
+    "target": "Oxford University — Research on the Global Politics of AI",
+
+    "distance": 32.87330541102063,
+
+    "reasoning": "GovAI's grant seems moe counterfactual, their work more directly relevant\n",
+
+    "squiggleString": "20 to 50"
+  }
+]

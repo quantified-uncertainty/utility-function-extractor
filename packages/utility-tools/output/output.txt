@@ -1,0 +1,95 @@
+Sorted output:
+  [
+    'Stanford University — Machine Learning Security Research Led by Dan Boneh and Florian Tramer',
+    'Wilson Center — AI Policy Seminar Series',
+    'UC Berkeley — AI Safety Research (2018)',
+    'Machine Intelligence Research Institute — AI Safety Retraining Program',
+    'Ought — General Support (2018)',
+    'AI Impacts — General Support (2018)',
+    'Open Phil AI Fellowship — 2018 Class',
+    'Oxford University — Research on the Global Politics of AI',
+    'Michael Cohen and Dmitrii Krasheninnikov — Scholarship Support (2018)'
+  ]
+
+Stanford University — Machine Learning Security Research Led by Dan Boneh and Florian Tramer
+  Number of paths:  102
+  Mean: 0.04340463625937361
+  90% confidence interval: [
+      3.102187977841675e-7,
+      0.10636313508232977
+  ]
+  3.902 seconds needed for processing
+
+Wilson Center — AI Policy Seminar Series
+  Number of paths:  52
+  Mean: 0.23923636834715892
+  90% confidence interval: [
+      0.0000012797707857581555,
+      0.7647175734237982
+  ]
+  0.855 seconds needed for processing
+
+UC Berkeley — AI Safety Research (2018)
+  Number of paths:  37
+  Mean: 0.6148765126821536
+  90% confidence interval: [
+      0.0000012857319777641759,
+      2.4285898907477064
+  ]
+  0.484 seconds needed for processing
+
+Machine Intelligence Research Institute — AI Safety Retraining Program
+  Number of paths:  21
+  Mean: 46.33576477417035
+  90% confidence interval: [
+      0.000022241280559831212,
+      201.37264605399085
+  ]
+  0.173 seconds needed for processing
+
+Ought — General Support (2018)
+  Number of paths:  36
+  Mean: 63.37826067838051
+  90% confidence interval: [
+      0.00004411196776834627,
+      145.5050535108514
+  ]
+  0.412 seconds needed for processing
+
+AI Impacts — General Support (2018)
+  Number of paths:  47
+  Mean: 9862.157135402398
+  90% confidence interval: [
+      0.018650934888088284,
+      22307.090052203544
+  ]
+  0.635 seconds needed for processing
+
+Open Phil AI Fellowship — 2018 Class
+  Number of paths:  372
+  Mean: 86301.01328794319
+  90% confidence interval: [
+      26.02179139839112,
+      115734.18190287006
+  ]
+  35.203 seconds needed for processing
+
+Oxford University — Research on the Global Politics of AI
+  Number of paths:  2261
+  Mean: 785779.6653748289
+  90% confidence interval: [
+      114.32195138741375,
+      960250.7929788446
+  ]
+  1048.955 seconds needed for processing
+
+Michael Cohen and Dmitrii Krasheninnikov — Scholarship Support (2018)
+  Number of paths:  5243
+  Mean: 1482642.2273006735
+  90% confidence interval: [
+      8.379381400123396,
+      330071.1150485886
+  ]
+  5550.563 seconds needed for processing
+
+
