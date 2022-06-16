@@ -26,3 +26,8 @@ The core structure is json array of objects. Only the "name" attribute is requir
 ## Netlify
 
 https://github.com/netlify/netlify-plugin-nextjs/#readme
+
+## To do
+
+- [ ] Extract merge, findPath and aggregatePath functionality into different repos
+- [ ] Add functionality like names, etc.
