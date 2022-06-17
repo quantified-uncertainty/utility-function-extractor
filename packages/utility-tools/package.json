@@ -1,12 +1,12 @@
 {
   "name": "utility-tools",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Process the json produced by utility-function-extractor.quantifieduncertainty.org",
   "scripts": {
     "start": "node --max-old-space-size=8192 src/index.js"
   },
   "type": "module",
-  "main": "src/process-inputs.js",
+  "main": "src/index.js",
   "author": "Nuño Sempere",
   "license": "MIT",
   "dependencies": {
