@@ -43,13 +43,14 @@ export function AdvancedOptions({
       {/* Show advanced options*/}
       <button
         className="text-gray-500 text-sm"
-        onClick={() => changeShowAdvanceOptions(!showAdvancedOptions)}
+        onClick={() => changeShowAdvanceOptions(true)}
       >
         Advanced options ▼
       </button>
       <br />
       {/* Toggle  buttons */}
-      <div className={showAdvancedOptions ? "" : "hidden"}>
+      <div className={showAdvancedOptions ? "" : ""}>
+        "Hello world"
         {buttonNames.map((buttonName, i) => {
           return (
             <button
@@ -60,10 +61,8 @@ export function AdvancedOptions({
             </button>
           );
         })}
-
         {/* Element: Show comparisons */}
         <ShowComparisons links={links} show={showComparisons} />
-
         {/* Element: Change comparisons */}
         <ComparisonsChanger
           setLinks={setLinks}
@@ -75,7 +74,7 @@ export function AdvancedOptions({
           onChangeOfDataset={onChangeOfDataset}
           show={showChangeDataset}
         />
-      </div>{" "}
+      </div>
     </div>
   );
 }

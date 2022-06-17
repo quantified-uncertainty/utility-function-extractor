@@ -5,7 +5,7 @@ import { ProgressIndicator } from "./progressIndicator.js";
 import { DisplayElementForComparison } from "./displayElementForComparison.js";
 import { ComparisonActuator } from "./comparisonActuator.js";
 import { AdvancedOptions } from "./advancedOptions.js";
-
+import { Graph } from "./graph/graph.js";
 import { resolveToNumIfPossible } from "../lib/squiggle.js";
 
 export function Homepage({ listOfElementsInit }) {
@@ -137,6 +137,9 @@ export function Homepage({ listOfElementsInit }) {
           onChangeOfDataset={onChangeOfDataset}
         />
       </div>
+      {/* <Graph /> 
+      <Graph />
+      */}
     </div>
   );
 }
