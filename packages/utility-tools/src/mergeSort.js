@@ -8,7 +8,11 @@ function isFirstElementGreater(links, element1, element2) {
   );
   if (relevantComparisons.length == 0) {
     // console.log(element1, "vs", element2);
-    return errorMsg;
+    let answer = {
+      foundAnswer: false,
+      error: errorMsg,
+    };
+    return answer;
   } else {
     const firstLink = relevantComparisons[0];
     // console.log(firstLink);
@@ -17,10 +21,15 @@ function isFirstElementGreater(links, element1, element2) {
         ? true
         : false;
     const distanceIsGreaterThanOne = Number(firstLink.distance) > 1;
-    const answer =
+    const isFirstElementFirst =
       (firstElementFirst && !distanceIsGreaterThanOne) ||
       (!firstElementFirst && distanceIsGreaterThanOne);
-    return !answer;
+    let answer = {
+      foundAnswer: true,
+      isFirstElementFirst,
+      errorMsg,
+    };
+    return answer;
   }
 }
 
@@ -29,54 +38,132 @@ function merge(links, left, right) {
 
   while (left.length && right.length) {
     // insert the biggest element to the sortedArr
-    let link = isFirstElementGreater(links, left[0], right[0]);
-    if (link == errorMsg) {
+    let getComparisonAnswer = isFirstElementGreater(links, left[0], right[0]);
+    if (getComparisonAnswer.foundAnswer == false) {
       // console.log("Error@:");
       // console.group();
       // console.log({ left, right });
       // console.groupEnd();
-      return errorMsg;
-    } else if (link) {
-      // left[0] > right[0]
-      sortedArr.push(left.shift());
-    } else {
-      sortedArr.push(right.shift());
+      let result = {
+        finishedMerge: false,
+        uncomparedElements: [left[0], right[0]],
+        errorMsg: errorMsg,
+      };
+      return result;
+    } else if (getComparisonAnswer.foundAnswer == true) {
+      if (getComparisonAnswer.isFirstElementFirst == true) {
+        // left[0] > right[0]
+        sortedArr.push(right.shift());
+      } else {
+        sortedArr.push(left.shift());
+      }
     }
   }
 
   // use spread operator and create a new array, combining the three arrays
-  return [...sortedArr, ...left, ...right]; // if they don't have the same size, the remaining ones will be greater than the ones before
+  let result = {
+    finishedMerge: true,
+    orderedList: [...sortedArr, ...left, ...right],
+    // if they don't have the same size, the remaining ones will be greater than the ones before
+  };
+  return result;
 }
 
-export function mergeSortInner({ list, links }) {
+export function mergeSortInner({ recursiveInput, links }) {
   // console.log({ l: list.length });
-  if (list == errorMsg) {
-    return errorMsg;
+  if (recursiveInput.bottleneckedByComparison == true) {
+    let result = {
+      recursiveInput: {
+        list: recursiveInput.list,
+        bottleneckedByComparison: true,
+        uncomparedElements: recursiveInput.uncomparedElements,
+      },
+      links: links,
+    };
+    return result;
   }
-  const half = list.length / 2;
+  const half = recursiveInput.list.length / 2;
 
   // the base case is list length <=1
-  if (list.length <= 1) {
-    return list;
+  if (recursiveInput.list.length <= 1) {
+    let result = {
+      recursiveInput: {
+        bottleneckedByComparison: false,
+        list: recursiveInput.list,
+      },
+      links: links,
+    };
+    return result;
   }
 
-  const left = list.slice(0, half); // the first half of the list
-  const right = list.slice(half, list.length); // Note that splice is destructive.
-  let orderedFirstHalf = mergeSortInner({ list: left, links });
-  let orderedSecondHalf = mergeSortInner({ list: right, links });
-  if (orderedFirstHalf != errorMsg && orderedSecondHalf != errorMsg) {
-    let result = merge(links, orderedFirstHalf, orderedSecondHalf);
-    return result;
+  const left = recursiveInput.list.slice(0, half); // the first half of the list
+  const right = recursiveInput.list.slice(half, recursiveInput.list.length); // Note that splice is destructive.
+  let orderedFirstHalfAnswer = mergeSortInner({
+    recursiveInput: { list: left, bottleneckedByComparison: false },
+    links,
+  });
+  let orderedSecondHalfAnswer = mergeSortInner({
+    recursiveInput: { list: right, bottleneckedByComparison: false },
+    links,
+  });
+  if (
+    orderedFirstHalfAnswer.recursiveInput.bottleneckedByComparison == false &&
+    orderedSecondHalfAnswer.recursiveInput.bottleneckedByComparison == false
+  ) {
+    let mergeStepAnswer = merge(
+      links,
+      orderedFirstHalfAnswer.recursiveInput.list,
+      orderedSecondHalfAnswer.recursiveInput.list
+    );
+    if (mergeStepAnswer.finishedMerge == true) {
+      let result = {
+        recursiveInput: {
+          list: mergeStepAnswer.orderedList,
+          bottleneckedByComparison: false,
+        },
+        links,
+      };
+      return result;
+    } else {
+      let result = {
+        recursiveInput: {
+          list: recursiveInput.list,
+          bottleneckedByComparison: true,
+          uncomparedElements: mergeStepAnswer.uncomparedElements,
+        },
+        links,
+      };
+      return result;
+    }
+  } else if (
+    orderedFirstHalfAnswer.recursiveInput.bottleneckedByComparison == true
+  ) {
+    return orderedFirstHalfAnswer;
   } else {
-    return errorMsg;
+    return orderedSecondHalfAnswer;
   }
 }
 
 export function mergeSort({ list, links }) {
   // Try normally
-  let answer = mergeSortInner({ list, links });
-  if (answer != errorMsg) return answer;
-
+  let answer = mergeSortInner({
+    recursiveInput: { list, bottleneckedByComparison: false },
+    links,
+  });
+  if (answer.recursiveInput.bottleneckedByComparison == false) {
+    let result = {
+      finishedOrderingList: true,
+      orderedList: answer.recursiveInput.list,
+    };
+    return result;
+  } else {
+    let result = {
+      finishedOrderingList: false,
+      uncomparedElements: answer.recursiveInput.uncomparedElements,
+    };
+    return result;
+  }
+  /*
   // otherwise
   let permutation = list.slice();
   var length = list.length;
@@ -112,4 +199,5 @@ export function mergeSort({ list, links }) {
   }
   console.log("Error");
   return "Error: The original list was wrongly ordered, and trying permutations didn't work";
+  */
 }

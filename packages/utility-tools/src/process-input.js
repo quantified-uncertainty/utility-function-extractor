@@ -32,29 +32,40 @@ async function main() {
   // Merge sort
   let mergeSortOutput = mergeSort({ list, links });
   // console.log("Output: ");
-  console.log("Sorted output: ");
-  console.group();
-  console.log(mergeSortOutput.map((x) => x.name));
-  console.groupEnd();
-  console.log("");
+  if (mergeSortOutput.finishedOrderingList == false) {
+    console.log("Merge could not proceed");
+    console.group();
+    console.log("Elements which need to be compared:");
+    console.log(mergeSortOutput.uncomparedElements);
+    console.groupEnd();
+  } else {
+    let orderedList = mergeSortOutput.orderedList;
+    // console.log(orderedList);
+    console.log("Sorted output: ");
+    console.group();
+    console.log(orderedList.map((x) => x.name));
+    console.groupEnd();
+    console.log("");
 
-  // find Paths
-  let nodes = mergeSortOutput.map((element, i) => ({
-    ...element,
-    position: i,
-  }));
-  const linksWithPosition = links.map((link) => ({
-    ...link,
-    sourceElementPosition: findElementPosition(link.source, nodes),
-    targetElementPosition: findElementPosition(link.target, nodes),
-  }));
-  let paths = await findDistancesFromAllElementsToAllReferencePoints({
-    nodes,
-    links: linksWithPosition,
-  });
-  // console.log(JSON.stringify(paths, null, 4));
+    // find Paths
+    let nodes = orderedList.map((element, i) => ({
+      ...element,
+      position: i,
+    }));
+    const linksWithPosition = links.map((link) => ({
+      ...link,
+      sourceElementPosition: findElementPosition(link.source, nodes),
+      targetElementPosition: findElementPosition(link.target, nodes),
+    }));
+    let paths = await findDistancesFromAllElementsToAllReferencePoints({
+      nodes,
+      links: linksWithPosition,
+    });
+    // console.log(JSON.stringify(paths, null, 4));
 
-  // Aggregate paths.
-  let aggregatedPaths = aggregatePaths(paths, nodes);
+    // Aggregate paths.
+    let aggregatedPaths = aggregatePaths(paths, nodes);
+    console.log(aggregatedPaths);
+  }
 }
 main();
