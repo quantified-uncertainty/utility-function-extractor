@@ -43,14 +43,13 @@ export function AdvancedOptions({
       {/* Show advanced options*/}
       <button
         className="text-gray-500 text-sm"
-        onClick={() => changeShowAdvanceOptions(true)}
+        onClick={() => changeShowAdvanceOptions(!showAdvancedOptions)}
       >
         Advanced options ▼
       </button>
       <br />
       {/* Toggle  buttons */}
-      <div className={showAdvancedOptions ? "" : ""}>
-        "Hello world"
+      <div className={showAdvancedOptions ? "" : "hidden"}>
         {buttonNames.map((buttonName, i) => {
           return (
             <button
