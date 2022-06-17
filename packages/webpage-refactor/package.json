@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@quri/squiggle-lang": "^0.2.11",
     "axios": "^0.21.4",
     "d3": "^6.7.0",
     "next": "latest",
@@ -16,7 +17,8 @@
     "react-compound-slider": "^3.3.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^6.0.2",
-    "remark-gfm": "^1.0.0"
+    "remark-gfm": "^1.0.0",
+    "utility-tools": "^0.2.2"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.2.1",
