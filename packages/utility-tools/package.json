@@ -6,7 +6,7 @@
     "start": "node --max-old-space-size=8192 src/index.js"
   },
   "type": "module",
-  "main": "src/index.js",
+  "main": "src/process-inputs.js",
   "author": "Nuño Sempere",
   "license": "MIT",
   "dependencies": {
