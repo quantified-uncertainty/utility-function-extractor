@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Doubling consumption for one person for one year",
+    "note": "at fairly low levels of wealth",
+    "isReferenceValue": true,
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A5:E5"
+  },
+  {
+    "name": "Averting the death of an individual under 5 from malaria",
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A8:T8"
+  },
+  {
+    "name": "Averting the death of an individual 5 or older from malaria",
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A9:T9"
+  },
+  {
+    "name": "Averting the death of a 6- to 59-month-old child",
+    "note": "through Vitamin A Supplementation",
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A10:T10"
+  },
+  {
+    "name": "Averting the death of an individual under 5 from vaccine-preventable diseases",
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A11:T11"
+  },
+  {
+    "name": "Averting the death of an individual 5-14 years old from vaccine-preventable diseases",
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A12:T12"
+  },
+  {
+    "name": "Averting the death of an individual 15-49 years old from vaccine-preventable diseases",
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A13:T13"
+  },
+  {
+    "name": "Averting the death of an individual 50-74 years old from vaccine-preventable diseases",
+    "url": "https://docs.google.com/spreadsheets/d/11HsJLpq0Suf3SK_PmzzWpK1tr_BTd364j0l3xVvSCQw/edit#gid=1362437801&range=A14:T14"
+  }
+]

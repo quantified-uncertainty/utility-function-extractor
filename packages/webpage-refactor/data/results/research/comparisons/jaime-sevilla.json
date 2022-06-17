@@ -1,0 +1,224 @@
+[
+  {
+    "source": "Thinking Fast and Slow",
+    "target": "The Mathematical Theory of Communication",
+    "distance": 1000,
+    "reasoning": "Jaime Sevilla\nThinking Fast and Slow is a recounting of the evidence about cogsci at the time, and large parts are already outdated.\nTMToC is an enduring piece of theory that kickstarted a new field "
+  },
+  {
+    "source": "The Global Priorities Institute's Research Agenda",
+    "target": "Superintelligence",
+    "distance": 20,
+    "reasoning": "Jaime Sevilla\nI am unsure about the quality difference, but Superintelligence has had a far wider reach"
+  },
+  {
+    "source": "The Global Priorities Institute's Research Agenda",
+    "target": "Thinking Fast and Slow",
+    "distance": 20,
+    "reasoning": "Thinking Fast and Slow has had wider reach, and is a good synthesis of the field."
+  },
+  {
+    "source": "Thinking Fast and Slow",
+    "target": "Superintelligence",
+    "distance": "1.1",
+    "reasoning": "Jaime Sevilla\nSuperintelligence gave prominence to the AI Safety field, possibly bringing forward research timelines a few years.\nThinking Fast and Slow made CogSci available to many people.\nLarge parts of both books are now outdated"
+  },
+  {
+    "source": "Superintelligence",
+    "target": "The Mathematical Theory of Communication",
+    "distance": 1000,
+    "reasoning": "Jaime Sevilla\nTMToC has stood the test of time"
+  },
+  {
+    "source": "Categorizing Variants of Goodhart's Law",
+    "target": "The Vulnerable World Hypothesis",
+    "distance": 33.333333333333336,
+    "reasoning": "TVWH has had wider reach"
+  },
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+    "target": "Shallow evaluations of longtermist organizations",
+    "distance": "2",
+    "reasoning": "Shallow evaluations contains more object level information"
+  },
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+    "target": "Categorizing Variants of Goodhart's Law",
+    "distance": 100,
+    "reasoning": "Goodhart contains more insight"
+  },
+  {
+    "source": "Shallow evaluations of longtermist organizations",
+    "target": "Categorizing Variants of Goodhart's Law",
+    "distance": 20,
+    "reasoning": "Goodhart contains more insights"
+  },
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+    "target": "The Global Priorities Institute's Research Agenda",
+    "distance": 100,
+    "reasoning": "GPIRA has presumably helped at least GPI set its agenda, and possibly other newcomers to the field.\nThe motivated reasoning critique might have helped some EAs by reiterating a core message"
+  },
+  {
+    "source": "Shallow evaluations of longtermist organizations",
+    "target": "The Global Priorities Institute's Research Agenda",
+    "distance": 12.5,
+    "reasoning": "GPIRA helped GPI set their priorities and decompose the problem, shallow evaluations is an experiment on institution evaluation which might result in more work later (I feel like I am not getting at the true reason for my scoring here)"
+  },
+  {
+    "source": "Categorizing Variants of Goodhart's Law",
+    "target": "The Global Priorities Institute's Research Agenda",
+    "distance": 1.1111111111111112,
+    "reasoning": "Research agendas can mobilize more talent, they can be a multiplier.\nBut Goodhearts law is tangible progress on a problem.\nOverall Im confused"
+  },
+  {
+    "source": "The Global Priorities Institute's Research Agenda",
+    "target": "The Vulnerable World Hypothesis",
+    "distance": "10",
+    "reasoning": "vulnerable world had wider reach, and inspired more people"
+  },
+  {
+    "source": "The Vulnerable World Hypothesis",
+    "target": "Thinking Fast and Slow",
+    "distance": 5,
+    "reasoning": "Thinking fast and slow reached more people"
+  },
+  {
+    "source": "A Model of Patient Spending and Movement Building",
+    "target": "Reversals in Psychology",
+    "distance": "10",
+    "reasoning": "I have heard more discussion of reversals than of AMPSMB"
+  },
+  {
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+    "distance": 10,
+    "reasoning": "I learned a couple of things in the low-information priors post but I think curating databases is very very helpful"
+  },
+  {
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+    "target": "A Model of Patient Spending and Movement Building",
+    "distance": 1.25,
+    "reasoning": "I personally learned more from low information priors, but I havent engaged with patient spending enough to evaluate its value"
+  },
+  {
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+    "target": "A Model of Patient Spending and Movement Building",
+    "distance": 1.1111111111111112,
+    "reasoning": "I think its slighly more likely I will build on top of the patient spending than on top of the database"
+  },
+  {
+    "source": "Center for Election Science EA Wiki stub",
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+    "distance": 100,
+    "reasoning": "Coal article seems more in-depth reasoning "
+  },
+  {
+    "source": "A comment on setting up a charity",
+    "target": "Center for Election Science EA Wiki stub",
+    "distance": 10,
+    "reasoning": "I imagine the wiki stub will reach more people"
+  },
+  {
+    "source": "A comment on setting up a charity",
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+    "distance": 25,
+    "reasoning": "I learned more from low info priors"
+  },
+  {
+    "source": "Center for Election Science EA Wiki stub",
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+    "distance": 12.5,
+    "reasoning": "Learned more from low info priors"
+  },
+  {
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+    "distance": "1.5",
+    "reasoning": "I learned more from low info priors but I expect I would learn more if I engaged with coal seam fires"
+  },
+  {
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+    "distance": "1.5",
+    "reasoning": "Database seems more reemplazable"
+  },
+  {
+    "source": "Extinguishing or preventing coal seam fires is a potential cause area",
+    "target": "A Model of Patient Spending and Movement Building",
+    "distance": 1.1111111111111112,
+    "reasoning": "I have no idea of which one would be more useful to me if I engaged with them\nI guess patient spending is more related to my work"
+  },
+  {
+    "source": "A comment on setting up a charity",
+    "target": "The motivated reasoning critique of effective altruism",
+    "distance": 100,
+    "reasoning": "The motivated reasoning critique is better at setting a good culture"
+  },
+  {
+    "source": "Center for Election Science EA Wiki stub",
+    "target": "The motivated reasoning critique of effective altruism",
+    "distance": 12.5,
+    "reasoning": "The motivated reasoning critique is better at setting a good culture"
+  },
+  {
+    "source": "The motivated reasoning critique of effective altruism",
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+    "distance": "1.1",
+    "reasoning": "I learned more from priors, critique is better at setting a culture"
+  },
+  {
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+    "target": "Shallow evaluations of longtermist organizations",
+    "distance": 10,
+    "reasoning": "Shallow evaluations has more object level content"
+  },
+  {
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+    "target": "Shallow evaluations of longtermist organizations",
+    "distance": 1.1111111111111112,
+    "reasoning": "Shallow evaluations contains more crystallized reasoning"
+  },
+  {
+    "source": "Shallow evaluations of longtermist organizations",
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+    "distance": "1.8",
+    "reasoning": "I expect I would learn more from coal seam if I engaged with it"
+  },
+  {
+    "source": "Extinguishing or preventing coal seam fires is a potential cause area",
+    "target": "Categorizing Variants of Goodhart's Law",
+    "distance": 12.5,
+    "reasoning": "Goodhart is more hard-to-replace progress "
+  },
+  {
+    "source": "A Model of Patient Spending and Movement Building",
+    "target": "Categorizing Variants of Goodhart's Law",
+    "distance": 3.3333333333333335,
+    "reasoning": "Goodheart feels like more hard-to-replace progress"
+  },
+  {
+    "source": "Categorizing Variants of Goodhart's Law",
+    "target": "Reversals in Psychology",
+    "distance": "2",
+    "reasoning": "reversals has had more reach"
+  },
+  {
+    "source": "The Global Priorities Institute's Research Agenda",
+    "target": "Reversals in Psychology",
+    "distance": "3",
+    "reasoning": "reversals has had more reach"
+  },
+  {
+    "source": "The Vulnerable World Hypothesis",
+    "target": "Reversals in Psychology",
+    "distance": "1.5",
+    "reasoning": "Reversals has had more reach"
+  },
+  {
+    "source": "Reversals in Psychology",
+    "target": "Thinking Fast and Slow",
+    "distance": 1.4285714285714286,
+    "reasoning": "Oof Im stumped.\nI think thinking fast and slow is enough of a good crystallization of knowledge I am giving it the nod, even though reversals in psychology might have a better insight compression rate"
+  }
+]

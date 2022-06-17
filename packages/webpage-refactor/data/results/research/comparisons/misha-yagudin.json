@@ -1,0 +1,399 @@
+[
+
+{
+
+    "source": "Thinking Fast and Slow",
+
+    "target": "The Mathematical Theory of Communication",
+
+    "distance": 10000,
+
+    "reasoning": "Information theory is fundamental. Thinking Fast and Slow is somewhat wrong and not as important in a grand scheme of things. It offered some meta cognitive skills but... They don't seem that valuable 5+y later."
+
+},
+
+{
+
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "Superintelligence",
+
+    "distance": 20,
+
+    "reasoning": "Misha Yagudin\n\nHard choice. Mostly intuition about how many times AI is more important and relative difference in how foundational it have been.\n\n\n\n"
+
+},
+
+{
+
+    "source": "Thinking Fast and Slow",
+
+    "target": "The Global Priorities Institute's Research Agenda",
+
+    "distance": "100",
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "The Mathematical Theory of Communication",
+
+    "distance": 10,
+
+    "reasoning": "Or something like that. "
+
+},
+
+{
+
+    "source": "Superintelligence",
+
+    "target": "The Mathematical Theory of Communication",
+
+    "distance": 2,
+
+    "reasoning": "Misha\n\nI know I am incoherent...\n\nBut SI is less fundamental but still important"
+
+},
+
+{
+
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": 33.333333333333336,
+
+    "reasoning": "VWH is the best argument against liberty. GL is good paper but clearly less important. "
+
+},
+
+{
+
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "The motivated reasoning critique of effective altruism",
+
+    "distance": 10,
+
+    "reasoning": "Misha \n\nI think the later might be more influential via CEA community health team. But low chances.\n\nAs a research direction the first is more important. But it feels inconsequential."
+
+},
+
+{
+
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "Categorizing Variants of Goodhart's Law",
+
+    "distance": 10,
+
+    "reasoning": "AI stuff is more important; AI stuff gives more general mental models"
+
+},
+
+{
+
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "Categorizing Variants of Goodhart's Law",
+
+    "distance": 5,
+
+    "reasoning": "Or something. AI is more important and more generalizable but community meta is still fairly important. \n\nI think meta will target worse thinkers on average hence difference."
+
+},
+
+{
+
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "Thinking Fast and Slow",
+
+    "distance": 66.66666666666667,
+
+    "reasoning": "It's a bit hard. I am fairly dismissive of TFaS but it's a book and some ideas are good."
+
+},
+
+{
+
+    "source": "The motivated reasoning critique of effective altruism",
+
+    "target": "Thinking Fast and Slow",
+
+    "distance": 25,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Categorizing Variants of Goodhart's Law",
+
+    "target": "Thinking Fast and Slow",
+
+    "distance": 2,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Thinking Fast and Slow",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": "15",
+
+    "reasoning": "Clearly more important for the world saving."
+
+},
+
+{
+
+    "source": "The Global Priorities Institute's Research Agenda",
+
+    "target": "The Vulnerable World Hypothesis",
+
+    "distance": "2",
+
+    "reasoning": "Hard call. VWH feels more urgent than GPI RA. But I tried to disentangle agenda as a piece from its role as a necessary tool for field building. I sorta think that VWH agenda would have been x10+ more valuable per its more immediate focus and applicability to policy."
+
+},
+
+{
+
+    "source": "The Vulnerable World Hypothesis",
+
+    "target": "Superintelligence",
+
+    "distance": 10,
+
+    "reasoning": "SI is field building, deeper and about AI."
+
+},
+
+{
+
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "Reversals in Psychology",
+
+    "distance": "3",
+
+    "reasoning": "I sorta think that knowing that some psychology is totally fabricated &c is useful for not relying on it in your reasoning about the world and some of these were fairly fundamental. Also another update about quality of social sciences.\n\nI think some updates are clearly x10+ more important but value of categorising them is not as much.\n\nI am not sure how valuable are econ models, tbh."
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": 100,
+
+    "reasoning": "Dunno nothing new to me in the priors question but Pablo's comment which is fairly trivial and I haven't used/thought about it since.\n"
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "A Model of Patient Spending and Movement Building",
+
+    "distance": 500,
+
+    "reasoning": "Sorta even worse"
+
+},
+
+{
+
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+
+    "target": "A Model of Patient Spending and Movement Building",
+
+    "distance": 3.3333333333333335,
+
+    "reasoning": "not sure; the later seems more consequential in the future"
+
+},
+
+{
+
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "distance": 10,
+
+    "reasoning": "No idea how good the later is but Wiki is not particularly insightful. I think think tags for orgs are obv less useful than tags for cause areas. "
+
+},
+
+{
+
+    "source": "A comment on setting up a charity",
+
+    "target": "Center for Election Science EA Wiki stub",
+
+    "distance": 100,
+
+    "reasoning": "idk man seems like a random comment might be consequential but let's not count it as research"
+
+},
+
+{
+
+    "source": "A comment on setting up a charity",
+
+    "target": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "distance": 100,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Center for Election Science EA Wiki stub",
+
+    "distance": 1,
+
+    "reasoning": "I like the later more but both are just lists which turned out not to be of much use to me. I think others will enjoy priors more."
+
+},
+
+{
+
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": 10,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "target": "Database of orgs relevant to longtermist/x-risk work",
+
+    "distance": 2.5,
+
+    "reasoning": "I think lists are cool. But maybe we would have it anyway via tags and maybe fires are actually good.\n\n"
+
+},
+
+{
+
+    "source": "A comment on setting up a charity",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 10000,
+
+    "reasoning": "idk"
+
+},
+
+{
+
+    "source": "What are some low-information priors that you find practically useful for thinking about the world?",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 100,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Center for Election Science EA Wiki stub",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 200,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Extinguishing or preventing coal seam fires is a potential cause area",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 10,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Database of orgs relevant to longtermist/x-risk work",
+
+    "target": "Shallow evaluations of longtermist organizations",
+
+    "distance": 10,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Shallow evaluations of longtermist organizations",
+
+    "target": "A Model of Patient Spending and Movement Building",
+
+    "distance": "2",
+
+    "reasoning": "hard call"
+
+},
+
+{
+
+    "source": "A Model of Patient Spending and Movement Building",
+
+    "target": "The motivated reasoning critique of effective altruism",
+
+    "distance": 3.3333333333333335,
+
+    "reasoning": ""
+
+},
+
+{
+
+    "source": "Reversals in Psychology",
+
+    "target": "The motivated reasoning critique of effective altruism",
+
+    "distance": 1.4285714285714286,
+
+    "reasoning": ""
+
+}
+
+]
