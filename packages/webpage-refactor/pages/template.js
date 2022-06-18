@@ -27,5 +27,5 @@ export async function getStaticProps() {
 
 // Main react component
 export default function Home({ listOfElementsForView }) {
-  return <ComparisonView listOfElementsForView={listOfElementsForView} />;
+  return <Homepage listOfElementsForView={listOfElementsForView} />;
 }

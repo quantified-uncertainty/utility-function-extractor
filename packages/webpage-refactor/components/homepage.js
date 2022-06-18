@@ -10,7 +10,7 @@ import { pushToMongo } from "../lib/pushToMongo.js";
 import { resolveToNumIfPossible } from "../lib/squiggle.js";
 
 export function Homepage({ listOfElementsInit }) {
-  const SLICE = true;
+  const SLICE = false;
   /* Statefull elements */
 
   // list of elements
@@ -136,6 +136,12 @@ export function Homepage({ listOfElementsInit }) {
       {/* <Graph /> 
       
       */}
+      <Graph
+        listOfElements={listOfElements}
+        links={links}
+        isListOrdered={isListOrdered}
+        mergeSortOrder={mergeSortOrder}
+      />
 
       {/* Advanced options section */}
       <div>
@@ -147,13 +153,6 @@ export function Homepage({ listOfElementsInit }) {
           onChangeOfDataset={onChangeOfDataset}
         />
       </div>
-
-      <Graph
-        listOfElements={listOfElements}
-        links={links}
-        isListOrdered={isListOrdered}
-        mergeSortOrder={mergeSortOrder}
-      />
     </div>
   );
 }

@@ -55,6 +55,7 @@ export function AdvancedOptions({
             <button
               className={effectButtonStyle}
               onClick={() => buttonToggles[i]()}
+              id={`advancedOptionsButton-${i}`}
             >
               {buttonName}
             </button>
