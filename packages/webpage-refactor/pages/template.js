@@ -10,22 +10,22 @@ import path from "path";
 import { Homepage } from "../components/homepage.js";
 
 /* Definitions */
-const elementsDocument = "../data/listForTemplate.json";
+const elementsDocument = "../data/listOfObjects.json";
 
 /* React components */
 export async function getStaticProps() {
   const directory = path.join(process.cwd(), "pages");
-  let listOfElementsForView = JSON.parse(
+  let listOfElementsInit = JSON.parse(
     fs.readFileSync(path.join(directory, elementsDocument), "utf8")
   );
   return {
     props: {
-      listOfElementsForView,
+      listOfElementsInit,
     },
   };
 }
 
 // Main react component
-export default function Home({ listOfElementsForView }) {
-  return <Homepage listOfElementsForView={listOfElementsForView} />;
+export default function Home({ listOfElementsInit }) {
+  return <Homepage listOfElementsInit={listOfElementsInit} />;
 }
