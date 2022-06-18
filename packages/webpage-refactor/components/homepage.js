@@ -6,14 +6,16 @@ import { DisplayElementForComparison } from "./displayElementForComparison.js";
 import { ComparisonActuator } from "./comparisonActuator.js";
 import { AdvancedOptions } from "./advancedOptions.js";
 import { Graph } from "./graph/graph.js";
+import { pushToMongo } from "../lib/pushToMongo.js";
 import { resolveToNumIfPossible } from "../lib/squiggle.js";
 
 export function Homepage({ listOfElementsInit }) {
+  const SLICE = true;
   /* Statefull elements */
 
   // list of elements
   const [listOfElements, setListOfElements] = useState(
-    listOfElementsInit //.slice(0, 5)
+    SLICE ? listOfElementsInit.slice(0, 4) : listOfElementsInit
   );
 
   // number of steps
@@ -22,6 +24,7 @@ export function Homepage({ listOfElementsInit }) {
 
   // is list ordered?
   const [isListOrdered, setIsListOrdered] = useState(false);
+  const [mergeSortOrder, setMergeSortOrder] = useState([]);
 
   // list of comparisons
   const [links, setLinks] = useState([]);
@@ -58,7 +61,9 @@ export function Homepage({ listOfElementsInit }) {
       setPairCurrentlyBeingCompared(newPairToCompare);
     } else {
       setIsListOrdered(true);
-      alert(JSON.stringify(mergeSortOutput, null, 4));
+      setMergeSortOrder(mergeSortOutput.orderedList);
+      pushToMongo({ mergeSortOutput, links });
+      // alert(JSON.stringify(mergeSortOutput, null, 4));
       // chooseNextPairToCompareRandomly({ listOfElements });
       // return 1;
     }
@@ -120,6 +125,7 @@ export function Homepage({ listOfElementsInit }) {
             listOfElements={listOfElements}
             pairCurrentlyBeingCompared={pairCurrentlyBeingCompared}
             moveToNextStep={moveToNextStep}
+            isListOrdered={isListOrdered}
           />
 
           <DisplayElementForComparison
@@ -142,7 +148,12 @@ export function Homepage({ listOfElementsInit }) {
         />
       </div>
 
-      <Graph listOfElements={listOfElements} links={links} />
+      <Graph
+        listOfElements={listOfElements}
+        links={links}
+        isListOrdered={isListOrdered}
+        mergeSortOrder={mergeSortOrder}
+      />
     </div>
   );
 }

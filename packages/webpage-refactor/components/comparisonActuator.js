@@ -5,20 +5,26 @@ export function ComparisonActuator({
   listOfElements,
   pairCurrentlyBeingCompared,
   moveToNextStep,
+  isListOrdered,
 }) {
   const initialComparisonString = "x to y";
   const [comparisonString, setComparisonString] = useState("x to y");
-  const onChangeComparisonString = async (event) =>
-    await setComparisonString(event.target.value);
+  const onChangeComparisonString = async (event) => {
+    if (!isListOrdered) {
+      await setComparisonString(event.target.value);
+    }
+  };
 
   const onClickSubmitEvent = (event) => {
     // console.log(event.target.value);
-    moveToNextStep({
-      listOfElements,
-      pairCurrentlyBeingCompared,
-      comparisonString,
-    });
-    setComparisonString(initialComparisonString);
+    if (!isListOrdered) {
+      moveToNextStep({
+        listOfElements,
+        pairCurrentlyBeingCompared,
+        comparisonString,
+      });
+      setComparisonString(initialComparisonString);
+    }
   };
 
   return (
@@ -29,6 +35,7 @@ export function ComparisonActuator({
           {`... is `}
           <br />
           <input
+            disabled={isListOrdered ? true : false}
             type="text"
             className="text-center text-blueGray-600 bg-white rounded text-lg border-0 shadow outline-none focus:outline-none focus:ring w-8/12 h-10 m-2"
             value={comparisonString}

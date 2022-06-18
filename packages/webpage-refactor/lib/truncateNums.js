@@ -7,6 +7,8 @@ let topOutAt100AndValidate = (x) => {
   }
 };
 
+export const toLocale = (x) => Number(x).toLocaleString();
+
 export const truncateValueForDisplay = (value) => {
   let result;
   if (value > 10) {

@@ -10,7 +10,7 @@ import path from "path";
 import { Homepage } from "../components/homepage.js";
 
 /* Definitions */
-const elementsDocument = "../data/listOfMoralGoods.json";
+const elementsDocument = "../data/listOfObjects.json";
 
 /* React components */
 export async function getStaticProps() {
