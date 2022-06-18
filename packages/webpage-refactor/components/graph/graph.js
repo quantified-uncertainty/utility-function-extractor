@@ -92,6 +92,10 @@ export function Graph({
         data: {
           id: cutOffLongNames(element.name),
           color: colors[i] || "darkgreen",
+          labelColor:
+            isListOrdered && i >= listOfElementsForGraph.length - 2
+              ? "black"
+              : "white",
         },
       };
     });
@@ -112,7 +116,7 @@ export function Graph({
       {
         selector: "node",
         style: {
-          padding: "25px",
+          padding: "30px",
           shape: "round-rectangle",
           content: "data(id)",
           "background-color": "data(color)",
@@ -126,8 +130,8 @@ export function Graph({
         selector: "node[id]",
         style: {
           label: "data(id)",
-          "font-size": "11",
-          color: "white",
+          "font-size": "13",
+          color: "data(labelColor)",
           "text-halign": "center",
           "text-valign": "center",
           "z-index": 1,
@@ -196,7 +200,7 @@ export function Graph({
   useEffect(async () => {
     await callEffect({ listOfElements, links, isListOrdered, mergeSortOrder });
     // console.log(JSON.stringify(config, null, 10));
-  }, [listOfElements, links]);
+  }, [listOfElements, links, isListOrdered]);
 
   return (
     <div>
