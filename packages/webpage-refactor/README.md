@@ -34,7 +34,8 @@ https://github.com/netlify/netlify-plugin-nextjs/#readme
 - [x] Send to mongo upon completion
 - [ ] Add paths table
 - [ ] warn that the paths table is approximate.
-- [ ] Push to github
-- [ ] Push to netlify
+- [x] Push to github
+- [x] Push to netlify
 - [x] Don't allow further comparisons after completion
 - [ ] Look back at Amazon thing which has been running
+- [x] Change README.
