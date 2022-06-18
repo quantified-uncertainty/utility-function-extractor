@@ -7,7 +7,7 @@
 import React from "react";
 import fs from "fs";
 import path from "path";
-import Homepage from "../lib/comparisonView.js";
+import { Homepage } from "../components/homepage.js";
 
 /* Definitions */
 const elementsDocument = "../data/listForTemplate.json";
