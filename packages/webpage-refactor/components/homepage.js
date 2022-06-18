@@ -13,7 +13,7 @@ export function Homepage({ listOfElementsInit }) {
 
   // list of elements
   const [listOfElements, setListOfElements] = useState(
-    listOfElementsInit.slice(0, 3)
+    listOfElementsInit.slice(0, 5)
   );
 
   // number of steps
@@ -110,7 +110,7 @@ export function Homepage({ listOfElementsInit }) {
         numElements={listOfElements.length}
       />
       {/* Comparisons section */}
-      <div className={isListOrdered ? "hidden" : ""}>
+      <div className={"" /*isListOrdered ? "hidden" : ""*/}>
         <div className="flex flex-wrap items-center max-w-4xl sm:w-full mt-10">
           <DisplayElementForComparison
             element={pairCurrentlyBeingCompared[0]}
@@ -127,6 +127,10 @@ export function Homepage({ listOfElementsInit }) {
           ></DisplayElementForComparison>
         </div>
       </div>
+      {/* <Graph /> 
+      
+      */}
+
       {/* Advanced options section */}
       <div>
         <AdvancedOptions
@@ -137,9 +141,8 @@ export function Homepage({ listOfElementsInit }) {
           onChangeOfDataset={onChangeOfDataset}
         />
       </div>
-      {/* <Graph /> 
-      <Graph />
-      */}
+
+      <Graph listOfElements={listOfElements} links={links} />
     </div>
   );
 }

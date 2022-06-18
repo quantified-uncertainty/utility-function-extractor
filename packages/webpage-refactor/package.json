@@ -10,6 +10,12 @@
   "dependencies": {
     "@quri/squiggle-lang": "^0.2.11",
     "axios": "^0.21.4",
+    "cytoscape": "^3.21.1",
+    "cytoscape-avsdf": "^1.0.0",
+    "cytoscape-cola": "^2.5.1",
+    "cytoscape-dagre": "^2.4.0",
+    "cytoscape-fcose": "^2.1.0",
+    "cytoscape-spread": "^3.0.0",
     "next": "latest",
     "path": "^0.12.7",
     "react": "^17.0.1",
@@ -18,6 +24,7 @@
     "react-dom": "17.0.1",
     "react-markdown": "^6.0.2",
     "remark-gfm": "^1.0.0",
+    "simple-react-cytoscape": "^1.0.4",
     "utility-tools": "^0.2.2"
   },
   "devDependencies": {
