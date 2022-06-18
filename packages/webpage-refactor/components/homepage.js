@@ -13,7 +13,7 @@ export function Homepage({ listOfElementsInit }) {
 
   // list of elements
   const [listOfElements, setListOfElements] = useState(
-    listOfElementsInit.slice(0, 5)
+    listOfElementsInit //.slice(0, 5)
   );
 
   // number of steps
@@ -104,14 +104,14 @@ export function Homepage({ listOfElementsInit }) {
   };
 
   return (
-    <div>
+    <div className="block w-full items-center sm:w-full mt-10">
       <ProgressIndicator
         numStepsNow={numStepsNow}
         numElements={listOfElements.length}
       />
       {/* Comparisons section */}
       <div className={"" /*isListOrdered ? "hidden" : ""*/}>
-        <div className="flex flex-wrap items-center max-w-4xl sm:w-full mt-10">
+        <div className="flex justify-evenly mt-10">
           <DisplayElementForComparison
             element={pairCurrentlyBeingCompared[0]}
           ></DisplayElementForComparison>

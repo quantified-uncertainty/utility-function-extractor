@@ -40,8 +40,10 @@ const getEdgeLabel = async (squiggleString) => {
 
 export function Graph({ listOfElements, links }) {
   const containerRef = useRef();
+  const [visibility, setVisibility] = useState("invisible");
 
   const callEffect = async (listOfElements, links) => {
+    setVisibility("invisible");
     cytoscape.use(spread); // spread
 
     let nodeElements = listOfElements.map((element) => {
@@ -73,7 +75,7 @@ export function Graph({ listOfElements, links }) {
             //"text-valign": "bottom",
             "text-justification": "auto",
           },
-          padding: 10,
+          padding: 2,
         },
         {
           selector: "edge",
@@ -108,13 +110,14 @@ export function Graph({ listOfElements, links }) {
         name: "spread", // circle, grid, dagre
         minDist: 10,
         //prelayout: false,
-        //animate: "end", // whether to transition the node positions
-        animationDuration: 0, // duration of animation in ms if enabled
+        // animate: false, // whether to transition the node positions
+        // animationDuration: 250, // duration of animation in ms if enabled
       },
       userZoomingEnabled: false,
       userPanningEnabled: false,
     };
     cytoscape(config);
+    setTimeout(() => setVisibility(""), 700);
   };
   useEffect(async () => {
     await callEffect(listOfElements, links);
@@ -123,7 +126,9 @@ export function Graph({ listOfElements, links }) {
 
   return (
     <div>
-      <div ref={containerRef} style={{ height: "700px", width: "1000px" }} />
+      <div className={visibility}>
+        <div ref={containerRef} style={{ height: "700px", width: "1000px" }} />
+      </div>
       <button
         className={effectButtonStyle}
         onClick={() => callEffect(listOfElements, links)}

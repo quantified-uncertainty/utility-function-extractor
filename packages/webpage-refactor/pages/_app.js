@@ -7,7 +7,7 @@ import { Title } from "../components/title.js";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className="block flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
       {/* Webpage name & favicon */}
       <div className="mt-10">
         <Head>
@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         {/* Content */}
-        <main className="flex flex-col items-center w-full flex-1 px-20 text-center">
+        <main className="inline flex-col items-center w-full flex-1 px-20 text-center">
           <Title />
           <Component {...pageProps} />
         </main>
