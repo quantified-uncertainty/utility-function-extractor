@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { ShowComparisons } from "./advancedOptions/showComparisons.js";
-import { ComparisonsChanger } from "./advancedOptions/comparisonsChanger.js";
-import { DataSetChanger } from "./advancedOptions/datasetChanger.js";
+import { ShowComparisons } from "./showComparisons.js";
+import { ComparisonsChanger } from "./comparisonsChanger.js";
+import { DataSetChanger } from "./datasetChanger.js";
+import { setRevalidateHeaders } from "next/dist/server/send-payload/revalidate-headers.js";
 
 const effectButtonStyle =
   "bg-transparent m-2 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5";
@@ -27,12 +28,12 @@ export function AdvancedOptions({
     setShowChangeDataset(!showChangeDataset);
 
   const buttonNames = [
-    "Show Comparisons",
+    // "Show Comparisons",
     "Load comparisons",
     "Use your own data",
   ];
   const buttonToggles = [
-    toggleShowComparisons,
+    // toggleShowComparisons,
     toggleShowLoadComparisons,
     toggleShowChangeDataset,
   ];
@@ -69,10 +70,12 @@ export function AdvancedOptions({
           listOfElements={listOfElements}
           show={showLoadComparisons}
           moveToNextStep={moveToNextStep}
+          links={links}
         />
         <DataSetChanger
           onChangeOfDataset={onChangeOfDataset}
           show={showChangeDataset}
+          listOfElements={listOfElements}
         />
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-export function DataSetChanger({ onChangeOfDataset, show }) {
-  let [value, setValue] = useState(`[
+export function DataSetChanger({ onChangeOfDataset, show, listOfElements }) {
+  /*let [value, setValue] = useState(`[
     {
       "name": "Some element. The name field is necessary",
       "url": "http://www.example.com",
@@ -18,7 +18,9 @@ export function DataSetChanger({ onChangeOfDataset, show }) {
       "isReferenceValue": true,
       "somethirdfield": "c"
     }
-  ]`);
+  ]`);*/
+  let [value, setValue] = useState(JSON.stringify(listOfElements, null, 4));
+
   const [displayingDoneMessage, setDisplayingDoneMessage] = useState(false);
   const [displayingDoneMessageTimer, setDisplayingDoneMessageTimer] =
     useState(null);
@@ -47,44 +49,21 @@ export function DataSetChanger({ onChangeOfDataset, show }) {
       setDisplayingDoneMessageTimer(timer);
     } catch (error) {
       setDisplayingDoneMessage(false);
-      //alert(error)
-      //console.log(error)
-      let substituteText = `Error: ${error.message}
-
-Try something like:
-[
-  {
-    "name": "Some element. The name field is necessary",
-    "url": "http://www.example.com",
-    "somethirdfield": "a"
-  },
-  {
-    "name": "Another element",
-    "url": "http://www.example1.com",
-    "somethirdfield": "b"
-  },
-  {
-    "name": "Another element",
-    "url": "http://www.example2.com",
-    "isReferenceValue": true,
-    "somethirdfield": "c"
-  }
-]
-
-Your old input was: ${value}`;
-      setValue(substituteText);
+      alert(error);
     }
   };
   return (
     <div className={`${show ? "" : "hidden"} `}>
       <form onSubmit={handleSubmitInner} className="inline mt-0">
-        <h3 className="text-lg mt-8">Change dataset</h3>
+        <h3 className="text-lg mt-8 mb-4">Change dataset</h3>
         <textarea
           value={value}
           onChange={handleChange}
-          rows="10"
-          cols="50"
-          className="mt-2"
+          rows={
+            1.2 * JSON.stringify(listOfElements, null, 4).split("\n").length
+          }
+          cols={90}
+          className="text-left text-gray-600 bg-white rounded text-normal p-10 border-0 shadow outline-none focus:outline-none focus:ring "
         />
         <br />
         <button

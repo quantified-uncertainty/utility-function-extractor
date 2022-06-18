@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+// import JSONInput from "react-json-editor-ajrm/index";
+// import locale from "react-json-editor-ajrm/locale/en";
 
 const checkLinksAreOk = (links, listOfElements) => {
   let linkSourceNames = links.map((link) => link.source.name);
@@ -25,8 +28,9 @@ export function ComparisonsChanger({
   listOfElements,
   show,
   moveToNextStep,
+  links,
 }) {
-  let [value, setValue] = useState(``);
+  let [value, setValue] = useState(JSON.stringify(links, null, 4));
   const [displayingDoneMessage, setDisplayingDoneMessage] = useState(false);
   const [displayingDoneMessageTimer, setDisplayingDoneMessageTimer] =
     useState(null);
@@ -38,10 +42,10 @@ export function ComparisonsChanger({
   let handleSubmitInner = (event) => {
     clearTimeout(displayingDoneMessageTimer);
     event.preventDefault();
+
     try {
       let newData = JSON.parse(value);
-      // setLinks
-      // newData
+
       if (checkLinksAreOk(newData, listOfElements)) {
         setLinks(newData);
         moveToNextStep({
@@ -57,49 +61,51 @@ export function ComparisonsChanger({
       }
     } catch (error) {
       setDisplayingDoneMessage(false);
-      let substituteText = `Error: ${error.message}
-
-Try something like:
-[
-  {
-    "source": "x",
-    "target": "y",
-    "distance": 99999.99999999999,
-    "reasoning": "blah blah"
-  },
-  {
-    "source": "y",
-    "target": "z",
-    "distance": 1,
-    "reasoning": "blah blah"
-  },
-  {
-    "source": "x",
-    "target": "z",
-    "distance": 10,
-    "reasoning": "blah blah"
-  }
-]
-
-Your old input was: ${value}`;
-      setValue(substituteText);
+      alert(error);
     }
   };
+
+  useEffect(async () => {
+    setValue(JSON.stringify(links, null, 4));
+    // console.log(JSON.stringify(config, null, 10));
+  }, [links]);
+
   return (
     <form
       onSubmit={handleSubmitInner}
       className={`inline ${show ? "" : "hidden"}`}
     >
       <h3 className="text-lg mt-8">Load comparisons</h3>
-      <p>These will override your current comparisons.</p>
+      <p>These can be edited, which will override your current comparisons.</p>
       <br />
       <textarea
         value={value}
         onChange={handleTextChange}
-        rows="10"
-        cols="50"
-        className=""
+        rows={4 + JSON.stringify(links, null, 4).split("\n").length}
+        cols={90}
+        className="text-left text-gray-600 bg-white rounded text-normal p-10 border-0 shadow outline-none focus:outline-none focus:ring "
       />
+      {/* */}
+      {/*
+      <div className="flex text-left text-xl justify-around ">
+        <JSONInput
+          placeholder={value} // data to display
+          theme="dark_vscode_tribute" //"light_mitsuketa_tribute" //
+          locale={locale}
+          colors={{
+            string: "#DAA520", // overrides theme colors with whatever color value you want
+          }}
+          height="550px"
+          style={{
+            body: {
+              fontSize: "20px",
+            },
+          }}
+          onChange={onChangeForJsonEditor}
+        />
+      </div>
+
+        */}
       <br />
       <button
         className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5 p-10"

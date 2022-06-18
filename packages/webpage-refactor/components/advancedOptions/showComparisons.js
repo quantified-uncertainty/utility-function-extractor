@@ -5,7 +5,7 @@ import { CopyBlock, googlecode } from "react-code-blocks";
 export function ShowComparisons({ links, show }) {
   return (
     <div className={`text-left ${show ? "" : "hidden"}`}>
-      <h3 className="text-lg mt-8">Load comparisons</h3>
+      <h3 className="text-lg mt-8">Comparisons</h3>
       <CopyBlock
         text={JSON.stringify(links, null, 4)}
         language={"js"}

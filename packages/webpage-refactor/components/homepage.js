@@ -4,7 +4,7 @@ import { mergeSort } from "utility-tools";
 import { ProgressIndicator } from "./progressIndicator.js";
 import { DisplayElementForComparison } from "./displayElementForComparison.js";
 import { ComparisonActuator } from "./comparisonActuator.js";
-import { AdvancedOptions } from "./advancedOptions.js";
+import { AdvancedOptions } from "./advancedOptions/advancedOptions.js";
 import { Graph } from "./graph/graph.js";
 import { pushToMongo } from "../lib/pushToMongo.js";
 import { resolveToNumIfPossible } from "../lib/squiggle.js";
@@ -134,7 +134,8 @@ export function Homepage({ listOfElementsInit }) {
         </div>
       </div>
       {/* <Graph /> 
-      
+            
+
       */}
       <Graph
         listOfElements={listOfElements}
