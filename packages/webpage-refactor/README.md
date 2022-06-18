@@ -29,5 +29,12 @@ https://github.com/netlify/netlify-plugin-nextjs/#readme
 
 ## To do
 
-- [ ] Extract merge, findPath and aggregatePath functionality into different repos
+- [x] Extract merge, findPath and aggregatePath functionality into different repos
 - [ ] Add functionality like names, etc.
+- [ ] Send to mongo upon completion
+- [ ] Add paths table
+- [ ] warn that the paths table is approximate.
+- [ ] Push to github
+- [ ] Push to netlify
+- [ ] Don't allow further comparisons after completion
+- [ ] Look back at Amazon thing which has been running
