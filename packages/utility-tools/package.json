@@ -1,6 +1,6 @@
 {
   "name": "utility-tools",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Process the json produced by utility-function-extractor.quantifieduncertainty.org",
   "scripts": {
     "start": "node --max-old-space-size=8192 src/index.js"
@@ -10,6 +10,7 @@
   "author": "Nuño Sempere",
   "license": "MIT",
   "dependencies": {
-    "@quri/squiggle-lang": "^0.2.11"
+    "@quri/squiggle-lang": "^0.2.11",
+    "utility-tools": "^0.2.2"
   }
 }
