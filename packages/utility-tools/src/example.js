@@ -1,7 +1,7 @@
 // IMPORTS
 import * as fs from "fs";
 import { mergeSort } from "./mergeSort.js";
-import { findDistancesFromAllElementsToAllReferencePoints } from "./findPaths.js";
+import { findDistances } from "./findPaths.js";
 import { aggregatePaths } from "./aggregatePaths.js";
 
 // DEFS
@@ -10,11 +10,6 @@ const inputListFilePath = "./input/input-list.json";
 const outputFilePath = "./output/output.json";
 
 // HELPERS
-
-const findElementPosition = (name, orderedList) => {
-  let node = orderedList.find((node) => node.name == name);
-  return node.position;
-};
 
 // MAIN
 async function main() {
@@ -43,25 +38,13 @@ async function main() {
     console.log("");
 
     // find Paths
-    let nodes = orderedList.map((element, i) => ({
-      ...element,
-      position: i,
-    }));
-    const linksWithPosition = links.map((link) => ({
-      ...link,
-      sourceElementPosition: findElementPosition(link.source, nodes),
-      targetElementPosition: findElementPosition(link.target, nodes),
-    }));
-    let paths = await findDistancesFromAllElementsToAllReferencePoints({
-      nodes,
-      links: linksWithPosition,
-    });
+    let paths = await findDistances({ orderedList, links });
     // console.log(JSON.stringify(paths, null, 4));
 
     // Aggregate paths.
     let aggregatedPaths = await aggregatePaths({
       pathsArray: paths,
-      nodes,
+      orderedList,
       aggregationType: "mean", // alternatively: aggregationType: "distribution"
       VERBOSE: false,
     });

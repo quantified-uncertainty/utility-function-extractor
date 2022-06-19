@@ -3,7 +3,7 @@ import { run } from "@quri/squiggle-lang";
 
 export async function aggregatePathsThroughMixtureOfDistributions({
   pathsArray,
-  nodes,
+  orderedList,
   VERBOSE,
 }) {
   let print = (x) => {
@@ -12,7 +12,7 @@ export async function aggregatePathsThroughMixtureOfDistributions({
     }
   };
   let result = pathsArray.map((paths, i) => {
-    print(nodes[i].name);
+    print(orderedList[i].name);
     let multipliedDistributions = paths.map(
       (path) => path.multipliedDistributionsInPath
     );
@@ -60,7 +60,7 @@ export async function aggregatePathsThroughMixtureOfDistributions({
     console.groupEnd();
     print("");
     return {
-      name: nodes[i].name,
+      name: orderedList[i].name,
       meanOfAggregatedDistributions: mean,
       ninetyPercentileConfidenceIntervalOfAggregatedDistributions:
         ci90percentAnswer,
@@ -84,7 +84,7 @@ export const geomMean = (arr) => {
 
 export function aggregatePathsThroughMixtureOfMeans({
   pathsArray,
-  nodes,
+  orderedList,
   VERBOSE,
 }) {
   let print = (x) => {
@@ -94,7 +94,7 @@ export function aggregatePathsThroughMixtureOfMeans({
   };
 
   let result = pathsArray.map((paths, i) => {
-    print(nodes[i].name);
+    print(orderedList[i].name);
     let expectedRelativeValues = paths
       .map((path) => path.expectedRelativeValue)
       .filter((x) => x != undefined);
@@ -112,7 +112,7 @@ export function aggregatePathsThroughMixtureOfMeans({
       }
     }
     return {
-      name: nodes[i].name,
+      name: orderedList[i].name,
       aggregatedMeans: answer,
       arrayMeans: expectedRelativeValues,
       allPositive: hasNegative.length == 0,
@@ -123,7 +123,7 @@ export function aggregatePathsThroughMixtureOfMeans({
 
 export async function aggregatePaths({
   pathsArray,
-  nodes,
+  orderedList,
   aggregationType,
   VERBOSE,
 }) {
@@ -134,19 +134,19 @@ export async function aggregatePaths({
     console.log("Warning: this may take a long time");
     return await aggregatePathsThroughMixtureOfDistributions({
       pathsArray,
-      nodes,
+      orderedList,
       VERBOSE,
     });
   } else if (aggregationType == "mean") {
     return aggregatePathsThroughMixtureOfMeans({
       pathsArray,
-      nodes,
+      orderedList,
       VERBOSE,
     });
   } else {
     return aggregatePathsThroughMixtureOfMeans({
       pathsArray,
-      nodes,
+      orderedList,
       VERBOSE,
     });
   }

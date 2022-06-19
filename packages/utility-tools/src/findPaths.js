@@ -312,3 +312,20 @@ export async function findDistancesFromAllElementsToAllReferencePoints({
   }
   return distancesForAllElements;
 }
+
+export async function findDistances({ orderedList, links }) {
+  let nodes = orderedList.map((element, i) => ({
+    ...element,
+    position: i,
+  }));
+  const linksWithPosition = links.map((link) => ({
+    ...link,
+    sourceElementPosition: findElementPosition(link.source, nodes),
+    targetElementPosition: findElementPosition(link.target, nodes),
+  }));
+  let result = await findDistancesFromAllElementsToAllReferencePoints({
+    nodes,
+    links: linksWithPosition,
+  });
+  return result;
+}
