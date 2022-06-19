@@ -4048,6 +4048,14 @@ utility-tools@^0.2.2:
   dependencies:
     "@quri/squiggle-lang" "^0.2.11"
 
+utility-tools@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/utility-tools/-/utility-tools-0.2.5.tgz#73ee06c88d74fc5a7bf87882caf93abed28600c2"
+  integrity sha512-sXT3RiOdjgO0DeYr5G3CPYrrXR2+8+d+GBGN6VELYXSFWfzBNUN1DA/alyYyuDaXRI+iBQequpuPy9rsHvsXGA==
+  dependencies:
+    "@quri/squiggle-lang" "^0.2.11"
+    utility-tools "^0.2.2"
+
 vfile-message@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/vfile-message/-/vfile-message-2.0.4.tgz#5b43b88171d409eae58477d13f23dd41d52c371a"

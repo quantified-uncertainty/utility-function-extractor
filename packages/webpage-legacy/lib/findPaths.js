@@ -354,7 +354,7 @@ export function CreateTable({ tableRows }) {
   }
   return (
     <div className="w-full">
-      <table className="w-full">
+      <table className="table-auto">
         <thead>
           <tr>
             <th>Id</th>

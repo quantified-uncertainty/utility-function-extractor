@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Separator } from "../separator.js";
 
 export function DataSetChanger({ onChangeOfDataset, show, listOfElements }) {
   /*let [value, setValue] = useState(`[
@@ -54,6 +55,7 @@ export function DataSetChanger({ onChangeOfDataset, show, listOfElements }) {
   };
   return (
     <div className={`${show ? "" : "hidden"} `}>
+      <Separator />
       <form onSubmit={handleSubmitInner} className="inline mt-0">
         <h3 className="text-lg mt-8 mb-4">Change dataset</h3>
         <textarea

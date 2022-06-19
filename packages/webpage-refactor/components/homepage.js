@@ -5,6 +5,8 @@ import { Title } from "./title.js";
 import { ProgressIndicator } from "./progressIndicator.js";
 import { DisplayElementForComparison } from "./displayElementForComparison.js";
 import { ComparisonActuator } from "./comparisonActuator.js";
+import { Separator } from "./separator.js";
+import { ResultsTable } from "./resultsTable.js";
 
 import { AdvancedOptions } from "./advancedOptions/advancedOptions.js";
 import { Graph } from "./graph/graph.js";
@@ -26,7 +28,7 @@ export function Homepage({ listOfElementsInit }) {
 
   // is list ordered?
   const [isListOrdered, setIsListOrdered] = useState(false);
-  const [mergeSortOrder, setMergeSortOrder] = useState([]);
+  const [listAfterMergeSort, setListAfterMergeSort] = useState([]);
 
   // list of comparisons
   const [links, setLinks] = useState([]);
@@ -48,6 +50,7 @@ export function Homepage({ listOfElementsInit }) {
     setPairCurrentlyBeingCompared([newListOfElements[0], newListOfElements[1]]);
     setNumStepsNow(0);
     setIsListOrdered(false);
+    setListAfterMergeSort([]);
   };
 
   // process next step
@@ -62,9 +65,9 @@ export function Homepage({ listOfElementsInit }) {
       setIsListOrdered(false);
       setPairCurrentlyBeingCompared(newPairToCompare);
     } else {
-      setIsListOrdered(true);
-      setMergeSortOrder(mergeSortOutput.orderedList);
+      setListAfterMergeSort(mergeSortOutput.orderedList);
       pushToMongo({ mergeSortOutput, links });
+      setIsListOrdered(true); // good if it's at the end.
       // alert(JSON.stringify(mergeSortOutput, null, 4));
       // chooseNextPairToCompareRandomly({ listOfElements });
       // return 1;
@@ -118,6 +121,7 @@ export function Homepage({ listOfElementsInit }) {
         numStepsNow={numStepsNow}
         numElements={listOfElements.length}
       />
+
       {/* Comparisons section */}
       <div className={"" /*isListOrdered ? "hidden" : ""*/}>
         <div className="flex justify-evenly mt-10">
@@ -137,26 +141,32 @@ export function Homepage({ listOfElementsInit }) {
           ></DisplayElementForComparison>
         </div>
       </div>
-      {/* <Graph /> 
-            
 
-      */}
+      {/* <Results table /> */}
+      <ResultsTable
+        isListOrdered={isListOrdered}
+        listAfterMergeSort={listAfterMergeSort}
+        links={links}
+      />
+
+      {/* <Graph /> */}
+      <Separator />
       <Graph
         listOfElements={listOfElements}
         links={links}
         isListOrdered={isListOrdered}
-        mergeSortOrder={mergeSortOrder}
+        listAfterMergeSort={listAfterMergeSort}
       />
+
       {/* Advanced options section */}
-      <div>
-        <AdvancedOptions
-          links={links}
-          setLinks={setLinks}
-          listOfElements={listOfElements}
-          moveToNextStep={moveToNextStep}
-          onChangeOfDataset={onChangeOfDataset}
-        />
-      </div>
+      <Separator />
+      <AdvancedOptions
+        links={links}
+        setLinks={setLinks}
+        listOfElements={listOfElements}
+        moveToNextStep={moveToNextStep}
+        onChangeOfDataset={onChangeOfDataset}
+      />
     </div>
   );
 }

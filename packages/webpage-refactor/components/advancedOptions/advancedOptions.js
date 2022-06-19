@@ -39,11 +39,12 @@ export function AdvancedOptions({
   ];
 
   return (
-    <div>
+    <div className="">
       <br />
       {/* Show advanced options*/}
       <button
-        className="text-gray-500 text-sm"
+        key={"advancedOptionsButton-top"}
+        className="text-gray-500 text-sm "
         onClick={() => changeShowAdvanceOptions(!showAdvancedOptions)}
       >
         Advanced options ▼
@@ -56,7 +57,7 @@ export function AdvancedOptions({
             <button
               className={effectButtonStyle}
               onClick={() => buttonToggles[i]()}
-              id={`advancedOptionsButton-${i}`}
+              key={`advancedOptionsButton-${i}`}
             >
               {buttonName}
             </button>

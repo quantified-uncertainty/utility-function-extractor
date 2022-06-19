@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Separator } from "../separator.js";
 
 // import JSONInput from "react-json-editor-ajrm/index";
 // import locale from "react-json-editor-ajrm/locale/en";
@@ -75,6 +76,7 @@ export function ComparisonsChanger({
       onSubmit={handleSubmitInner}
       className={`inline ${show ? "" : "hidden"}`}
     >
+      <Separator />
       <h3 className="text-lg mt-8">Load comparisons</h3>
       <p>These can be edited, which will override your current comparisons.</p>
       <br />

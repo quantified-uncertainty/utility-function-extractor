@@ -2,11 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import colormap from "colormap";
 import cytoscape from "cytoscape";
 import spread from "cytoscape-spread";
+
 import {
   resolveToNumIfPossible,
   getSquiggleSparkline,
 } from "../../lib/squiggle.js";
 import { truncateValueForDisplay } from "../../lib/truncateNums.js";
+import { cutOffLongNames } from "../../lib/stringManipulations.js";
 
 // import dagre from "cytoscape-dagre";
 // import cola from "cytoscape-cola";
@@ -38,32 +40,30 @@ const getEdgeLabel = async (squiggleString) => {
 };
 
 const getColors = (n) => {
-  let colors = colormap({
-    colormap: "viridis",
-    nshades: n,
-    format: "hex",
-    alpha: 1,
-  });
-  return colors;
-};
-
-const cutOffLongNames = (string) => {
-  let maxLength = 40;
-  let result;
-  if (string.length < maxLength) {
-    result = string;
+  let colors;
+  if (n >= 9) {
+    colors = colormap({
+      colormap: "viridis",
+      nshades: n,
+      format: "hex",
+      alpha: 1,
+    });
   } else {
-    result = string.slice(0, maxLength - 4);
-    result = result + "...";
+    colors = colormap({
+      colormap: "greys", // hot,
+      nshades: n,
+      format: "hex",
+      alpha: 1,
+    });
   }
-  return result;
+  return colors;
 };
 
 export function Graph({
   listOfElements,
   links,
   isListOrdered,
-  mergeSortOrder,
+  listAfterMergeSort,
 }) {
   const containerRef = useRef("hello-world");
   const [visibility, setVisibility] = useState(""); /// useState("invisible");
@@ -72,14 +72,14 @@ export function Graph({
     listOfElements,
     links,
     isListOrdered,
-    mergeSortOrder,
+    listAfterMergeSort,
   }) => {
     //setVisibility("invisible");
     let layoutName = "circle"; //
 
     // cytoscape.use(circle); // spread, circle,
     let listOfElementsForGraph = isListOrdered
-      ? mergeSortOrder
+      ? listAfterMergeSort
       : listOfElements;
 
     let colors = new Array(listOfElements.length);
@@ -92,10 +92,11 @@ export function Graph({
         data: {
           id: cutOffLongNames(element.name),
           color: colors[i] || "darkgreen",
-          labelColor:
-            isListOrdered && i >= listOfElementsForGraph.length - 2
+          labelColor: isListOrdered
+            ? i >= listOfElementsForGraph.length - 2
               ? "black"
-              : "white",
+              : "white"
+            : "white",
         },
       };
     });
@@ -195,22 +196,38 @@ export function Graph({
       userPanningEnabled: false,
     };
     cytoscape(config);
-    // setTimeout(() => setVisibility(""), 700);
+    //setTimeout(() => setVisibility(""), 700);
   };
   useEffect(async () => {
-    await callEffect({ listOfElements, links, isListOrdered, mergeSortOrder });
+    await callEffect({
+      listOfElements,
+      links,
+      isListOrdered,
+      listAfterMergeSort,
+    });
     // console.log(JSON.stringify(config, null, 10));
-  }, [listOfElements, links, isListOrdered]);
+  }, [listOfElements, links, isListOrdered, listAfterMergeSort]);
 
   return (
-    <div>
-      <div className={visibility}>
-        <div ref={containerRef} style={{ height: "900px", width: "1000px" }} />
+    <div className="">
+      <div className={visibility + "grid grid-cols-1 place-items-center "}>
+        <div
+          ref={containerRef}
+          style={{
+            height: "900px", // isListOrdered ? "900px" : "500px",
+            width: "900px", // isListOrdered ? "900px" : "500px",
+          }}
+        />
       </div>
       <button
         className={effectButtonStyle}
         onClick={() =>
-          callEffect({ listOfElements, links, isListOrdered, mergeSortOrder })
+          callEffect({
+            listOfElements,
+            links,
+            isListOrdered,
+            listAfterMergeSort,
+          })
         }
       >
         {"Redraw graph"}
