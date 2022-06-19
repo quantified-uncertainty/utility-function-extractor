@@ -4,7 +4,6 @@ import "../styles/globals.css";
 import "../styles/cytoscape.css";
 
 import Head from "next/head";
-import { Title } from "../components/title.js";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -17,7 +16,6 @@ function MyApp({ Component, pageProps }) {
         </Head>
         {/* Content */}
         <main className="inline flex-col items-center w-full flex-1 px-20 text-center">
-          <Title />
           <Component {...pageProps} />
         </main>
       </div>

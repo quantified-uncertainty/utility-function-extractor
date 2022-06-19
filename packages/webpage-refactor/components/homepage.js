@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { mergeSort } from "utility-tools";
 
+import { Title } from "./title.js";
 import { ProgressIndicator } from "./progressIndicator.js";
 import { DisplayElementForComparison } from "./displayElementForComparison.js";
 import { ComparisonActuator } from "./comparisonActuator.js";
+
 import { AdvancedOptions } from "./advancedOptions/advancedOptions.js";
 import { Graph } from "./graph/graph.js";
 import { pushToMongo } from "../lib/pushToMongo.js";
@@ -110,6 +112,8 @@ export function Homepage({ listOfElementsInit }) {
 
   return (
     <div className="block w-full items-center sm:w-full mt-10">
+      <Title />
+
       <ProgressIndicator
         numStepsNow={numStepsNow}
         numElements={listOfElements.length}
@@ -143,7 +147,6 @@ export function Homepage({ listOfElementsInit }) {
         isListOrdered={isListOrdered}
         mergeSortOrder={mergeSortOrder}
       />
-
       {/* Advanced options section */}
       <div>
         <AdvancedOptions

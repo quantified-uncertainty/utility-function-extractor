@@ -24,11 +24,6 @@ async function main() {
   const links = JSON.parse(inputLinksAsString);
   const list = JSON.parse(inputListAsString);
 
-  // process file
-  // const sources = links.map((link) => link.source);
-  // const targets = links.map((link) => link.target);
-  // const list = [...new Set([...sources, ...targets])];
-
   // Merge sort
   let mergeSortOutput = mergeSort({ list, links });
   // console.log("Output: ");
@@ -64,7 +59,12 @@ async function main() {
     // console.log(JSON.stringify(paths, null, 4));
 
     // Aggregate paths.
-    let aggregatedPaths = aggregatePaths(paths, nodes);
+    let aggregatedPaths = await aggregatePaths({
+      pathsArray: paths,
+      nodes,
+      aggregationType: "mean", // alternatively: aggregationType: "distribution"
+      VERBOSE: false,
+    });
     console.log(aggregatedPaths);
   }
 }
