@@ -191,22 +191,23 @@ export function Graph({
     // necessary for themes like spread, which have
     // a confusing animation at the beginning
   };
-  useEffect(async () => {
-    await callEffect({
+  useEffect(() => {
+    callEffect({
       listOfElements,
       links,
       isListOrdered,
       listAfterMergeSort,
     });
-    return () => console.log("cleanup");
   }, [listOfElements, links, isListOrdered, listAfterMergeSort]);
 
-  useEffect(async () => {
-    cs.edges().on("click", (event) => {
-      let edge = event.target;
-      alert(JSON.stringify(edge.json()));
-    });
-  });
+  useEffect(() => {
+    if (cs != null) {
+      cs.edges().on("click", (event) => {
+        let edge = event.target;
+        alert(JSON.stringify(edge.json()));
+      });
+    }
+  }, [cs]);
   return (
     <div className="">
       <div className={visibility + "grid grid-cols-1 place-items-center "}>

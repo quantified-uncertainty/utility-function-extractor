@@ -67,19 +67,22 @@ export function ResultsTable({ isListOrdered, listAfterMergeSort, links }) {
   const [isTableComputed, setIsTableComputed] = useState(false);
   const [tableContents, setTableContents] = useState([]);
 
-  useEffect(async () => {
-    if (isListOrdered && listAfterMergeSort.length > 0) {
-      // both comparisons aren't strictly necessary,
-      // but it bit me once, so I'm leaving it
-      let tableContentsResult = await fullResultsTable({
-        listAfterMergeSort,
-        links,
-      });
-      console.log(tableContentsResult);
-      setTableContents(tableContentsResult);
-      setIsTableComputed(true);
-    }
-    return () => console.log("cleanup");
+  useEffect(() => {
+    let iAsync = async () => {
+      if (isListOrdered && listAfterMergeSort.length > 0) {
+        // both comparisons aren't strictly necessary,
+        // but it bit me once, so I'm leaving it
+        let tableContentsResult = await fullResultsTable({
+          listAfterMergeSort,
+          links,
+        });
+        console.log(tableContentsResult);
+        setTableContents(tableContentsResult);
+        setIsTableComputed(true);
+      }
+      return () => console.log("cleanup");
+    };
+    iAsync();
   }, [isListOrdered, listAfterMergeSort, links]);
 
   return !(isListOrdered && isTableComputed) ? (
