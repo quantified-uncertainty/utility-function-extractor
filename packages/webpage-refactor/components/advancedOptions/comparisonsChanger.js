@@ -80,7 +80,7 @@ export function ComparisonsChanger({
         value={value}
         onChange={handleTextChange}
         rows={4 + JSON.stringify(links, null, 4).split("\n").length}
-        cols={90}
+        cols={70}
         className="text-left text-gray-600 bg-white rounded text-normal p-10 border-0 shadow outline-none focus:outline-none focus:ring "
       />
       <br />

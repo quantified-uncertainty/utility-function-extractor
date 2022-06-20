@@ -60,7 +60,7 @@ export function DataSetChanger({ onChangeOfDataset, show, listOfElements }) {
           rows={
             1.2 * JSON.stringify(listOfElements, null, 4).split("\n").length
           }
-          cols={90}
+          cols={70}
           className="text-left text-gray-600 bg-white rounded text-normal p-10 border-0 shadow outline-none focus:outline-none focus:ring "
         />
         <br />

@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import colormap from "colormap";
 import cytoscape from "cytoscape";
 
+import { DynamicSquiggleChart } from "../dynamicSquiggleChart.js";
 import {
   resolveToNumIfPossible,
   getSquiggleSparkline,
-} from "../../lib/squiggle.js";
+} from "../../lib/squiggleCalculations.js";
 import { truncateValueForDisplay } from "../../lib/truncateNums.js";
 import { cutOffLongNames } from "../../lib/stringManipulations.js";
 
@@ -68,6 +69,8 @@ export function Graph({
   const containerRef = useRef("hello-world");
   const [visibility, setVisibility] = useState(""); /// useState("invisible");
   const [cs, setCs] = useState(null); /// useState("invisible");
+  const [selectedLink, setSelectedLink] = useState(null);
+  const [selectedLinkTimeout, setSelectedLinkTimeout] = useState(null);
 
   const callEffect = async ({
     listOfElements,
@@ -109,6 +112,7 @@ export function Graph({
             source: cutOffLongNames(link.source),
             target: cutOffLongNames(link.target),
             label: await getEdgeLabel(link.squiggleString),
+            squiggleString: link.squiggleString,
           },
         };
       })
@@ -198,25 +202,44 @@ export function Graph({
       isListOrdered,
       listAfterMergeSort,
     });
-  }, [listOfElements, links, isListOrdered, listAfterMergeSort]);
+  }, [listOfElements, links, isListOrdered, listAfterMergeSort, selectedLink]);
 
   useEffect(() => {
     if (cs != null) {
-      cs.edges().on("click", (event) => {
-        let edge = event.target;
-        alert(JSON.stringify(edge.json()));
-      });
+      clearTimeout(selectedLinkTimeout);
+      let newTimeout = setTimeout(() => {
+        cs.edges().on("mouseover", (event) => {
+          // on("click",
+          let edge = event.target;
+          // alert(JSON.stringify(edge.json()));
+          console.log(JSON.stringify(edge.json()));
+          setSelectedLink(JSON.parse(JSON.stringify(edge.json())).data);
+        });
+      }, 100);
+      setSelectedLinkTimeout(newTimeout);
     }
   }, [cs]);
   return (
-    <div className="">
-      <div className={visibility + "grid grid-cols-1 place-items-center "}>
+    <div className="grid place-items-center">
+      <div
+        className={
+          visibility +
+          `grid grid-cols-${
+            selectedLink == null ? "1 " : "2"
+          } place-items-center place-self-center space-x-0 w-10/12 `
+        }
+      >
         <div
           ref={containerRef}
           style={{
             height: "900px", // isListOrdered ? "900px" : "500px",
             width: "900px", // isListOrdered ? "900px" : "500px",
           }}
+          className=""
+        />
+        <DynamicSquiggleChart
+          link={selectedLink}
+          stopShowing={() => setSelectedLink(null)}
         />
       </div>
       <button

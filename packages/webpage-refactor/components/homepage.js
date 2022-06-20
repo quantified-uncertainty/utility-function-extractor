@@ -11,7 +11,7 @@ import { ResultsTable } from "./resultsTable.js";
 import { AdvancedOptions } from "./advancedOptions/advancedOptions.js";
 import { Graph } from "./graph/graph.js";
 import { pushToMongo } from "../lib/pushToMongo.js";
-import { resolveToNumIfPossible } from "../lib/squiggle.js";
+import { resolveToNumIfPossible } from "../lib/squiggleCalculations.js";
 
 export function Homepage({ listOfElementsInit }) {
   const SLICE = false;
@@ -120,8 +120,10 @@ export function Homepage({ listOfElementsInit }) {
       />
 
       {/* Comparisons section */}
-      <div className={"" /*isListOrdered ? "hidden" : ""*/}>
-        <div className="flex justify-evenly mt-10">
+      <div
+        className={"grid place-items-center" /*isListOrdered ? "hidden" : ""*/}
+      >
+        <div className="grid grid-rows-1 grid-cols-3 place-items-center w-6/11 mt-10">
           <DisplayElementForComparison
             element={pairCurrentlyBeingCompared[0]}
           ></DisplayElementForComparison>

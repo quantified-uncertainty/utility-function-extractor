@@ -40,7 +40,6 @@ export function AdvancedOptions({
 
   return (
     <div className="">
-      <br />
       {/* Show advanced options*/}
       <button
         key={"advancedOptionsButton-top"}
@@ -49,7 +48,6 @@ export function AdvancedOptions({
       >
         Advanced options ▼
       </button>
-      <br />
       {/* Toggle  buttons */}
       <div className={showAdvancedOptions ? "" : "hidden"}>
         {buttonNames.map((buttonName, i) => {
