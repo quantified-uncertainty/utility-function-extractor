@@ -117,42 +117,40 @@ export function ResultsTable({ isListOrdered, listAfterMergeSort, links }) {
     }
   }, [isListOrdered, listAfterMergeSort, links]);
 
-  return (
+  return !(isListOrdered && isTableComputed) ? (
+    ""
+  ) : (
     <div>
-      {!(isListOrdered && isTableComputed) ? (
-        ""
-      ) : (
-        <div>
-          <Separator />
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
-            <table className="w-full text-sm text-left text-gray-800 dark:text-gray-400">
-              <thead className=" text-xs text-gray-700  bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th scope="col" className="px-6 py-3">
-                    Position
-                  </th>
+      <div>
+        <Separator />
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+          <table className="w-full text-sm text-left text-gray-800 dark:text-gray-400">
+            <thead className=" text-xs text-gray-700  bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  Position
+                </th>
 
-                  <th scope="col" className="px-6 py-3">
-                    Element
-                  </th>
+                <th scope="col" className="px-6 py-3">
+                  Element
+                </th>
 
-                  <th scope="col" className="text-center px-6 py-3">
-                    Possible relative values
-                  </th>
+                <th scope="col" className="text-center px-6 py-3">
+                  Possible relative values
+                </th>
 
-                  <th scope="col" className="text-center px-6 py-3">
-                    Aggregated Means*
-                  </th>
-                  <th scope="col" className="text-center px-6 py-3">
-                    Coefficient of variation
-                  </th>
-                </tr>
-              </thead>
-              <tbody>{reactTableContents(tableContents)}</tbody>
-            </table>
-          </div>
+                <th scope="col" className="text-center px-6 py-3">
+                  Aggregated Means*
+                </th>
+                <th scope="col" className="text-center px-6 py-3">
+                  Coefficient of variation
+                </th>
+              </tr>
+            </thead>
+            <tbody>{reactTableContents(tableContents)}</tbody>
+          </table>
         </div>
-      )}
+      </div>
       <div className="grid w-full place-items-center text-center ">
         <p className="mt-8  max-w-5xl">
           *This is the geometric mean if all elements are either all positive or
