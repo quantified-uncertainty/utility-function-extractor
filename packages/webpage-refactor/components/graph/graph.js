@@ -67,6 +67,7 @@ export function Graph({
 }) {
   const containerRef = useRef("hello-world");
   const [visibility, setVisibility] = useState(""); /// useState("invisible");
+  const [cs, setCs] = useState(null); /// useState("invisible");
 
   const callEffect = async ({
     listOfElements,
@@ -184,7 +185,8 @@ export function Graph({
       userZoomingEnabled: false,
       userPanningEnabled: false,
     };
-    cytoscape(config);
+    let newCs = cytoscape(config);
+    setCs(newCs);
     // setTimeout(() => setVisibility(""), 700);
     // necessary for themes like spread, which have
     // a confusing animation at the beginning
@@ -196,8 +198,15 @@ export function Graph({
       isListOrdered,
       listAfterMergeSort,
     });
+    return () => console.log("cleanup");
   }, [listOfElements, links, isListOrdered, listAfterMergeSort]);
 
+  useEffect(async () => {
+    cs.edges().on("click", (event) => {
+      let edge = event.target;
+      alert(JSON.stringify(edge.json()));
+    });
+  });
   return (
     <div className="">
       <div className={visibility + "grid grid-cols-1 place-items-center "}>

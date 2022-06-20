@@ -65,6 +65,7 @@ export function ComparisonsChanger({
 
   useEffect(async () => {
     setValue(JSON.stringify(links, null, 4));
+    return () => console.log("cleanup");
   }, [links]);
 
   return (

@@ -79,6 +79,7 @@ export function ResultsTable({ isListOrdered, listAfterMergeSort, links }) {
       setTableContents(tableContentsResult);
       setIsTableComputed(true);
     }
+    return () => console.log("cleanup");
   }, [isListOrdered, listAfterMergeSort, links]);
 
   return !(isListOrdered && isTableComputed) ? (
