@@ -117,17 +117,18 @@ export function ResultsTable({ isListOrdered, listAfterMergeSort, links }) {
       </div>
       <div className="grid w-full place-items-center text-center ">
         <p className="mt-8  max-w-5xl">
-          *This is the geometric mean if all elements are either all positive or
-          all negative, and the arithmetic mean otherwise. For a principled
-          aggregation which is able to produce meaningfull 90% confidence
-          intervals, see the{" "}
+          *This is the geometric mean of all means of paths if all elements are
+          either all positive or all negative, and the arithmetic mean
+          otherwise. Paths with a non-numeric mean (e.g., resulting from
+          dividing by a mean of 0) are ignored. For a principled aggregation
+          which is able to produce meaningfull 90% confidence intervals, see the{" "}
           <a
             href="https://github.com/quantified-uncertainty/utility-function-extractor/tree/master/packages/utility-tools"
             target="_blank"
           >
             utility-tools package
           </a>{" "}
-          in npm or github
+          in npm or Github
         </p>
       </div>
     </div>

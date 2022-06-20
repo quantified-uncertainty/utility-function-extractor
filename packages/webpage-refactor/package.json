@@ -27,7 +27,7 @@
     "react-markdown": "^6.0.2",
     "remark-gfm": "^1.0.0",
     "simple-react-cytoscape": "^1.0.4",
-    "utility-tools": "^0.2.5"
+    "utility-tools": "^1.0.4"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.2.1",

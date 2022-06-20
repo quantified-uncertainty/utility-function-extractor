@@ -4048,10 +4048,10 @@ utility-tools@^0.2.2:
   dependencies:
     "@quri/squiggle-lang" "^0.2.11"
 
-utility-tools@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/utility-tools/-/utility-tools-0.2.5.tgz#73ee06c88d74fc5a7bf87882caf93abed28600c2"
-  integrity sha512-sXT3RiOdjgO0DeYr5G3CPYrrXR2+8+d+GBGN6VELYXSFWfzBNUN1DA/alyYyuDaXRI+iBQequpuPy9rsHvsXGA==
+utility-tools@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/utility-tools/-/utility-tools-1.0.4.tgz#3d565d82445b1825708eb8ecfdd4cd479b08b3dd"
+  integrity sha512-m7wLilx3hn6UrKf1RznpaJ86SPNx7z72g+NVdEwwka+tOwzTQS4bCplN60/lApur/Xp16fOCpXIpdZFURH1L+g==
   dependencies:
     "@quri/squiggle-lang" "^0.2.11"
     utility-tools "^0.2.2"
