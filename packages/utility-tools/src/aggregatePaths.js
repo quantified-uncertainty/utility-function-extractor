@@ -112,19 +112,19 @@ export function aggregatePathsThroughMixtureOfMeans({
     let hasNegative = expectedRelativeValuesFiltered.filter((x) => x < 0);
     let answer;
     if (hasPositive.length != 0 && hasNegative.length != 0) {
-      answer = avg(expectedRelativeValues);
+      answer = avg(expectedRelativeValuesFiltered);
     } else {
       if (hasNegative.length == 0) {
-        answer = geomMean(expectedRelativeValues);
+        answer = geomMean(expectedRelativeValuesFiltered);
       } else {
-        let arrayAsPositive = expectedRelativeValues.map((x) => -x);
+        let arrayAsPositive = expectedRelativeValuesFiltered.map((x) => -x);
         answer = -geomMean(arrayAsPositive);
       }
     }
     return {
       name: orderedList[i].name,
       aggregatedMeans: answer,
-      arrayMeans: expectedRelativeValues,
+      arrayMeans: expectedRelativeValuesFiltered,
       allPositive: hasNegative.length == 0,
     };
   });
