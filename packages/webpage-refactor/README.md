@@ -24,7 +24,7 @@ Initially, users could only input numbers, e.g., "A is `3` times better than B".
 - [Netlify](https://github.com/netlify/netlify-plugin-nextjs/#readme)
 - [React](https://reactjs.org/)
 - [Squiggle](https://www.squiggle-language.com/)
-- [Utility tools](to do: add links)
+- [Utility tools](https://github.com/quantified-uncertainty/utility-function-extractor/tree/master/packages/utility-tools)
 
 ## Usage
 
@@ -32,7 +32,7 @@ Navigate to [utility-function-extractor.quantifieduncertainty.org/](https://util
 
 You can change the list of objects to be compared by clicking on "advanced options".
 
-After comparing objects for a while, you will get a table and a graph with results. You can also use the [utility tools](to do: add link) package to process these results, for which you will need the json of comparisons, which can be found in "Advanced options" -> "Load comparisons"
+After comparing objects for a while, you will get a table and a graph with results. You can also use the [utility tools](https://github.com/quantified-uncertainty/utility-function-extractor/tree/master/packages/utility-tools) package to process these results, for which you will need the json of comparisons, which can be found in "Advanced options" -> "Load comparisons"
 
 ## Notes
 
