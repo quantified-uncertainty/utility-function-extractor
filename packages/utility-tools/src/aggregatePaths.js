@@ -98,9 +98,10 @@ export function aggregatePathsThroughMixtureOfMeans({
       (path) => path.expectedRelativeValue
     );
 
-    let expectedRelativeValuesFiltered;
+    let expectedRelativeValuesFiltered = expectedRelativeValues;
+
     if (!DONT_EXCLUDE_INFINITIES_AND_NANS) {
-      expectedRelativeValuesFiltered
+      expectedRelativeValuesFiltered = expectedRelativeValues
         .filter((x) => x != undefined)
         .filter((x) => !isNaN(x))
         .filter((x) => isFinite(x))
