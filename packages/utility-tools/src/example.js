@@ -43,7 +43,8 @@ async function main() {
       pathsArray: paths,
       orderedList,
       aggregationType: "mean", // alternatively: aggregationType: "distribution"
-      VERBOSE: false,
+      VERBOSE: false, // optional arg
+      DONT_EXCLUDE_INFINITIES_AND_NANS: false, // optional arg
     });
     console.log(aggregatedPaths);
   }

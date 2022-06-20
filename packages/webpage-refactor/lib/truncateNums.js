@@ -21,6 +21,8 @@ export const truncateValueForDisplay = (value) => {
       candidateNumSignificantDigits
     );
     result = value.toFixed(numSignificantDigits);
+  } else if (value == 0) {
+    return 0;
   } else if (-1 < value) {
     let candidateNumSignificantDigits =
       -Math.floor(Math.log(Math.abs(value)) / Math.log(10)) + 1;

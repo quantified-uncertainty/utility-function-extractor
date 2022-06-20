@@ -84,6 +84,7 @@ export function aggregatePathsThroughMixtureOfMeans({
   pathsArray,
   orderedList,
   VERBOSE,
+  DONT_EXCLUDE_INFINITIES_AND_NANS,
 }) {
   let print = (x) => {
     if (VERBOSE) {
@@ -93,11 +94,21 @@ export function aggregatePathsThroughMixtureOfMeans({
 
   let result = pathsArray.map((paths, i) => {
     print(orderedList[i].name);
-    let expectedRelativeValues = paths
-      .map((path) => path.expectedRelativeValue)
-      .filter((x) => x != undefined);
-    let hasPositive = expectedRelativeValues.filter((x) => x > 0);
-    let hasNegative = expectedRelativeValues.filter((x) => x < 0);
+    let expectedRelativeValues = paths.map(
+      (path) => path.expectedRelativeValue
+    );
+
+    let expectedRelativeValuesFiltered;
+    if (!DONT_EXCLUDE_INFINITIES_AND_NANS) {
+      expectedRelativeValuesFiltered
+        .filter((x) => x != undefined)
+        .filter((x) => !isNaN(x))
+        .filter((x) => isFinite(x))
+        .filter((x) => x != null);
+    }
+
+    let hasPositive = expectedRelativeValuesFiltered.filter((x) => x > 0);
+    let hasNegative = expectedRelativeValuesFiltered.filter((x) => x < 0);
     let answer;
     if (hasPositive.length != 0 && hasNegative.length != 0) {
       answer = avg(expectedRelativeValues);
