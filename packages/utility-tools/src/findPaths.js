@@ -13,6 +13,8 @@ const findElementPosition = (name, nodes) => {
 };
 
 async function findPathsWithoutPrunning({
+  // DO NOT DELETE THIS UN-USED FUNCTION
+  // USEFUL FOR UNDERSTANDING AGAIN HOW THIS CODE WORKS AFTER A FEW MONTHS
   sourceElementName,
   targetElementName,
   maxLengthOfPath,
@@ -110,10 +112,11 @@ async function findPaths({
           link.target == targetElementName) ||
         (link.source == targetElementName && link.target == sourceElementName)
       ) {
-        // direct Path
+        // We have found a direct path.
         let newPath = pathPlusLink(pathSoFar, link);
         paths.push(newPath);
       } else if (link.source == sourceElementName) {
+        // Recursively call find Paths
         let newPaths = await findPaths({
           pathSoFar: pathPlusLink(pathSoFar, link),
           maxLengthOfPath: maxLengthOfPath - 1,
@@ -160,11 +163,7 @@ async function findExpectedValuesAndDistributionsForElement({
   // then orders them correctly in the for loop
   // (by flipping the distance to 1/distance when necessary)
   // and then gets the array of weights for the different paths.
-  /*
-	console.log(
-    `findDistance@findPaths.js from ${sourceElementPosition} to ${targetElementPosition}`
-  );
-  */
+
   let maxLengthOfPath = Math.abs(sourceElementPosition - targetElementPosition);
   let paths = await findPaths({
     sourceElementName,
@@ -207,49 +206,6 @@ async function findExpectedValuesAndDistributionsForElement({
     });
   }
   return processedPaths;
-
-  /*
-  let expectedValues = [];
-  for (let path of paths) {
-    let currentSource = sourceElementName;
-    let weight = 1;
-    for (let element of path) {
-      let distance = 0;
-      if (element.source == currentSource) {
-        distance = element.distance;
-        currentSource = element.target;
-      } else if (element.target == currentSource) {
-        distance = 1 / Number(element.distance);
-        currentSource = element.source;
-      }
-      weight = weight * distance;
-    }
-    expectedValues.push(weight);
-  }
-
-  let distributionalForm = [];
-  for (let path of paths) {
-    let currentSource = sourceElementName;
-    let multipliedDistributionsInPath = 1;
-    for (let element of path) {
-      let anotherDistributionInPath;
-      if (element.source == currentSource) {
-        distributionInPath = element.squiggleString;
-        currentSource = element.target;
-      } else if (element.target == currentSource) {
-        distance = `1 / (${element.squiggleString})`;
-        currentSource = element.source;
-      }
-      multipliedDistributionsInPath = `${multipliedDistributionsInPath} * (${anotherDistributionInPath})`;
-    }
-    distributionalForm.push(multipliedDistributionsInPath);
-  }
-    return {
-    expectedValues,
-    distributionalForm,
-    // paths,
-  };
-  */
 }
 
 async function findDistancesFromAllElementsToReferencePoint({
@@ -263,15 +219,12 @@ async function findDistancesFromAllElementsToReferencePoint({
   /* Get or build reference element */
   let midpoint = Math.round(nodes.length / 2);
   referenceElement = referenceElement || nodes[midpoint];
-  // console.log(`referenceElement.position: ${referenceElement.position}`);
 
   /* Get distances. */
   let distancesArray = nodes.map((node) => {
     if (node.name == referenceElement.name) {
       return [1];
     } else {
-      // console.log("node");
-      // console.log(node);
       let expectedValuesAndDistributionsForElement =
         findExpectedValuesAndDistributionsForElement({
           sourceElementName: referenceElement.name,
@@ -303,7 +256,6 @@ export async function findDistancesFromAllElementsToAllReferencePoints({
       links,
       referenceElement: node,
     });
-    // alert(`distancesFromNode.length: ${distancesFromNode.length}`);
     distancesForAllElements = distancesForAllElements.map((arr, i) => {
       return !!arr && arr.length > 0
         ? [...arr, ...distancesFromNode[i]]

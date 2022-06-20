@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { SubmitButton } from "./submitButton";
 
 export function ComparisonActuator({
   listOfElements,
@@ -16,7 +15,6 @@ export function ComparisonActuator({
   };
 
   const onClickSubmitEvent = (event) => {
-    // console.log(event.target.value);
     if (!isListOrdered) {
       moveToNextStep({
         listOfElements,

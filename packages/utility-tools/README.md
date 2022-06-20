@@ -40,6 +40,8 @@ Given an (ordered) list of elements and a list of utility comparisons, find all 
 
 _Note_: Some elements will have many more paths than others.
 
+_Note_: The `findPaths.js` file has a few un-used functions which should make it easier to understand the code.
+
 ### Aggregate paths (`aggregatePaths`)
 
 Given a list of path, aggregate them to finally produce an estimate of the relative utility of each element.

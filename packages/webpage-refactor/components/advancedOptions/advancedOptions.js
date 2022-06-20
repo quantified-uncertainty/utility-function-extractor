@@ -64,7 +64,8 @@ export function AdvancedOptions({
           );
         })}
         {/* Element: Show comparisons */}
-        <ShowComparisons links={links} show={showComparisons} />
+        {/* <ShowComparisons links={links} show={showComparisons} /> */}
+
         {/* Element: Change comparisons */}
         <ComparisonsChanger
           setLinks={setLinks}
@@ -73,6 +74,8 @@ export function AdvancedOptions({
           moveToNextStep={moveToNextStep}
           links={links}
         />
+
+        {/* Element: Dataset changer */}
         <DataSetChanger
           onChangeOfDataset={onChangeOfDataset}
           show={showChangeDataset}

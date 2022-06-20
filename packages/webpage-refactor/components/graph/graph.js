@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import colormap from "colormap";
 import cytoscape from "cytoscape";
-import spread from "cytoscape-spread";
 
 import {
   resolveToNumIfPossible,
@@ -10,6 +9,7 @@ import {
 import { truncateValueForDisplay } from "../../lib/truncateNums.js";
 import { cutOffLongNames } from "../../lib/stringManipulations.js";
 
+// import spread from "cytoscape-spread";
 // import dagre from "cytoscape-dagre";
 // import cola from "cytoscape-cola";
 // import fcose from "cytoscape-fcose";
@@ -36,7 +36,7 @@ const getEdgeLabel = async (squiggleString) => {
     //alert("▁▁▁▁▁▁▁▁▁▁▁");
   }
 
-  return squiggleString + sparklineConcat; //sparkline;
+  return squiggleString + sparklineConcat;
 };
 
 const getColors = (n) => {
@@ -50,7 +50,7 @@ const getColors = (n) => {
     });
   } else {
     colors = colormap({
-      colormap: "greys", // hot,
+      colormap: "greys", // other themes: hot, winter, etc.
       nshades: n,
       format: "hex",
       alpha: 1,
@@ -77,7 +77,7 @@ export function Graph({
     //setVisibility("invisible");
     let layoutName = "circle"; //
 
-    // cytoscape.use(circle); // spread, circle,
+    // cytoscape.use(spread); // necessary for non-default themes,
     let listOfElementsForGraph = isListOrdered
       ? listAfterMergeSort
       : listOfElements;
@@ -122,7 +122,6 @@ export function Graph({
           content: "data(id)",
           "background-color": "data(color)",
           "text-wrap": "wrap",
-          //"text-overflow-wrap": "anywhere",
           "text-max-width": 70,
           "z-index": 1,
         },
@@ -166,8 +165,6 @@ export function Graph({
           "text-border-width": 0.5,
           "text-border-opacity": 1,
           "z-index": 3,
-
-          // "text-rotation": "autorotate"
         },
       },
     ];
@@ -175,28 +172,22 @@ export function Graph({
     const config = {
       container: containerRef.current,
       style: cytoscapeStylesheet,
-      elements: [
-        /* Dummy data:
-        { data: { id: "n1" } },
-        { data: { id: "n2" } },
-        { data: { id: "e1", source: "n1", target: "n2" } },
-        
-        Real data:*/
-        ...nodeElements,
-        ...linkElements,
-      ],
+      elements: [...nodeElements, ...linkElements],
       layout: {
         name: layoutName, // circle, grid, dagre
         minDist: 10,
         //prelayout: false,
         // animate: false, // whether to transition the node positions
         // animationDuration: 250, // duration of animation in ms if enabled
+        // the cytoscape documentation is pretty good here.
       },
       userZoomingEnabled: false,
       userPanningEnabled: false,
     };
     cytoscape(config);
-    //setTimeout(() => setVisibility(""), 700);
+    // setTimeout(() => setVisibility(""), 700);
+    // necessary for themes like spread, which have
+    // a confusing animation at the beginning
   };
   useEffect(async () => {
     await callEffect({
@@ -205,7 +196,6 @@ export function Graph({
       isListOrdered,
       listAfterMergeSort,
     });
-    // console.log(JSON.stringify(config, null, 10));
   }, [listOfElements, links, isListOrdered, listAfterMergeSort]);
 
   return (

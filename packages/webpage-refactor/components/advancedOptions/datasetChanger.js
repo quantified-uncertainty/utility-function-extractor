@@ -33,14 +33,10 @@ export function DataSetChanger({ onChangeOfDataset, show, listOfElements }) {
   let handleSubmitInner = (event) => {
     clearTimeout(displayingDoneMessageTimer);
     event.preventDefault();
-    //console.log(event)
     console.log("value@handleSubmitInner@DataSetChanger");
-    //console.log(typeof(value));
     console.log(value);
     try {
       let newData = JSON.parse(value);
-      //console.log(typeof(newData))
-      //console.log(newData)
       if (!newData.length || newData.length < 2) {
         throw Error("Not enough objects");
       }

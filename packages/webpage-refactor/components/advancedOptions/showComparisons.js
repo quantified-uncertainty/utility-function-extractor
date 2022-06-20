@@ -1,7 +1,6 @@
 import React, { state } from "react";
 import { CopyBlock, googlecode } from "react-code-blocks";
 import { Separator } from "../separator.js";
-// googlecode
 
 export function ShowComparisons({ links, show }) {
   return (

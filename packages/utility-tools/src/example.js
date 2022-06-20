@@ -13,7 +13,7 @@ const outputFilePath = "./output/output.json";
 
 // MAIN
 async function main() {
-  // read file
+  // Read file
   const inputLinksAsString = fs.readFileSync(inputLinksFilePath);
   const inputListAsString = fs.readFileSync(inputListFilePath);
   const links = JSON.parse(inputLinksAsString);
@@ -21,7 +21,6 @@ async function main() {
 
   // Merge sort
   let mergeSortOutput = mergeSort({ list, links });
-  // console.log("Output: ");
   if (mergeSortOutput.finishedOrderingList == false) {
     console.log("Merge could not proceed");
     console.group();
@@ -30,7 +29,6 @@ async function main() {
     console.groupEnd();
   } else {
     let orderedList = mergeSortOutput.orderedList;
-    // console.log(orderedList);
     console.log("Sorted output: ");
     console.group();
     console.log(orderedList.map((x) => x.name));
@@ -39,7 +37,6 @@ async function main() {
 
     // find Paths
     let paths = await findDistances({ orderedList, links });
-    // console.log(JSON.stringify(paths, null, 4));
 
     // Aggregate paths.
     let aggregatedPaths = await aggregatePaths({

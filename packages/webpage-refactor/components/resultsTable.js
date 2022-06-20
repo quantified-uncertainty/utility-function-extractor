@@ -13,7 +13,6 @@ async function fullResultsTable({ listAfterMergeSort, links }) {
     orderedList: listAfterMergeSort,
     links: links,
   });
-  // console.log(pathsArray);
   let aggregatedPaths = await aggregatePaths({
     pathsArray: pathsArray,
     orderedList: listAfterMergeSort,
@@ -39,7 +38,7 @@ function getStdev(arr) {
 
 export const geomMean = (arr) => {
   let n = arr.length;
-  let logavg = sum(arr.map((x) => Math.log(x))); // works for low numbers much better
+  let logavg = sum(arr.map((x) => Math.log(x))); // works for low numbers much better, numerically
   let result = Math.exp(logavg / n);
   return result;
 };
@@ -92,8 +91,6 @@ function getRow(row, i) {
 }
 
 function reactTableContents(tableContents) {
-  // alert(JSON.stringify(tableContents));
-  // return "Hello";
   return tableContents.map((row, i) => getRow(row, i));
 }
 
@@ -102,16 +99,14 @@ export function ResultsTable({ isListOrdered, listAfterMergeSort, links }) {
   const [tableContents, setTableContents] = useState([]);
 
   useEffect(async () => {
-    // console.log(JSON.stringify(config, null, 10));
     if (isListOrdered && listAfterMergeSort.length > 0) {
-      // both necessary because there is a small moment when list is ordered
-      // but listAfterMergeSort wasn't ready yet
+      // both comparisons aren't strictly necessary,
+      // but it bit me once, so I'm leaving it
       let tableContentsResult = await fullResultsTable({
         listAfterMergeSort,
         links,
       });
       console.log(tableContentsResult);
-      // alert(JSON.stringify(tableContentsResult));
       setTableContents(tableContentsResult);
       setIsTableComputed(true);
     }

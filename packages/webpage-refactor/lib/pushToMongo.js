@@ -13,4 +13,3 @@ export async function pushToMongo(data) {
     console.log(response);
   }
 }
-// pushToMongo()

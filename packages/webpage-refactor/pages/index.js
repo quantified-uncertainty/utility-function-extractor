@@ -1,6 +1,6 @@
 /* Notes */
 
-// This function is just a simple wrapper around lib/comparisonView.
+// This function is just a simple wrapper around components/homepage.
 // Most of the time, I'll want to edit that instead
 
 /* Imports */

@@ -7,7 +7,6 @@ function isFirstElementGreater(links, element1, element2) {
       (link.source == element2.name && link.target == element1.name)
   );
   if (relevantComparisons.length == 0) {
-    // console.log(element1, "vs", element2);
     let answer = {
       foundAnswer: false,
       error: errorMsg,
@@ -15,7 +14,6 @@ function isFirstElementGreater(links, element1, element2) {
     return answer;
   } else {
     const firstLink = relevantComparisons[0];
-    // console.log(firstLink);
     const firstElementFirst =
       firstLink.source == element1.name && firstLink.target == element2.name
         ? true
@@ -34,16 +32,11 @@ function isFirstElementGreater(links, element1, element2) {
 }
 
 function merge(links, left, right) {
-  let sortedArr = []; // the sorted elements will go here
-
+  let sortedArr = [];
   while (left.length && right.length) {
     // insert the biggest element to the sortedArr
     let getComparisonAnswer = isFirstElementGreater(links, left[0], right[0]);
     if (getComparisonAnswer.foundAnswer == false) {
-      // console.log("Error@:");
-      // console.group();
-      // console.log({ left, right });
-      // console.groupEnd();
       let result = {
         finishedMerge: false,
         uncomparedElements: [left[0], right[0]],
@@ -53,6 +46,8 @@ function merge(links, left, right) {
     } else if (getComparisonAnswer.foundAnswer == true) {
       if (getComparisonAnswer.isFirstElementFirst == true) {
         // left[0] > right[0]
+        // note that we can order from smallest to largest or the reverse
+        // ; I forget which one this is.
         sortedArr.push(right.shift());
       } else {
         sortedArr.push(left.shift());
@@ -70,7 +65,6 @@ function merge(links, left, right) {
 }
 
 export function mergeSortInner({ recursiveInput, links }) {
-  // console.log({ l: list.length });
   if (recursiveInput.bottleneckedByComparison == true) {
     let result = {
       recursiveInput: {
@@ -97,7 +91,7 @@ export function mergeSortInner({ recursiveInput, links }) {
   }
 
   const left = recursiveInput.list.slice(0, half); // the first half of the list
-  const right = recursiveInput.list.slice(half, recursiveInput.list.length); // Note that splice is destructive.
+  const right = recursiveInput.list.slice(half, recursiveInput.list.length); // Note that splice is destructive, and that slice instead creates a new array.
   let orderedFirstHalfAnswer = mergeSortInner({
     recursiveInput: { list: left, bottleneckedByComparison: false },
     links,
@@ -164,7 +158,7 @@ export function mergeSort({ list, links }) {
     return result;
   }
   /*
-  // otherwise
+  // otherwise, test all other permutations: 
   let permutation = list.slice();
   var length = list.length;
   // let result = [list.slice()];

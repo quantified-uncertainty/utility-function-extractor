@@ -4,15 +4,21 @@ This repository creates a react webpage that allows to extract a utility functio
 
 It presents the users with a series of elements to compare, using merge-sort in the background to cleverly minimize the number of choices needed.
 
-![](./public/example-prompt.png)
+<p align="center">
+  <img width="50%" height="50%" src="./public/example-prompt.png">
+</p>
 
 Then, it cleverly aggregates them, on the one hand by producing a graphical representation:
 
-![](./public/example-graph.png)
+<p align="center">
+  <img width="50%" height="50%" src="./public/example-graph.png">
+</p>
 
 and on the other hand doing some fast and clever mean aggregation [^1]:
 
-![](./public/example-table.png)
+<p align="center">
+  <img width="50%" height="50%" src="./public/example-table.png">
+</p>
 
 Initially, users could only input numbers, e.g., "A is `3` times better than B". But now, users can also input distributions, using the [squiggle](https://www.squiggle-language.com/) syntax, e.g., "A is `1 to 10` times better than B", or "A is `mm(normal(1, 10), uniform(0,100))` better than B".
 
@@ -65,7 +71,7 @@ The core structure for links is as follows:
     },
     {
         "source": "Spiderman",
-        "target": "Doctor Octopus",
+        "target": "Jonah Jameson",
         "squiggleString": "20 to 2000",
         "distance": 6.76997149080232
     },
@@ -93,13 +99,11 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 - [x] Paths table
   - [x] Add paths table
   - [x] warn that the paths table is approximate.
-  - However, I really don't feel like re-adding this after having worked out the distribution rather than the mean aggregation
-  - However, I think it does make it more user to other users.
+  - I really don't feel like re-adding this after having worked out the distribution rather than the mean aggregation
+  - On the other hand, I think it does make it more user to other users.
+- [x] Change README.
 - [ ] Add functionality like names, etc.
   - I also don't feel like doing this
 - [ ] Look back at Amazon thing which has been running
-- [x] Change README.
-
-## Footnotes
 
 [^1]: The program takes each element as a reference point in turn, and computing the possible distances from that reference point to all other points, and taking the geometric mean of these distances. This produces a number representing the value of each element, such that the ratios between elements represent the user's preferences: a utility function. However, this isn't perfect; the principled approach woud be to aggregate the distributions rather than their means. But this principled approach is much more slowly. For the principled approach, see the `utility-tools` repository.

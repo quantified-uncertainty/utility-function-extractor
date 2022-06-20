@@ -1,5 +1,4 @@
 let topOutAt100AndValidate = (x) => {
-  // return 10;
   if (x == x) {
     return x > 99 ? 99 : x < 0 ? 2 : x;
   } else {

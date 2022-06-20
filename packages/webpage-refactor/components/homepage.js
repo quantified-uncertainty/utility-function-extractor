@@ -15,6 +15,7 @@ import { resolveToNumIfPossible } from "../lib/squiggle.js";
 
 export function Homepage({ listOfElementsInit }) {
   const SLICE = false;
+
   /* Statefull elements */
 
   // list of elements
@@ -43,6 +44,8 @@ export function Homepage({ listOfElementsInit }) {
     pairCurrentlyBeingComparedInit
   );
 
+  /* Effects */
+
   // dataset changer
   const onChangeOfDataset = (newListOfElements) => {
     setListOfElements(newListOfElements);
@@ -67,14 +70,11 @@ export function Homepage({ listOfElementsInit }) {
     } else {
       setListAfterMergeSort(mergeSortOutput.orderedList);
       pushToMongo({ mergeSortOutput, links });
-      setIsListOrdered(true); // good if it's at the end.
-      // alert(JSON.stringify(mergeSortOutput, null, 4));
-      // chooseNextPairToCompareRandomly({ listOfElements });
-      // return 1;
+      setIsListOrdered(true); // should be at the end, because some useEffects are triggered by it.
     }
   };
 
-  // full
+  // Main mergesort step
   const moveToNextStep = async ({
     listOfElements,
     pairCurrentlyBeingCompared,
@@ -82,8 +82,8 @@ export function Homepage({ listOfElementsInit }) {
     whileChangingStuff,
     newLinksFromChangingStuff,
   }) => {
-    // In the normal course of things:
     if (!whileChangingStuff) {
+      // In the normal course of things:
       let newLink = {
         source: pairCurrentlyBeingCompared[0].name,
         target: pairCurrentlyBeingCompared[1].name,
@@ -94,8 +94,6 @@ export function Homepage({ listOfElementsInit }) {
       if (numOption.asNum == false) {
         alert(JSON.stringify(numOption.errorMsg));
       } else if (numOption.asNum == true) {
-        // addLink({ ...newLink, distance: numOption.num }, links);
-        /// let newLinks = [...links, { ...newLink, distance: numOption.num }];
         newLink = { ...newLink, distance: numOption.num };
         addLink(newLink, links);
         let newLinks = [...links, newLink];
@@ -103,14 +101,13 @@ export function Homepage({ listOfElementsInit }) {
         mergeSortStep({ list: listOfElements, links: newLinks });
       }
     } else {
+      // When changing comparisons:
       mergeSortStep({
         list: listOfElements,
         links: newLinksFromChangingStuff,
       });
       setNumStepsNow(0); // almost no guarantees of how many left.
     }
-
-    // When changing comparisons:
   };
 
   return (

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Separator } from "../separator.js";
 
-// import JSONInput from "react-json-editor-ajrm/index";
-// import locale from "react-json-editor-ajrm/locale/en";
-
 const checkLinksAreOk = (links, listOfElements) => {
   let linkSourceNames = links.map((link) => link.source.name);
   let linkTargetNames = links.map((link) => link.target.name);
@@ -68,7 +65,6 @@ export function ComparisonsChanger({
 
   useEffect(async () => {
     setValue(JSON.stringify(links, null, 4));
-    // console.log(JSON.stringify(config, null, 10));
   }, [links]);
 
   return (
@@ -87,27 +83,6 @@ export function ComparisonsChanger({
         cols={90}
         className="text-left text-gray-600 bg-white rounded text-normal p-10 border-0 shadow outline-none focus:outline-none focus:ring "
       />
-      {/* */}
-      {/*
-      <div className="flex text-left text-xl justify-around ">
-        <JSONInput
-          placeholder={value} // data to display
-          theme="dark_vscode_tribute" //"light_mitsuketa_tribute" //
-          locale={locale}
-          colors={{
-            string: "#DAA520", // overrides theme colors with whatever color value you want
-          }}
-          height="550px"
-          style={{
-            body: {
-              fontSize: "20px",
-            },
-          }}
-          onChange={onChangeForJsonEditor}
-        />
-      </div>
-
-        */}
       <br />
       <button
         className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5 p-10"

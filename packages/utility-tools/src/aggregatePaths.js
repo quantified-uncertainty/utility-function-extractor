@@ -18,10 +18,8 @@ export async function aggregatePathsThroughMixtureOfDistributions({
     );
     console.group();
     print("Number of paths: ", multipliedDistributions.length);
-    // print(multipliedDistributions.slice(0, 10));
     let squiggleCode = `aggregatePath = mx(${multipliedDistributions
       .filter((distributions) => distributions != undefined)
-      // .slice(0, 600)
       .join(", ")})`;
 
     // Start measuring time
@@ -54,6 +52,7 @@ export async function aggregatePathsThroughMixtureOfDistributions({
         4
       )}`
     );
+
     // Stop measuring time
     let end = Date.now();
     print(`${(end - start) / 1000} seconds needed for processing`);
@@ -77,7 +76,6 @@ export const avg = (arr) => sum(arr) / arr.length;
 export const geomMean = (arr) => {
   let n = arr.length;
   let logavg = sum(arr.map((x) => Math.log(x))); // works for low numbers much better
-  // console.log(logavg);
   let result = Math.exp(logavg / n);
   return result;
 };
