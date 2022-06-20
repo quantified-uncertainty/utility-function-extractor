@@ -6,8 +6,10 @@ export function ComparisonActuator({
   moveToNextStep,
   isListOrdered,
 }) {
-  const initialComparisonString = "x to y";
-  const [comparisonString, setComparisonString] = useState("x to y");
+  const initialComparisonString = "";
+  const [comparisonString, setComparisonString] = useState(
+    initialComparisonString
+  );
   const onChangeComparisonString = async (event) => {
     if (!isListOrdered) {
       await setComparisonString(event.target.value);
@@ -34,6 +36,7 @@ export function ComparisonActuator({
           <br />
           <input
             disabled={isListOrdered ? true : false}
+            placeholder={"x to y"}
             type="text"
             className="text-center text-blueGray-600 bg-white rounded text-lg border-0 shadow outline-none focus:outline-none focus:ring w-8/12 h-10 m-2"
             value={comparisonString}
