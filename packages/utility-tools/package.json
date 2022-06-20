@@ -1,6 +1,6 @@
 {
   "name": "utility-tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Process the json produced by utility-function-extractor.quantifieduncertainty.org",
   "scripts": {
     "start": "node --max-old-space-size=8192 src/index.js",
