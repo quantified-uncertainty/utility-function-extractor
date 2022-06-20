@@ -151,7 +151,14 @@ export function ResultsTable({ isListOrdered, listAfterMergeSort, links }) {
           *This is the geometric mean if all elements are either all positive or
           all negative, and the arithmetic mean otherwise. For a principled
           aggregation which is able to produce meaningfull 90% confidence
-          intervals, see the utility-tools package in npm or github
+          intervals, see the{" "}
+          <a
+            href="https://github.com/quantified-uncertainty/utility-function-extractor/tree/master/packages/utility-tools"
+            target="_blank"
+          >
+            utility-tools package
+          </a>{" "}
+          in npm or github
         </p>
       </div>
     </div>
