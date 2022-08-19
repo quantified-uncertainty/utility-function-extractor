@@ -11,10 +11,13 @@ import { truncateValueForDisplay } from "../../lib/truncateNums.js";
 import { cutOffLongNames } from "../../lib/stringManipulations.js";
 
 // import spread from "cytoscape-spread";
-// import dagre from "cytoscape-dagre";
+import dagre from "cytoscape-dagre";
 // import cola from "cytoscape-cola";
 // import fcose from "cytoscape-fcose";
 // import avsdf from "cytoscape-avsdf";
+
+// ^ then cytoscape.use it below
+cytoscape.use(dagre); // necessary for non-default themes,
 
 const effectButtonStyle =
   "bg-transparent m-2 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5";
@@ -47,7 +50,7 @@ const getColors = (n) => {
       colormap: "viridis",
       nshades: n,
       format: "hex",
-      alpha: 1,
+      alpha: 0.5,
     });
   } else {
     colors = colormap({
@@ -57,7 +60,7 @@ const getColors = (n) => {
       alpha: 1,
     });
   }
-  return colors;
+  return colors.reverse();
 };
 
 export function Graph({
@@ -81,13 +84,13 @@ export function Graph({
     //setVisibility("invisible");
     let layoutName = "circle"; //
 
-    // cytoscape.use(spread); // necessary for non-default themes,
+    cytoscape.use(dagre); // necessary for non-default themes,
     let listOfElementsForGraph = isListOrdered
       ? listAfterMergeSort
       : listOfElements;
 
     let colors = new Array(listOfElements.length);
-    if (isListOrdered) {
+    if (true) {
       colors = getColors(listOfElements.length);
     }
 
@@ -96,11 +99,9 @@ export function Graph({
         data: {
           id: cutOffLongNames(element.name),
           color: colors[i] || "darkgreen",
-          labelColor: isListOrdered
-            ? i >= listOfElementsForGraph.length - 2
+          labelColor: i <= 2
               ? "black"
               : "white"
-            : "white",
         },
       };
     });
@@ -117,17 +118,17 @@ export function Graph({
         };
       })
     );
-
+    const size_multiplier = 0.5
     const cytoscapeStylesheet = [
       {
         selector: "node",
         style: {
-          padding: "30px",
+          padding: 30 * size_multiplier,
           shape: "round-rectangle",
           content: "data(id)",
           "background-color": "data(color)",
           "text-wrap": "wrap",
-          "text-max-width": 70,
+          "text-max-width": 70 * size_multiplier,
           "z-index": 1,
         },
       },
@@ -135,7 +136,7 @@ export function Graph({
         selector: "node[id]",
         style: {
           label: "data(id)",
-          "font-size": "13",
+          "font-size": 13 * size_multiplier,
           color: "data(labelColor)",
           "text-halign": "center",
           "text-valign": "center",
@@ -147,9 +148,9 @@ export function Graph({
         style: {
           "curve-style": "unbundled-bezier",
           "target-arrow-shape": "vee",
-          width: 1.5,
+          width: 1.5 * size_multiplier,
           "target-arrow-color": "green",
-          "arrow-scale": 3,
+          "arrow-scale": 3 * size_multiplier,
           "target-arrow-fill": "filled",
           "text-rotation": "autorotate",
           "z-index": 0,
@@ -159,15 +160,15 @@ export function Graph({
         selector: "edge[label]",
         style: {
           label: "data(label)",
-          "font-size": "12",
+          "font-size": 12 * size_multiplier,
 
           "text-background-color": "#f9f9f9",
           "text-background-opacity": 1,
-          "text-background-padding": "4px",
+          "text-background-padding": 4 * size_multiplier,
 
           "text-border-color": "black",
           "text-border-style": "solid",
-          "text-border-width": 0.5,
+          "text-border-width": 0.5 * size_multiplier,
           "text-border-opacity": 1,
           "z-index": 3,
         },
@@ -179,8 +180,11 @@ export function Graph({
       style: cytoscapeStylesheet,
       elements: [...nodeElements, ...linkElements],
       layout: {
-        name: layoutName, // circle, grid, dagre
-        minDist: 10,
+        name: "dagre", // layoutName, // circle, grid, dagre
+        minDist: 10 * size_multiplier,
+        nodeSep: 50 * size_multiplier,
+        rankSep: 170 * size_multiplier,
+        rankDir: "BT",
         //prelayout: false,
         // animate: false, // whether to transition the node positions
         // animationDuration: 250, // duration of animation in ms if enabled
@@ -189,6 +193,7 @@ export function Graph({
       userZoomingEnabled: false,
       userPanningEnabled: false,
     };
+    cytoscape.use(dagre); // necessary for non-default themes,
     let newCs = cytoscape(config);
     setCs(newCs);
     // setTimeout(() => setVisibility(""), 700);
@@ -206,6 +211,7 @@ export function Graph({
 
   useEffect(() => {
     if (cs != null) {
+      
       clearTimeout(selectedLinkTimeout);
       let newTimeout = setTimeout(() => {
         cs.edges().on("mouseover", (event) => {
@@ -232,8 +238,8 @@ export function Graph({
         <div
           ref={containerRef}
           style={{
-            height: "900px", // isListOrdered ? "900px" : "500px",
-            width: "900px", // isListOrdered ? "900px" : "500px",
+            height: "2000px", // isListOrdered ? "900px" : "500px",
+            width: "1200px", // isListOrdered ? "900px" : "500px",
           }}
           className=""
         />
