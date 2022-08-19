@@ -107,8 +107,5 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 - [ ] Look back at Amazon thing which has been running
 - [ ] Simplify Graph and DynamicSquiggleChart components
 - [ ] Add squiggle component to initial comparison?
-- [ ] Understand why the rewrite doesn't
-  - Maybe: When two elements are judged to be roughly equal
-  - Maybe: Slightly different merge-sort algorithm.
 
 [^1]: The program takes each element as a reference point in turn, and computing the possible distances from that reference point to all other points, and taking the geometric mean of these distances. This produces a number representing the value of each element, such that the ratios between elements represent the user's preferences: a utility function. However, this isn't perfect; the principled approach woud be to aggregate the distributions rather than their means. But this principled approach is much more slowly. For the principled approach, see the `utility-tools` repository.
