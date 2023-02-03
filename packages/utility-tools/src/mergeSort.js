@@ -138,7 +138,7 @@ export function mergeSortInner({ recursiveInput, links }) {
   }
 }
 
-export function mergeSort({ list, links }) {
+export function mergeSort({ list, links, tryHardWithPermutations }) {
   // Try normally
   let answer = mergeSortInner({
     recursiveInput: { list, bottleneckedByComparison: false },
@@ -150,48 +150,59 @@ export function mergeSort({ list, links }) {
       orderedList: answer.recursiveInput.list,
     };
     return result;
-  } else {
+  } else if (tryHardWithPermutations != true) {
     let result = {
       finishedOrderingList: false,
       uncomparedElements: answer.recursiveInput.uncomparedElements,
     };
     return result;
-  }
-  /*
-  // otherwise, test all other permutations: 
-  let permutation = list.slice();
-  var length = list.length;
-  // let result = [list.slice()];
-  let c = new Array(length).fill(0);
-  let i = 1;
-  let k;
-  let p;
-  let counter = 0;
+  } else {
+    // otherwise, test all other permutations:
+    let permutation = list.slice();
+    var length = list.length;
+    // let result = [list.slice()];
+    let c = new Array(length).fill(0);
+    let i = 1;
+    let k;
+    let p;
+    let counter = 0;
+    let errorMsg =
+      "Error: The original list was wrongly ordered, and trying permutations didn't work";
 
-  while (i < length) {
-    counter++;
-    if (counter > 10) console.log(counter);
-    if (c[i] < i) {
-      k = i % 2 && c[i];
-      p = permutation[i];
-      permutation[i] = permutation[k];
-      permutation[k] = p;
-      // ++c[i];
-      c[i] = c[i] + 1;
-      i = 1;
-      let answer = mergeSortInner({ list: permutation, links });
-      if (answer != errorMsg) {
-        console.log(answer);
-        return answer;
+    while (i < length) {
+      counter++;
+      if (counter > 10) console.log("permutation #" + counter);
+      if (c[i] < i) {
+        k = i % 2 && c[i];
+        p = permutation[i];
+        permutation[i] = permutation[k];
+        permutation[k] = p;
+        // ++c[i];
+        c[i] = c[i] + 1;
+        i = 1;
+        let answer = mergeSortInner({
+          recursiveInput: {
+            list: permutation,
+            bottleneckedByComparison: false,
+          },
+          links,
+        });
+        if (answer.recursiveInput.bottleneckedByComparison == false) {
+          console.log(answer.recursiveInput);
+          let result = {
+            finishedOrderingList: true,
+            orderedList: answer.recursiveInput.list,
+          };
+          return result;
+        }
+        // result.push(permutation.slice());
+      } else {
+        c[i] = 0;
+        i = i + 1;
+        // ++i;
       }
-      // result.push(permutation.slice());
-    } else {
-      c[i] = 0;
-      i = i + 1;
-      // ++i;
     }
+    console.log(errorMsg);
+    return errorMsg;
   }
-  console.log("Error");
-  return "Error: The original list was wrongly ordered, and trying permutations didn't work";
-  */
 }

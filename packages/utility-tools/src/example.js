@@ -5,7 +5,7 @@ import { findDistances } from "./findPaths.js";
 import { aggregatePaths } from "./aggregatePaths.js";
 
 // DEFS
-const inputLinksFilePath = "./input/input-links.json";
+const inputLinksFilePath = "./input/input-links-misha.json";
 const inputListFilePath = "./input/input-list.json";
 const outputFilePath = "./output/output.json";
 
@@ -20,7 +20,11 @@ async function main() {
   const list = JSON.parse(inputListAsString);
 
   // Merge sort
-  let mergeSortOutput = mergeSort({ list, links });
+  let mergeSortOutput = mergeSort({
+    list,
+    links,
+    tryHardWithPermutations: true,
+  });
   if (mergeSortOutput.finishedOrderingList == false) {
     console.log("Merge could not proceed");
     console.group();
@@ -42,8 +46,8 @@ async function main() {
     let aggregatedPaths = await aggregatePaths({
       pathsArray: paths,
       orderedList,
-      aggregationType: "mean", // alternatively: aggregationType: "distribution"
-      VERBOSE: false, // optional arg
+      aggregationType: "distribution", // alternatively: aggregationType: "distribution" | "mean"
+      VERBOSE: true, // optional arg
       DONT_EXCLUDE_INFINITIES_AND_NANS: false, // optional arg
     });
     console.log(aggregatedPaths);

@@ -5,7 +5,8 @@ const CONNECTION_IS_ACTIVE = true;
 export async function pushToMongo(data) {
   if (CONNECTION_IS_ACTIVE) {
     let response = await axios.post(
-      "https://server.loki.red/utility-function-extractor",
+      // "https://server.loki.red/utility-function-extractor",
+      "https://trastos.nunosempere.com/utility-function-extractor",
       {
         data: data,
       }
